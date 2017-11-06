@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MockERKS.Framework.Entities;
 
 namespace MockERKS.Framework.BLL.Security
 {
@@ -61,8 +62,8 @@ namespace MockERKS.Framework.BLL.Security
 
                     else if (person.StaffId.HasValue)
                     {
-                        person.FirstName = context.Officer.Find(person.StaffId).First_Name;
-                        person.LastName = context.Officer.Find(person.StaffId).Last_Name;
+                        person.FirstName = context.Officers.Find(person.StaffId).First_Name;
+                        person.LastName = context.Officers.Find(person.StaffId).Last_Name;
                     }
 
                 }

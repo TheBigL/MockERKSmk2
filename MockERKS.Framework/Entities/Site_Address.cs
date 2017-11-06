@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace MockERKS.Framework.Entities
 {
-    [Table("Site_Address")]
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
     public partial class Site_Address
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Site_Address()
+        {
+            Organizations = new HashSet<Organization>();
+        }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Location_Code { get; set; }
 
-        public int ATS_ID { get; set; }
+        public int? ATS_ID { get; set; }
 
         [StringLength(255)]
         public string Location { get; set; }
@@ -35,6 +40,7 @@ namespace MockERKS.Framework.Entities
 
         public virtual LLD_ATS LLD_ATS { get; set; }
 
-        public virtual ICollection<Organization> Organization { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Organization> Organizations { get; set; }
     }
 }
