@@ -34,6 +34,7 @@
       <HintPath>..\Website\Bin\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,11 +47,25 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DAL\MockErksDbContext.cs" />
     <Compile Include="DAL\Security\ApplicationDbContext.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Document_Type.cs" />
+    <Compile Include="Entities\File_Type.cs" />
+    <Compile Include="Entities\LLD_ATS.cs" />
+    <Compile Include="Entities\LLD_PBL.cs" />
+    <Compile Include="Entities\Manager.cs" />
+    <Compile Include="Entities\Manager_Group.cs" />
+    <Compile Include="Entities\Officer.cs" />
+    <Compile Include="Entities\Operation.cs" />
+    <Compile Include="Entities\Organization.cs" />
+    <Compile Include="Entities\Record_Details.cs" />
+    <Compile Include="Entities\Security_Classification.cs" />
+    <Compile Include="Entities\Site_Address.cs" />
+    <Compile Include="Entities\Site_File.cs" />
+    <Compile Include="Entities\SPIN_II.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
-    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
