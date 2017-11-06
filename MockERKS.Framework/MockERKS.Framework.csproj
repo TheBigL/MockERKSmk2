@@ -33,9 +33,16 @@
     <Reference Include="EntityFramework">
       <HintPath>..\Website\Bin\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\Website\Bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\Website\Bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Security\ApplicationUser.cs" />
+    <Compile Include="BLL\Security\RoleManager.cs" />
+    <Compile Include="BLL\Security\SecurityRoles.cs" />
+    <Compile Include="BLL\Security\UserManager.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DAL\MockErksDbContext.cs" />
     <Compile Include="DAL\Security\ApplicationDbContext.cs" />
@@ -58,15 +69,16 @@
     <Compile Include="Entities\Operation.cs" />
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Entities\Record_Details.cs" />
+    <Compile Include="Entities\Security\RoleProfile.cs" />
+    <Compile Include="Entities\Security\SecurityRoles.cs" />
+    <Compile Include="Entities\Security\UserProfile.cs" />
     <Compile Include="Entities\Security_Classification.cs" />
     <Compile Include="Entities\Site_Address.cs" />
     <Compile Include="Entities\Site_File.cs" />
     <Compile Include="Entities\SPIN_II.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
