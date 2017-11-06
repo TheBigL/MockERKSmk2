@@ -1,16 +1,31 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrganizationForm.aspx.cs" Inherits="AutomatedApprovalSystem_OrganizationForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrganizationForm.aspx.cs" Inherits="AutomatedApprovalSystem_OrganizationForm" MasterPageFile="~/Site.master" %>
 
-<!DOCTYPE html>
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+        <div class="row">
+        <asp:Label AssociatedControlID="OrgID" Text="Organization ID" runat="server"></asp:Label>
+        <asp:TextBox ID="OrgID" Enabled="false" runat="server"></asp:TextBox><br />
+
+        <asp:Label AssociatedControlID="OrgName" Text="Organization Name" runat="server"></asp:Label>
+        <asp:TextBox ID="OrgName" runat="server"></asp:TextBox><br />
+
+        <asp:Label AssociatedControlID="OrgAddress" Text="Organization Address" runat="server"></asp:Label>
+        <asp:TextBox ID="OrgAddress" runat="server"></asp:TextBox><br />
+
+        <asp:Label AssociatedControlID="OrgPhone" runat="server" Text="Phone"></asp:Label>
+        <asp:TextBox ID="OrgPhone" runat="server"></asp:TextBox><br />
+
+        <asp:Label AssociatedControlID="OrgEmail" runat="server" Text="Email"></asp:Label>
+        <asp:TextBox ID="OrgEmail" runat="server"></asp:TextBox><br />
+
+
+        <asp:Button ID="Register" runat="server" Text="Register" />
+
+        
+
+
+
+
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
