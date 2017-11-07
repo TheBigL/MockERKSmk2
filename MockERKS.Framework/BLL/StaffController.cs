@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 #region Extra Namespaces
 using System.ComponentModel;
+using MockERKS.Framework.Entities;
+using MockERKS.Framework.DAL;
 #endregion
 
 namespace MockERKS.Framework.BLL
@@ -25,6 +27,41 @@ namespace MockERKS.Framework.BLL
         * Sincerely,
         * --Leban Mohamed
         */
+
+        /* Look Up All Organizations
+* Description: List all of the Organizations in the Database.
+* Author: Leban Mohamed
+* Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
+*/
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Organization> LookupAllOrganizations()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                return context.Organizations.ToList();
+            }
+        }
+
+        /* Look Up Organizations By Name
+        * Description: List all of the Organizations in the Database by name.
+        * Author: Leban Mohamed
+        * Author's Comments: Nothinng in particular.
+        */
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Organization> LookupOrganizationByName(string name)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var results = from org in context.Organizations
+                              where org.Organization_Name.Contains(name)
+                              select org;
+
+                return results.ToList();
+            }
+
+        }
 
 
     }
