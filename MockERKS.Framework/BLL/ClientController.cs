@@ -1,6 +1,7 @@
 ﻿using MockERKS.Framework.DAL;
 using MockERKS.Framework.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -27,9 +28,9 @@ namespace MockERKS.Framework.BLL
 
         
         /* Create Organization
-         * Creates an Organization
+         * Description: Creates an Organization
          * Author: Leban Mohamed
-         * I figured this object would be simple. Add the Organization and call it a day.
+         * Author's Comments: I figured this object would be simple. Add the Organization and call it a day.
          * If there are any business rules, I will change the method accordingly.
          */
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
@@ -39,6 +40,41 @@ namespace MockERKS.Framework.BLL
             {
                 context.Organizations.Add(org);
                 context.SaveChanges();
+            }
+
+        }
+
+        /* Look Up All Organizations
+        * Description: List all of the Organizations in the Database.
+        * Author: Leban Mohamed
+        * Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
+        */
+        
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Organization> LookupAllOrganizations()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                return context.Organizations.ToList();
+            }
+        }
+
+        /* Look Up Organizations By Name
+        * Description: List all of the Organizations in the Database by name.
+        * Author: Leban Mohamed
+        * Author's Comments: Nothinng in particular
+        */
+
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<Organization> LookupOrganizationByName(string name)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var results = from org in context.Organizations
+                              where org.Organization_Name.Contains(name)
+                              select org;
+
+                return results.ToList();
             }
 
         }
