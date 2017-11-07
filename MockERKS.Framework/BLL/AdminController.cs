@@ -44,10 +44,11 @@ namespace MockERKS.Framework.BLL
         {
             using (var context = new MockErksDbContext())
             {
+                //TODO: Find the file
                 var file = context.Site_File.Find(fileID);
                 if (file == null) throw new ArgumentException("This file doesn't exist");
                 
-                //Getting right of all foreign keys associated with the file.
+                //Getting rid of all the Foreign Key Associted with the class.
                 bool categoryMatch = context.Categories.Any(x => x.Category_ID == file.Category_ID);
                 if (!categoryMatch) throw new Exception("No Category exists");
                 else context.Categories.Remove(file.Category);
@@ -77,9 +78,10 @@ namespace MockERKS.Framework.BLL
 
                 context.Security_Classification.Remove(file.Security_Classification);
 
+                //Get rid of the child class be creating a List of Record Details.
                 List<Record_Details> remove = new List<Record_Details>();
                  
-
+                //Adding the Record details to the new List.
                 foreach(var item in rdetails)
                 {
                     bool rdMatch = context.Record_Details.Any(x => x.File_ID == fileID);
@@ -89,6 +91,7 @@ namespace MockERKS.Framework.BLL
                     } 
                 }
 
+                //Removing each Record Details from the list.
                 foreach(var item in remove)
                 {
                     context.Record_Details.Remove(item);
@@ -100,8 +103,10 @@ namespace MockERKS.Framework.BLL
                 
 
 
-
+                //Getting rid of the file class proper
                 context.Site_File.Remove(file);
+
+                //Saving all the changes making them permanent.
                 context.SaveChanges();
             }
 
