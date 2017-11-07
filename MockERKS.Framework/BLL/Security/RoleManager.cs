@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using MockERKS.Framework.DAL.Security;
+using MockERKS.Framework.BLL.Security;
 using MockERKS.Framework.Entities.Security;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace MockERKS.Framework.BLL.Security
         }
 
         #region List All Roles
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<string> ListAllRoleNames()
+        {
+            return this.Roles.Where(r => r.Name != SecurityRoles.Staff).Select(r => r.Name).ToList();
+        }
+
+
+
         [DataObjectMethod(DataObjectMethodType.Select, true)]
         public List<RoleProfile> ListAllRoles()
         {
@@ -45,6 +55,38 @@ namespace MockERKS.Framework.BLL.Security
                          };
 
             return result.ToList();
+        }
+        
+
+
+
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void AddRole(RoleProfile role)
+        {
+            if (!this.RoleExists(role.RoleName))
+            {
+                this.Create(new IdentityRole(role.RoleName));
+            }
+            else
+            {
+                throw new Exception("Creation failed. " + role.RoleName + " already exists.");
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteRole(RoleProfile role)
+        {
+            var existing = this.FindById(role.RoleId);
+            if (existing.Users.Count() == 0)
+            {
+                this.Delete(this.FindById(role.RoleId));
+            }
+            else
+            {
+                throw new Exception("Delete failed. " + role.RoleName + " has existing users. Reassign users first.");
+            }
+
+
         }
         #endregion
 
