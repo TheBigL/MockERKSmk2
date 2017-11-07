@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 #region Extra Namespaces
 using System.ComponentModel;
+using MockERKS.Framework.DAL;
 #endregion
 
 namespace MockERKS.Framework.BLL
@@ -26,5 +27,33 @@ namespace MockERKS.Framework.BLL
         * Sincerely,
         * --Leban Mohamed
         */
+
+
+        //TODO Create a Delete File Function For the Admin.
+
+            /*Delete File
+             * Deletes the foreign keys associated with the file, then it removes the file
+             * based on the fileID
+             * Author: Leban Mohamed
+             * Comments:
+             */
+
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+        public void DeleteFile(int fileID)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var file = context.Site_File.Find(fileID);
+                if (file == null) throw new ArgumentException("This file doesn't exist");
+                //TODO: Get rid any foreign keys associated with it.
+
+
+                context.Site_File.Remove(file);
+                context.SaveChanges();
+            }
+
+        }
+
+
     }
 }
