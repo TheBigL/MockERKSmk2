@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#region Extra Namespaces
+using System.ComponentModel;
+#endregion
+
 namespace MockERKS.Framework.BLL
 {
+    [DataObject]
     public class AdminController
     {
         /*Yo! I've set up the project for guys. Remember to comment on your code whenever you create
