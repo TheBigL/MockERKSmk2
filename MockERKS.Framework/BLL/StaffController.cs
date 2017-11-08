@@ -63,6 +63,38 @@ namespace MockERKS.Framework.BLL
 
         }
 
+        /*
+         * LookupFilebyOrganization
+         *Author: Leban Mohamed 
+         * Note: I may change the Site File variables based on what is important to display.
+         * 
+         */
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<Site_File> LookupFileByOrganization(int orgID)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var results = from file in context.Site_File
+                              where file.Organization.Organization_ID == orgID
+                              select new Site_File
+                              {
+                                  Organization_ID = orgID,
+                                  File_ID = file.File_ID,
+                                  Category_ID = file.Category.Category_ID,
+                                  Document_Type_ID = file.Document_Type_ID,
+                                  File_Status = file.File_Status,
+                                  Type_ID = file.Type_ID,
+                                  Operation_ID = file.Operation_ID,
+                                  LLD_PBL = file.LLD_PBL,
+                                  LINC_Number = file.LINC_Number,
+                                  Security_Classification_ID = file.Security_Classification_ID,
+                              };
+                return results.ToList();
+            }
+
+
+        }
+
 
     }
 }
