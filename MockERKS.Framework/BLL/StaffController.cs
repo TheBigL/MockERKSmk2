@@ -82,6 +82,29 @@ namespace MockERKS.Framework.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<Officer> LookupStaff()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var results = from staffC in context.Officers
+                              select new Officer
+                              {
+                                  Officer_ID = staffC.Officer_ID,
+                                  First_Name = staffC.First_Name,
+                                  Last_Name = staffC.Last_Name,
+                                  Email = staffC.Email,
+                                  Phone = staffC.Phone
+
+                              };
+
+                return results.ToList();
+            };
+
+            
+
+        }
+
         /*
          * LookupFilebyOrganization
          *Author: Leban Mohamed 

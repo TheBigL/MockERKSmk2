@@ -22,8 +22,7 @@ namespace MockERKS.Framework.BLL
         * how it all gets done, but try not to make me do this for you.
         * 
         * I'm currently going to move on with my part of the project. 
-        * NOTE: Remember what Steve said about the workload. Don't force me to everything.
-        * 
+        * NOTE: Remember what Steve said about the workload. Don't force me to do everything.
         * 
         * Sincerely,
         * --Leban Mohamed
