@@ -113,6 +113,46 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
+        #region UpdateFile
+        /*Delete File
+         * Updates the Site File as well as the Foreign Keys associted the File Class.
+         * Author: Leban Mohamed
+         * Comments: N/A
+         */
+        [DataObjectMethod(DataObjectMethodType.Update,true)]
+        public void UpdateFile(Site_File file, List<Record_Details> rDetails)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var sFile = context.Site_File.Find(file.File_ID);
+                if (sFile == null) throw new ArgumentNullException("Invalid File - The file does not exist");
+
+                foreach(var item in rDetails)
+                {
+                    //TODO: Update the relevant parts (Including the Foreign Keys) of the File class. 
+                }
+
+                context.Entry<Site_File>(context.Site_File.Attach(file)).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+
+            
+
+        }
+
+
+        #endregion
+
+        #region DeleteUser
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteUser()
+        {
+
+        }
+
+        #endregion
+
 
     }
 }

@@ -34,6 +34,7 @@ namespace MockERKS.Framework.Entities
         [Required]
         [StringLength(25)]
         public string Offcial { get; set; }
+        // ^ Fix this spelling error. It's "Official".
 
         public int Storage_Medium { get; set; }
 
