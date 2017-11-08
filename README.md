@@ -16,6 +16,6 @@ Admin - They maintain the overall system and have all of the similar abilities t
 with several key differences. First, administrators can delete files at their discretion.
 Also, only admins can add, change the roles of the people who log in. They can remove users from the system.
 
-#Functions
+# Functions
 
-#In this section, we will highlight each function and tell you how they work.
+In this section, we will highlight each function and tell you how they work.

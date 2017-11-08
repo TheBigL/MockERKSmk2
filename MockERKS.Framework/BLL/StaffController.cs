@@ -64,6 +64,24 @@ namespace MockERKS.Framework.BLL
 
         }
 
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Manager> LookupAdmins()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                var result = from admin in context.Managers
+                             select new Manager
+                             {
+                                 First_Name = admin.First_Name,
+                                 Last_Name = admin.Last_Name,
+                                 Email = admin.Email,
+                                 Phone = admin.Phone
+                             };
+                return result.ToList();
+            }
+        }
+
         /*
          * LookupFilebyOrganization
          *Author: Leban Mohamed 
