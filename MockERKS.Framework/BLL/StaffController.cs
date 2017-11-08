@@ -37,6 +37,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Organization> LookupAllOrganizations()
         {
+            //Simple Lookup for All Organizations
             using (var context = new MockErksDbContext())
             {
                 return context.Organizations.ToList();
@@ -74,6 +75,7 @@ namespace MockERKS.Framework.BLL
         {
             using (var context = new MockErksDbContext())
             {
+                //Simple LINQ Query for a list of file based on a matching Organization ID (or Client ID if they decide to change it).
                 var results = from file in context.Site_File
                               where file.Organization.Organization_ID == orgID
                               select new Site_File

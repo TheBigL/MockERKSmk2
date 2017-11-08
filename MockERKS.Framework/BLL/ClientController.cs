@@ -66,9 +66,20 @@ namespace MockERKS.Framework.BLL
 
     */
 
-        
+        /*
+         * 
+         * 
+         * 
+         * */
 
-
+        [DataObjectMethod(DataObjectMethodType.Insert)]
+        public void addOrganizationInfoFromForm()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                //Add items to the list. Or a possible LINQ Query.
+            }
+        }
 
 
     }
