@@ -28,18 +28,48 @@
         <br />
         <br />
 
-        <asp:Label ID="Label6" runat="server" Text="Site Location"></asp:Label><br />
+        <!-- <asp:Label ID="Label6" runat="server" Text="Site Location"></asp:Label><br /> -->
+        <h5>Site Location</h5>
+        <asp:Label ID="Label12" runat="server" Text="Location:"></asp:Label>
+        <asp:DropDownList ID="Location" runat="server"></asp:DropDownList><br />
+
+        <asp:Label ID="Label13" runat="server" Text="Address:" AssociatedControlID="Address"></asp:Label>
+        <asp:TextBox ID="Address" runat="server"></asp:TextBox><br />
+        <br />
+        <br />
         
-        <br />
-        <br />
-        
-        <asp:Label ID="Label7" runat="server" Text="Legal Land Description (LLD) ATS"></asp:Label><br />
+        <!-- <asp:Label ID="Label7" runat="server" Text="Legal Land Description (LLD) ATS"></asp:Label><br /> -->
+        <h5>Legal Land Description (LLD) ATS</h5>
+        <asp:Label ID="Label14" runat="server" Text="Meridian:"></asp:Label>
+        <asp:DropDownList ID="Meridian" runat="server"></asp:DropDownList><br />
 
+        <asp:Label ID="Label15" runat="server" Text="Range:"></asp:Label>
+        <asp:DropDownList ID="Range" runat="server"></asp:DropDownList><br />
+
+        <asp:Label ID="Label16" runat="server" Text="Township:"></asp:Label>
+        <asp:DropDownList ID="Township" runat="server"></asp:DropDownList><br />
+
+        <asp:Label ID="Label17" runat="server" Text="Section:"></asp:Label>
+        <asp:DropDownList ID="Section" runat="server"></asp:DropDownList><br />
+
+        <asp:Label ID="Label18" runat="server" Text="QuarterSection:"></asp:Label>
+        <asp:DropDownList ID="QuarterSection" runat="server"></asp:DropDownList><br />
+
+        <asp:Label ID="Label19" runat="server" Text="LSD:"></asp:Label>
+        <asp:DropDownList ID="LSD" runat="server"></asp:DropDownList><br />
         <br />
         <br />
 
-        <asp:Label ID="Label8" runat="server" Text="Legal Land Description (LLD) PBL"></asp:Label><br />
+        <!-- <asp:Label ID="Label8" runat="server" Text="Legal Land Description (LLD) PBL"></asp:Label><br /> -->
+        <h5>Legal Land Description (LLD) PBL</h5>
+        <asp:Label ID="Label20" runat="server" Text="Plan:" AssociatedControlID="Plan"></asp:Label>
+        <asp:TextBox ID="Plan" runat="server"></asp:TextBox><br />
 
+        <asp:Label ID="Label21" runat="server" Text="Block:" AssociatedControlID="Block"></asp:Label>
+        <asp:TextBox ID="Block" runat="server"></asp:TextBox><br />
+
+        <asp:Label ID="Label22" runat="server" Text="Lot:" AssociatedControlID="Lot"></asp:Label>
+        <asp:TextBox ID="Lot" runat="server"></asp:TextBox><br />
         <br />
         <br />
 
