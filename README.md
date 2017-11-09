@@ -6,6 +6,8 @@ This project is a part our NAIT capstone project.
 
 # System Roles
 
+This section is about the Roles that are used in the class. 
+
 Clients - They can post files and lookup their own individual files.
 
 Staff - Members of the AEF can lookup files based on the Client and Organization that the files are
