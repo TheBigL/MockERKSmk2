@@ -7,9 +7,9 @@
         <div="col-12">
             Welcome to the Staff Page! Here, you can view file that are currently stored in the database.
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#users" data-toggle="tab">Files</a></li>
-                <li><a href="#roles" data-toggle="tab">Staff</a></li>
-                <li><a href="#unregistered" data-toggle="tab">Organizations</a></li>
+                <li class="active"><a href="#files" data-toggle="tab">Files</a></li>
+                <li><a href="#staff" data-toggle="tab">Staff</a></li>
+                <li><a href="#organizations" data-toggle="tab">Organizations</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="users">
