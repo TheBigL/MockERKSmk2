@@ -48,9 +48,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,6 +81,8 @@
     <Compile Include="Entities\Officer.cs" />
     <Compile Include="Entities\Operation.cs" />
     <Compile Include="Entities\Organization.cs" />
+    <Compile Include="Entities\POCOs\OfficerListPOCO.cs" />
+    <Compile Include="Entities\POCOs\RegisteredOfficerPOCO.cs" />
     <Compile Include="Entities\Record_Details.cs" />
     <Compile Include="Entities\Security\RoleProfile.cs" />
     <Compile Include="Entities\Security\SecurityRoles.cs" />

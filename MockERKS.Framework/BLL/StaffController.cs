@@ -138,6 +138,19 @@ namespace MockERKS.Framework.BLL
 
         }
 
+        /*
+        * LookupOfficerByOfficerID
+        *Author: Sayed
+        * 
+        */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Officer Officer_Get(int Officer_ID)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                return context.Officers.Find(Officer_ID);
+            }
+        }
 
     }
 }

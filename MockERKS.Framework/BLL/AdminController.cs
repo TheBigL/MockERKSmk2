@@ -16,27 +16,12 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class AdminController
     {
-        /*Yo! I've set up the project for guys. Remember to comment on your code whenever you create
-        * the class. We want to make sure we can tell who's working on which part.
-        * I don't want you guys to get confused. We can go to each other and consult about
-        * how it all gets done, but try not to make me do this for you.
-        * 
-        * I'm currently going to move on with my part of the project. 
-        * NOTE: Remember what Steve said about the workload. Don't force me to do everything.
-        * 
-        * Sincerely,
-        * --Leban Mohamed
-        */
+      
 
 
         //TODO Create a Delete File Function For the Admin.
         #region DeleteFile
-        /*Delete File
-         * Deletes the foreign keys associated with the file, then it removes the file
-         * based on the fileID
-         * Author: Leban Mohamed
-         * Comments:
-         */
+       
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteFile(int fileID, List<Record_Details> rdetails)
@@ -113,11 +98,7 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region UpdateFile
-        /*Delete File
-         * Updates the Site File as well as the Foreign Keys associted the File Class.
-         * Author: Leban Mohamed
-         * Comments: N/A
-         */
+   
         [DataObjectMethod(DataObjectMethodType.Update,true)]
         public void UpdateFile(Site_File file, List<Record_Details> rDetails)
         {

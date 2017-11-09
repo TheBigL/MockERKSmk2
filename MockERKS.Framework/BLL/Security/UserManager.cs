@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using MockERKS.Framework.DAL;
 using MockERKS.Framework.DAL.Security;
 using MockERKS.Framework.Entities.Security;
+using MockERKS.Framework.Entities.POCOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,7 @@ namespace MockERKS.Framework.BLL.Security
          : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
         {
         }
-
+        //Author:Sayed
         public void AddWebMaster()
         {
             //Users accesses all the records on the AspNetUsers table
@@ -53,9 +54,85 @@ namespace MockERKS.Framework.BLL.Security
             }
         }
 
+        //Author:Sayed
 
-        #region User CRUD
+        public void AddStaff()
+        {
+            using (var context = new MockErksDbContext())
+            {
+                
+                var currentStaff = from x in context.Officers
+                                       select new OfficerListPOCO
+                                       {
+                                           Officer_ID = x.Officer_ID,
+                                           First_Name = x.First_Name,
+                                           Last_Name = x.Last_Name
+                                       };
 
+              
+                var UserOfficer = from x in Users.ToList()
+                                    where x.StaffId.HasValue
+                                    select new RegisteredOfficerPOCO
+                                    {
+                                        UserName = x.UserName,
+                                        Officer_ID = int.Parse(x.StaffId.ToString())
+                                    };
+             
+                foreach (var officer in currentStaff)
+                {
+                    //does the employee NOT have a logon (no User record)
+                    if (!UserOfficer.Any(us => us.Officer_ID == officer.Officer_ID))
+                    {
+                        
+                        var newUserName = officer.First_Name.Substring(0, 1) + officer.Last_Name;
+
+                        //create a new User ApplicationUser instance
+                        var userAccount = new ApplicationUser()
+                        {
+                            UserName = newUserName,
+                            Email = string.Format(STR_EMAIL_FORMAT, newUserName),
+                            EmailConfirmed = true
+                        };
+                        userAccount.StaffId = officer.Officer_ID;
+                        //create the Users record
+                        IdentityResult result = this.Create(userAccount, STR_DEFAULT_PASSWORD);
+
+                        //result hold the return value of the creation attempt
+                        
+                        if (!result.Succeeded)
+                        {
+                           
+                            newUserName = VerifyNewUserName(newUserName);
+                            userAccount.UserName = newUserName;
+                            this.Create(userAccount, STR_DEFAULT_PASSWORD);
+                        }
+
+                        //create the staff role in UserRoles
+                        this.AddToRole(userAccount.Id, SecurityRoles.Staff);
+                    }
+                }
+            }
+        }
+
+        public string VerifyNewUserName(string suggestedUserName)
+        {
+            
+            var allUserNames = from x in Users.ToList()
+                               where x.UserName.StartsWith(suggestedUserName)
+                               orderby x.UserName
+                               select x.UserName;
+            //set up the verified unique UserName
+            var verifiedUserName = suggestedUserName;
+
+            for (int i = 1; allUserNames.Any(x => x.Equals(verifiedUserName,
+                         StringComparison.OrdinalIgnoreCase)); i++)
+            {
+                verifiedUserName = suggestedUserName + i.ToString();
+            }
+
+            //return teh finalized new verified user name
+            return verifiedUserName;
+        }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]
         public List<UserProfile> ListAllStaff()
@@ -79,7 +156,7 @@ namespace MockERKS.Framework.BLL.Security
                 {
                     if (person.AdminId.HasValue)
                     {
-                        //TODO: Finish the MockERKSDatabaseContext class before I can finish this method. 
+                        
                         person.FirstName = context.Managers.Find(person.StaffId).First_Name;
                         person.LastName = context.Managers.Find(person.StaffId).Last_Name;
                     }
@@ -92,11 +169,6 @@ namespace MockERKS.Framework.BLL.Security
 
                 }
             }
-
-
-
-            //TODO: Finish the MockERKSDatabaseContext class before I can finish this method. 
-
 
             return result.ToList();
         }
@@ -117,13 +189,6 @@ namespace MockERKS.Framework.BLL.Security
 
         }
 
-
-
-
-
-
-
-        #endregion
 
 
 
