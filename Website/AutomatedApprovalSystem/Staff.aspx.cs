@@ -15,9 +15,9 @@ public partial class AutomatedApprovalSystem_Staff : System.Web.UI.Page
         }
 
 
-        if(!User.IsInRole("Staff"))
+        /*if(!User.IsInRole("Staff"))
         {
             Response.Redirect("~/Account/Login.aspx");
-        }
+        }*/
     }
 }
