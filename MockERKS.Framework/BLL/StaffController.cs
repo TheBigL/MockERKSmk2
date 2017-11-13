@@ -15,19 +15,7 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class StaffController
     {
-        /*Yo! I've set up the project for guys. Remember to comment on your code whenever you create
-        * the class. We want to make sure we can tell who's working on which part.
-        * I don't want you guys to get confused. We can go to each other and consult about
-        * how it all gets done, but try not to make me do this for you.
-        * 
-        * I'm currently going to move on with my part of the project. 
-        * NOTE: Remember what Steve said about the workload. Don't force me to everything.
-        * 
-        * 
-        * Sincerely,
-        * --Leban Mohamed
-        */
-
+        
         /* Look Up All Organizations
 * Description: List all of the Organizations in the Database.
 * Author: Leban Mohamed
@@ -150,6 +138,45 @@ namespace MockERKS.Framework.BLL
             {
                 return context.Officers.Find(Officer_ID);
             }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Insert, true)]
+        public void Insert_Staff(string firstName, string lastName, int phone, string email )
+        {
+            List<string> exceptionReasons = new List<string>();
+
+            Officer newStaff = new Officer()
+            {
+                First_Name = firstName,
+                Last_Name = lastName,
+                Phone = phone,
+                Email = email,
+
+            };
+            
+            using (var context = new MockErksDbContext())
+            {
+
+                foreach(var item in context.Officers)
+                {
+                    if (newStaff.First_Name == item.First_Name && newStaff.Last_Name == item.Last_Name)
+                        exceptionReasons.Add("Your first name and last name is the same as another staff member.");
+                    if (newStaff.Email == item.Email)
+                        exceptionReasons.Add("Your e-mail is the same as another e-mail. Pick a different E-Mail");
+                }
+
+                if (exceptionReasons.Count > 0)
+                {
+                    throw new Exception("We cannot add the Staff for the following reason:");
+                }
+                
+                
+
+                context.Officers.Add(newStaff);
+            }
+
+
+            
         }
 
     }
