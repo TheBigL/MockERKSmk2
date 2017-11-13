@@ -11,4 +11,12 @@ public partial class AutomatedApprovalSystem_StaffForm : System.Web.UI.Page
     {
 
     }
+
+    protected void ResetForm_Click(object sender, EventArgs e)
+    {
+        StaffID.Text = "";
+        StaffName.Text = "";
+        StaffPhone.Text = "";
+        StaffEmail.Text = "";
+    }
 }
