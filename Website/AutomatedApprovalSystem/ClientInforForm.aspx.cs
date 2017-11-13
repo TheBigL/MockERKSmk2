@@ -14,6 +14,7 @@ public partial class AutomatedApprovalSystem_ClientForm : System.Web.UI.Page
 
     protected void ResetForm_Click(object sender, EventArgs e)
     {
+        ClientID.Text = "";
         ClientName.Text = "";
         ClientDescription.SelectedIndex = 0;
         ClientPhone.Text = "";
