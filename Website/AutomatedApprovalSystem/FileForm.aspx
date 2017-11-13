@@ -88,7 +88,7 @@
         <br />
 
         <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
-        <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" />
+        <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
         <asp:Button CssClass="btn" ID="CancleActivity" runat="server" Text="Cancle" />
     </fieldset>
 </asp:Content>
