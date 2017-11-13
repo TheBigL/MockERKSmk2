@@ -51,4 +51,9 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         FileStatus.SelectedIndex = 0;
         ClosedDate.SelectedDates.Clear();
     }
+
+    protected void AddFile_Click(object sender, EventArgs e)
+    {
+
+    }
 }
