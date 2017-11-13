@@ -7,7 +7,7 @@
       
         <div style="margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;">
         <a href="Account/Login.aspx" class="btn btn-primary btn-lg">Log In &raquo;</a>
-        <a href="Account/Register.aspx" class="btn btn-primary btn-lg">New User &raquo;</a>
+        <a href="Account/NewClient.aspx" class="btn btn-primary btn-lg">New Client &raquo;</a>
               </div>
        
     </div>
