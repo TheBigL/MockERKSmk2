@@ -84,6 +84,12 @@
 
         <asp:Label ID="Label11" runat="server" Text="Closed Date:" AssociatedControlID="ClosedDate"></asp:Label>
         <asp:Calendar ID="ClosedDate" runat="server"></asp:Calendar><br />
+        <br />
+        <br />
+
+        <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
+        <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" />
+        <asp:Button CssClass="btn" ID="CancleActivity" runat="server" Text="Cancle" />
     </fieldset>
 </asp:Content>
 
