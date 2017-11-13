@@ -18,8 +18,8 @@
           
           <br />
 
-          <%--<asp:Label ID="Label1" runat="server" Text="Description" AssociatedControlID="Description"></asp:Label>
-          <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList><br />--%>
+          <asp:Label ID="Label1" runat="server" Text="Description" AssociatedControlID="Description"></asp:Label>
+          <asp:DropDownList ID="Description" runat="server"></asp:DropDownList><br />
 
           <asp:Label ID="Label2" runat="server" Text="Phone" AssociatedControlID="Phone"></asp:Label>
           <asp:TextBox ID="Phone" runat="server"></asp:TextBox>
