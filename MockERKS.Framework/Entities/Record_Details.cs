@@ -9,7 +9,6 @@ namespace MockERKS.Framework.Entities
     public partial class Record_Details
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Record_ID { get; set; }
 
         public int? File_ID { get; set; }
@@ -34,7 +33,6 @@ namespace MockERKS.Framework.Entities
         [Required]
         [StringLength(25)]
         public string Offcial { get; set; }
-        // ^ Fix this spelling error. It's "Official".
 
         public int Storage_Medium { get; set; }
 

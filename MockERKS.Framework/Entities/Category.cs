@@ -16,7 +16,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Category_ID { get; set; }
 
         [Required]

@@ -16,15 +16,11 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Operation_ID { get; set; }
 
         [Required]
         [StringLength(25)]
         public string Operation_Name { get; set; }
-
-        [Column(TypeName = "text")]
-        public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site_File> Site_File { get; set; }

@@ -9,8 +9,13 @@ namespace MockERKS.Framework.Entities
     [Table("Manager")]
     public partial class Manager
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Manager()
+        {
+            Manager_Group = new HashSet<Manager_Group>();
+        }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Manager_ID { get; set; }
 
         [Required]
@@ -21,12 +26,13 @@ namespace MockERKS.Framework.Entities
         [StringLength(25)]
         public string Last_Name { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string Phone { get; set; }
+        public int Phone { get; set; }
 
         [Required]
         [StringLength(125)]
         public string Email { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Manager_Group> Manager_Group { get; set; }
     }
 }

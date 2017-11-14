@@ -34,13 +34,23 @@ namespace MockERKS.Framework.BLL
          * Note: This code is incomplete; Wenyu, this is your time to shine.
          */
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void RegisterOrganization(Organization org)
+        public void RegisterOrganization(string clientName, string Description, int Phone, string email)
         {
             using (var context = new MockErksDbContext())
             {
-                context.Organizations.Add(org);
+                Organization newOrg = new Organization();
+                newOrg.Organization_Name = clientName;
+                newOrg.Organization_Description = Description;
+                newOrg.Email = email;
+                newOrg.Phone = Phone;
+
+                context.Organizations.Add(newOrg);
+
                 context.SaveChanges();
+                
             }
+
+            
 
         }
 

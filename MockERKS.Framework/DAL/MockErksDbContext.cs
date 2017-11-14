@@ -1,10 +1,9 @@
-namespace MockERKS.Framework.DAL
+namespace MockERKS.Framework.Entities
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using MockERKS.Framework.Entities;
 
     public partial class MockErksDbContext : DbContext
     {
@@ -56,10 +55,6 @@ namespace MockERKS.Framework.DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<Manager>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Manager>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
@@ -85,10 +80,6 @@ namespace MockERKS.Framework.DAL
 
             modelBuilder.Entity<Operation>()
                 .Property(e => e.Operation_Name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Operation>()
-                .Property(e => e.Description)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Organization>()

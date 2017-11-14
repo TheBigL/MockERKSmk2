@@ -15,7 +15,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PBL_ID { get; set; }
 
         public int Plan_Number { get; set; }

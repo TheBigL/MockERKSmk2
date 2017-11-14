@@ -16,12 +16,10 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Organization_ID { get; set; }
 
         public int? Location_Code { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Organization_Name { get; set; }
 

@@ -15,8 +15,9 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Manager_Group_ID { get; set; }
+
+        public int? Manager_ID { get; set; }
 
         [Required]
         [StringLength(25)]
@@ -24,6 +25,8 @@ namespace MockERKS.Framework.Entities
 
         [Column(TypeName = "text")]
         public string Description { get; set; }
+
+        public virtual Manager Manager { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Record_Details> Record_Details { get; set; }

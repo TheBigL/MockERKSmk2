@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MockERKS.Framework.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,8 +22,19 @@ public partial class AutomatedApprovalSystem_ClientForm : System.Web.UI.Page
         ClientEmail.Text = "";
     }
 
+
+    /*
+     * Add Client Click
+     * Author: Leban Mohamed
+     * */
     protected void AddClient_Click(object sender, EventArgs e)
     {
+        ClientController sysman = new ClientController();
+        string clientName = ClientName.Text;
+        string description = ClientDescription.Text;
+        int phone = Int32.Parse(ClientPhone.Text);
+
+       
 
     }
 }
