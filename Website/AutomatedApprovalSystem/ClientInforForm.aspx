@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ClientInforForm.aspx.cs" Inherits="AutomatedApprovalSystem_ClientForm" %>
 
-<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <h1>Client Information</h1>
+
+    <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 
     <fieldset class="form-horizontal">
         <asp:Label runat="server" Text="Client ID:" AssociatedControlID="ClientID"></asp:Label>
@@ -23,7 +25,8 @@
 
         <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
         <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
-        <asp:Button CssClass="btn" ID="CancleActivity" runat="server" Text="Cancle" />
+        <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" />
+        <asp:Button CssClass="btn" ID="AddClient" runat="server" Text="Add Client" OnClick="AddClient_Click" />
     </fieldset>
 </asp:Content>
 

@@ -20,4 +20,9 @@ public partial class AutomatedApprovalSystem_ClientForm : System.Web.UI.Page
         ClientPhone.Text = "";
         ClientEmail.Text = "";
     }
+
+    protected void AddClient_Click(object sender, EventArgs e)
+    {
+
+    }
 }

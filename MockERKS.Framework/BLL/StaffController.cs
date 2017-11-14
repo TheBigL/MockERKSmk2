@@ -17,10 +17,10 @@ namespace MockERKS.Framework.BLL
     {
         
         /* Look Up All Organizations
-* Description: List all of the Organizations in the Database.
-* Author: Leban Mohamed
-* Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
-*/
+        * Description: List all of the Organizations in the Database.
+        * Author: Leban Mohamed
+        * Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
+        */
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Organization> LookupAllOrganizations()
@@ -97,7 +97,7 @@ namespace MockERKS.Framework.BLL
          * LookupFilebyOrganization
          *Author: Leban Mohamed 
          * Note: I may change the Site File variables based on what is important to display.
-         * 
+         * Comments: Note that I focus on the foreign keys first BEFORE I go on to remove the files.
          */
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Site_File> LookupFileByOrganization(int orgID)
@@ -140,6 +140,11 @@ namespace MockERKS.Framework.BLL
             }
         }
 
+        /*
+         * Insert Staff
+         * Author: Leban Mohamed
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
         public void Insert_Staff(string firstName, string lastName, int phone, string email )
         {
@@ -157,14 +162,6 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockErksDbContext())
             {
 
-                foreach(var item in context.Officers)
-                {
-                    if (newStaff.First_Name == item.First_Name && newStaff.Last_Name == item.Last_Name)
-                        exceptionReasons.Add("Your first name and last name is the same as another staff member.");
-                    if (newStaff.Email == item.Email)
-                        exceptionReasons.Add("Your e-mail is the same as another e-mail. Pick a different E-Mail");
-                }
-
                 if (exceptionReasons.Count > 0)
                 {
                     throw new Exception("We cannot add the Staff for the following reason:");
@@ -176,6 +173,43 @@ namespace MockERKS.Framework.BLL
             }
 
 
+            
+        }
+        /*Delete_Staff Method
+         * 
+         * Description: Removes the Record Detail Connections associated with the Staff Member and remove the Staff Member.
+         * Author: Leban Mohamed
+         * 
+         */
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+        public void Delete_Staff(int staffID, List<Record_Details> rdetails)
+        {
+            using (var context = new MockErksDbContext())
+            {
+                //Find the StaffID
+                Officer RemoveStaff = context.Officers.Find(staffID);
+                List<Record_Details> toRemove = new List<Record_Details>();
+
+                foreach(var item in RemoveStaff.Record_Details)
+                {
+                    bool rdetailsMatch = rdetails.Any(x => x.Officer_ID == RemoveStaff.Officer_ID);
+                    if(rdetailsMatch)
+                    {
+                        toRemove.Add(item);
+                    }
+
+                }
+
+                foreach(var item in toRemove)
+                {
+                    toRemove.Remove(item);
+                }
+                context.Officers.Remove(RemoveStaff);
+                context.SaveChanges();
+
+                
+
+            }
             
         }
 
