@@ -18,6 +18,9 @@
         <asp:Label AssociatedControlID="OrgEmail" runat="server" Text="Email"></asp:Label>
         <asp:TextBox ID="OrgEmail" runat="server"></asp:TextBox><br />
 
+        <asp:Label AssociatedControlID="OrgDes" runat="server" Text="Organization Description"></asp:Label>
+        <asp:DropDownList ID="OrgDes" runat="server"></asp:DropDownList>
+
 
         <asp:Button ID="Register" runat="server" Text="Register" />
 
