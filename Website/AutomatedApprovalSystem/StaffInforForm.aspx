@@ -48,7 +48,7 @@
                 <asp:Label ID="Label4" runat="server" Text="Email:" AssociatedControlID="StaffEmail"></asp:Label>
                 <asp:TextBox ID="StaffEmail" runat="server"></asp:TextBox><br />
 
-                <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
+                <asp:Button CssClass="btn" ID="SaveForm" runat="server" OnClick="SaveForm_Click" Text="Save" />
                 <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
                 <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" />
                 <asp:Button CssClass="btn" ID="AddStaff" runat="server" Text="Add Staff Member" />
