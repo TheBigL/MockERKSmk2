@@ -52,6 +52,21 @@ namespace MockERKS.Framework.BLL
 
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<Officer> LookupStaffMembers()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var staffList = from staff in context.Officers
+                                select staff;
+
+                return staffList.ToList();
+            }
+
+            
+        }
+
+
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Manager> LookupAdmins()
@@ -76,15 +91,8 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var results = from staffC in context.Officers
-                              select new Officer
-                              {
-                                  Officer_ID = staffC.Officer_ID,
-                                  First_Name = staffC.First_Name,
-                                  Last_Name = staffC.Last_Name,
-                                  Email = staffC.Email,
-                                  Phone = staffC.Phone
+                              select staffC;
 
-                              };
 
                 return results.ToList();
             };

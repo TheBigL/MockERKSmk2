@@ -15,10 +15,7 @@ public partial class AutomatedApprovalSystem_Staff : System.Web.UI.Page
         {
             using (var context = new MockERKSDb())
             {
-                if(context.Officers.Count() < 1)
-                {
-                    
-                }
+
             }
         }
 
