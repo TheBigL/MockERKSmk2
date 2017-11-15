@@ -11,47 +11,48 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-          <div class="form-group">
-                        <asp:Label ID="Label" runat="server" AssociatedControlID="OrganizationName" CssClass="col-md-2 control-label">Client/Organization Name</asp:Label>
-                        <div class="col-md-10">
-                             <asp:TextBox ID="OrganizationName" runat="server" CssClass="form-control"></asp:TextBox>
-          <asp:RequiredFieldValidator runat="server" ControlToValidate="OrganizationName"
+        <%--This is the Client Registration Form
+        Author : Sayed Quadri--%>
+
+        <div class="form-group">
+            <asp:Label ID="Label" runat="server" AssociatedControlID="OrganizationName" CssClass="col-md-2 control-label">Client/Organization Name</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox ID="OrganizationName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="OrganizationName"
                     CssClass="text-danger" ErrorMessage="The user name field is required." />
-                            </div>
-                        </div>
+            </div>
+        </div>
 
 
 
-                    <div class="form-group">
-          <asp:Label ID="Label1" runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label">Description</asp:Label>
+        <div class="form-group">
+            <asp:Label ID="Label1" runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label">Description</asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList ID="Description" runat="server" CssClass="form-control"></asp:DropDownList><br />
+            </div>
+        </div>
 
-                        <div class="col-md-10">
-          <asp:DropDownList ID="Description" runat="server" CssClass="form-control"></asp:DropDownList><br />
+        <div class="form-group">
+            <asp:Label ID="Label2" runat="server" AssociatedControlID="Phone" CssClass="col-md-2 control-label">Phone</asp:Label>
 
-                            </div>
-                        </div>
-
-                    <div class="form-group">
-          <asp:Label ID="Label2" runat="server"  AssociatedControlID="Phone" CssClass="col-md-2 control-label">Phone</asp:Label>
-
-                        <div class="col-md-10">
-                            <asp:TextBox ID="Phone" runat="server" CssClass="form-control"></asp:TextBox>
-          <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone"
+            <div class="col-md-10">
+                <asp:TextBox ID="Phone" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone"
                     CssClass="text-danger" ErrorMessage="A Phone Number is required."></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
+            </div>
+        </div>
 
 
-                    <div class="form-group">
+        <div class="form-group">
 
-          <asp:Label ID="Label3" runat="server"  AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
+            <asp:Label ID="Label3" runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
 
-                        <div class="col-md-10">
-                            <asp:TextBox ID="Email" runat="server" CssClass="form-control"></asp:TextBox>
-          <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                    CssClass="text-danger" ErrorMessage="An Email is required." ></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
+            <div class="col-md-10">
+                <asp:TextBox ID="Email" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
+                    CssClass="text-danger" ErrorMessage="An Email is required."></asp:RequiredFieldValidator>
+            </div>
+        </div>
 
 
         <div class="form-group">
