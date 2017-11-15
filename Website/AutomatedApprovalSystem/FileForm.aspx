@@ -7,7 +7,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
-            <!-- User massage control for this panel -->
+            <!-- User message control for this panel -->
             <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
             <!-- Validation controls on Insert tab panel -->
