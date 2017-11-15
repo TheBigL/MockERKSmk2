@@ -36,20 +36,20 @@
 
             <!-- Form -->
             <fieldset class="form-horizontal">
-                <asp:Label runat="server" Text="Client ID:" AssociatedControlID="ClientID"></asp:Label>
-                <asp:Label ID="Label1" runat="server"></asp:Label><br />
+                <asp:Label runat="server" Text="Client ID:" AssociatedControlID="OrgID"></asp:Label>
+                <asp:Label ID="OrgID" runat="server"></asp:Label><br />
 
                 <asp:Label runat="server" Text="Client Name:" AssociatedControlID="ClientName"></asp:Label>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="ClientName" runat="server"></asp:TextBox><br />
 
                 <asp:Label  runat="server" Text="Description:" AssociatedControlID="ClientDescription"></asp:Label>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="DropDownData" DataTextField="Organization_Description" DataValueField="Organization_ID"></asp:DropDownList><br />
+                <asp:DropDownList ID="ClientDescription" runat="server" DataSourceID="DropDownData" DataTextField="Organization_Description" DataValueField="Organization_ID"></asp:DropDownList><br />
 
                 <asp:Label  runat="server" Text="Phone:" AssociatedControlID="ClientPhone"></asp:Label>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="ClientPhone" runat="server"></asp:TextBox><br />
 
                 <asp:Label  runat="server" Text="Email:" AssociatedControlID="ClientEmail"></asp:Label>
-                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="ClientEmail" runat="server"></asp:TextBox><br />
 
                 <asp:Button CssClass="btn" ID="Button1" runat="server" Text="Save" />
                 <asp:Button CssClass="btn" ID="Button2" runat="server" OnClick="ResetForm_Click" Text="Reset" />

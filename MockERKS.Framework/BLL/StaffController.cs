@@ -52,35 +52,22 @@ namespace MockERKS.Framework.BLL
 
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public List<Officer> LookupStaffMembers()
-        {
-            using (var context = new MockERKSDb())
-            {
-                var staffList = from staff in context.Officers
-                                select staff;
-
-                return staffList.ToList();
-            }
-
-            
-        }
 
 
-
+        /*Lookup Admins
+         * Simple lookups of the Admins
+         * Author: Leban Mohamed
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Manager> LookupAdmins()
         {
             using (var context = new MockERKSDb())
             {
                 var result = from admin in context.Managers
-                             select new Manager
-                             {
-                                 First_Name = admin.First_Name,
-                                 Last_Name = admin.Last_Name,
-                                 Email = admin.Email,
-                                 Phone = admin.Phone
-                             };
+                             select admin;
+
                 return result.ToList();
             }
         }
@@ -157,40 +144,18 @@ namespace MockERKS.Framework.BLL
             }
         }
 
-        /*
-         * Insert Staff
-         * Author: Leban Mohamed
-         * 
-         * */
-        [DataObjectMethod(DataObjectMethodType.Insert, true)]
-        public void Insert_Staff(string firstName, string lastName, int phone, string email )
-        {
-            List<string> exceptionReasons = new List<string>();
-
-            Officer newStaff = new Officer()
-            {
-                First_Name = firstName,
-                Last_Name = lastName,
-                Phone = phone,
-                Email = email,
-
-            };
-            
-            using (var context = new MockERKSDb())
-            {
-
-                context.Officers.Add(newStaff);
-            }
+       
 
 
             
         }
+
         /*Delete_Staff Method
          * 
          * Description: Removes the Record Detail Connections associated with the Staff Member and remove the Staff Member.
          * Author: Leban Mohamed
          * 
-         */
+         *
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete_Staff(int staffID, List<Record_Details> rdetails)
         {
@@ -221,7 +186,6 @@ namespace MockERKS.Framework.BLL
 
             }
             
-        }
+        }*/
 
     }
-}
