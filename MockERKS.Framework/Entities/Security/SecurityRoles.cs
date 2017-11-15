@@ -8,17 +8,17 @@ namespace MockERKS.Framework.Entities.Security
 {
     public static class SecurityRoles
     {
-        public const string WebsiteAdmins = "WebsiteAdmins";
-        public const string RegisteredUsers = "RegisteredUsers";
+        public const string WebAdmins = "WebAdmins";
         public const string Staff = "Staff";
+        public const string Client = "Client";
 
-        public static List<string> DefaultSecurityRoles
+        public static List<string> StartUpSecurityRoles
         {
             get
             {
                 List<string> value = new List<string>();
-                value.Add(WebsiteAdmins);
-                value.Add(RegisteredUsers);
+                value.Add(WebAdmins);
+                value.Add(Client);
                 value.Add(Staff);
                 return value;
             }

@@ -10,9 +10,8 @@ namespace MockERKS.Framework.Entities.Security
     {
         public string UserId { get; set; }
         public string UserName { get; set; }
-        public int? StaffId { get; set; }
-        public int? OrganizationId { get; set; }
-        public int? AdminId { get; set; }
+        public int? StaffID { get; set; }
+        public int? OrganizationID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
