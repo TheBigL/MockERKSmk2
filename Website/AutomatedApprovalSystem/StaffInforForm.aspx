@@ -14,7 +14,7 @@
             <asp:ValidationSummary ID="ContrestValidationSummary" runat="server"
                 HeaderText="Please correct the folowing parts of the form brfore submitting:<br />" />
             
-            <asp:RequiredFieldValidator ID="RequiredFirldStaffName" runat="server" ForeColor="#a94442"
+            <asp:RequiredFieldValidator ID="RequiredFieldStaffName" runat="server" ForeColor="#a94442"
                 ErrorMessage="Staff Name Required" Display="None" ControlToValidate="StaffName" SetFocusOnError="true">
             </asp:RequiredFieldValidator>
 
@@ -31,7 +31,7 @@
             </asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionStaffEmail" runat="server" Display="None"
                 ControlToValidate="StaffEmail" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
-                SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="">
+                SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid email format. Example: someone@example.com">
             </asp:RegularExpressionValidator>
 
             <!-- Form -->
