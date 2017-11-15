@@ -7,26 +7,26 @@
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
-            <!-- User massage control for this panel -->
+            <!-- User message control for this panel -->
             <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
             <!-- Validation controls on Insert tab panel -->
             <asp:ValidationSummary ID="ContrestValidationSummary" runat="server"
                 HeaderText="Please correct the folowing parts of the form brfore submitting:<br />" />
             <asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
-                ControlToValidate="PlanNumber" ValidationExpression="[1-9 | A-Z][0-9 | A-Z]{6}"
+                ControlToValidate="PlanNumber" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionBlockNumber" runat="server" Display="None"
-                ControlToValidate="BlockNumber" ValidationExpression="[1-9 | A-Z][0-9 | A-Z]{3}"
+                ControlToValidate="BlockNumber" ValidationExpression="^[A-Z\d]{4}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Block Number. Block number can be alpha (U), numeric(3), or alpha numberic (17A) - maximum 4 characters, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionLotNumber" runat="server" Display="None"
-                ControlToValidate="LotNumber" ValidationExpression="[1-9 | A-Z][0-9 | A-Z]{5}"
+                ControlToValidate="LotNumber" ValidationExpression="^[A-Z\d]{6}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Lot Number. Lot number can be alpha (X), numeric (7), or alpha numeric (21B) - maximum 6 characters, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionLINC" runat="server" Display="None"
-                ControlToValidate="LINC" ValidationExpression="[1-9][0-9]{9}"
+                ControlToValidate="LINC" ValidationExpression="^\d{10}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid LINC. LINC is 10 digit number.">
             </asp:RegularExpressionValidator>
 

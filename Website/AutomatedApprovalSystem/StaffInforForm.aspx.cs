@@ -19,4 +19,13 @@ public partial class AutomatedApprovalSystem_StaffForm : System.Web.UI.Page
         StaffPhone.Text = "";
         StaffEmail.Text = "";
     }
+
+    protected void SaveForm_Click(object sender, EventArgs e)
+    {
+        // Retest the validation of the incoming data via the Validation Controls
+        if (IsValid)
+        {
+            
+        }
+    }
 }
