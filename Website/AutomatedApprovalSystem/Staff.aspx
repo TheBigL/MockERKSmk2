@@ -167,7 +167,8 @@
 
 
         
-            <asp:ObjectDataSource ID="StaffListData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupStaff" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="StaffListData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupStaff" TypeName="MockERKS.Framework.BLL.StaffController">
+            </asp:ObjectDataSource>
 
 
 

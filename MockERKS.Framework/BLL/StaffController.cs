@@ -85,6 +85,12 @@ namespace MockERKS.Framework.BLL
             }
         }
 
+        /*
+         * Lookup Staff
+         * Simple Lookup on all Staff Members.
+         * Author: Leban Mohamed
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Officer> LookupStaff()
         {
@@ -100,6 +106,9 @@ namespace MockERKS.Framework.BLL
             
 
         }
+
+        
+
 
         /*
          * LookupFilebyOrganization
@@ -169,13 +178,6 @@ namespace MockERKS.Framework.BLL
             
             using (var context = new MockERKSDb())
             {
-
-                if (exceptionReasons.Count > 0)
-                {
-                    throw new Exception("We cannot add the Staff for the following reason:");
-                }
-                
-                
 
                 context.Officers.Add(newStaff);
             }
