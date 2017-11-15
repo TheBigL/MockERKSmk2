@@ -3,11 +3,14 @@ using System;
 using System.Linq;
 using System.Web.UI;
 using Website;
+using MockERKS.Framework.BLL;
 
 public partial class Account_Register : Page
 {
     protected void CreateUser_Click(object sender, EventArgs e)
     {
+       
+
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };
         IdentityResult result = manager.Create(user, Password.Text);
