@@ -15,6 +15,7 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Type_ID { get; set; }
 
         [Column(TypeName = "text")]
