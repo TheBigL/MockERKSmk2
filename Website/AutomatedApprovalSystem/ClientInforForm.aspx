@@ -15,7 +15,7 @@
         <asp:TextBox ID="ClientName" runat="server"></asp:TextBox><br />
 
         <asp:Label  runat="server" Text="Description:" AssociatedControlID="ClientDescription"></asp:Label>
-        <asp:DropDownList ID="ClientDescription" runat="server"></asp:DropDownList><br />
+        <asp:DropDownList ID="ClientDescription" runat="server" DataSourceID="DropDownData" DataTextField="Organization_Description" DataValueField="Organization_ID"></asp:DropDownList><br />
 
         <asp:Label  runat="server" Text="Phone:" AssociatedControlID="ClientPhone"></asp:Label>
         <asp:TextBox ID="ClientPhone" runat="server"></asp:TextBox><br />
@@ -27,6 +27,7 @@
         <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
         <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" />
         <asp:Button CssClass="btn" ID="AddClient" runat="server" Text="Add Client" OnClick="AddClient_Click" />
+        <asp:ObjectDataSource ID="DropDownData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListClientDescription" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
     </fieldset>
 </asp:Content>
 

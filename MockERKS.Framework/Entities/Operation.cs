@@ -16,7 +16,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Operation_ID { get; set; }
 
         [Required]

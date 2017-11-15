@@ -9,7 +9,6 @@ namespace MockERKS.Framework.Entities
     public partial class Record_Details
     {
         [Key]
-
         public int Record_ID { get; set; }
 
         public int? File_ID { get; set; }

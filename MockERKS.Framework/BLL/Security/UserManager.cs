@@ -58,7 +58,7 @@ namespace MockERKS.Framework.BLL.Security
 
         public void AddStaff()
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 
                 var currentStaff = from x in context.Officers
@@ -150,7 +150,7 @@ namespace MockERKS.Framework.BLL.Security
                              RoleMemberships = person.Roles.Select(r => rm.FindById(r.RoleId).Name)
                          };
 
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 foreach (var person in result)
                 {

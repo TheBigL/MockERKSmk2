@@ -15,7 +15,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-
         public int Location_Code { get; set; }
 
         public int? ATS_ID { get; set; }

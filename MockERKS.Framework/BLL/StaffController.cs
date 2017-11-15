@@ -26,7 +26,7 @@ namespace MockERKS.Framework.BLL
         public List<Organization> LookupAllOrganizations()
         {
             //Simple Lookup for All Organizations
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 return context.Organizations.ToList();
             }
@@ -41,7 +41,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Organization> LookupOrganizationByName(string name)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 var results = from org in context.Organizations
                               where org.Organization_Name.Contains(name)
@@ -56,7 +56,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Manager> LookupAdmins()
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 var result = from admin in context.Managers
                              select new Manager
@@ -73,7 +73,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Officer> LookupStaff()
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 var results = from staffC in context.Officers
                               select new Officer
@@ -102,7 +102,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Site_File> LookupFileByOrganization(int orgID)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 //Simple LINQ Query for a list of file based on a matching Organization ID (or Client ID if they decide to change it).
                 var results = from file in context.Site_File
@@ -134,7 +134,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Officer Officer_Get(int Officer_ID)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 return context.Officers.Find(Officer_ID);
             }
@@ -159,7 +159,7 @@ namespace MockERKS.Framework.BLL
 
             };
             
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
 
                 if (exceptionReasons.Count > 0)
@@ -184,7 +184,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete_Staff(int staffID, List<Record_Details> rdetails)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 //Find the StaffID
                 Officer RemoveStaff = context.Officers.Find(staffID);

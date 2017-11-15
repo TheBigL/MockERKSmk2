@@ -15,7 +15,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        
         public int File_ID { get; set; }
 
         public int? Type_ID { get; set; }

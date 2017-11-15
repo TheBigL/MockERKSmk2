@@ -5,10 +5,10 @@ namespace MockERKS.Framework.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class MockErksDbContext : DbContext
+    public partial class MockERKSDb : DbContext
     {
-        public MockErksDbContext()
-            : base("name=MockErksDbContext")
+        public MockERKSDb()
+            : base("name=MockERKSDb")
         {
         }
 

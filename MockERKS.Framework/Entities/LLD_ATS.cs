@@ -15,7 +15,6 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ATS_ID { get; set; }
 
         public int? Meridian_Number { get; set; }

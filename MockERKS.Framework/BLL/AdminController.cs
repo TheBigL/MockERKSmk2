@@ -26,7 +26,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteFile(int fileID, List<Record_Details> rdetails)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 //TODO: Find the file
                 var file = context.Site_File.Find(fileID);
@@ -102,7 +102,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Update,true)]
         public void UpdateFile(Site_File file, List<Record_Details> rDetails)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 var sFile = context.Site_File.Find(file.File_ID);
                 if (sFile == null) throw new ArgumentNullException("Invalid File - The file does not exist");

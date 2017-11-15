@@ -13,7 +13,7 @@ public partial class AutomatedApprovalSystem_Staff : System.Web.UI.Page
     {
         if(!Page.IsPostBack)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 if(context.Officers.Count() < 1)
                 {

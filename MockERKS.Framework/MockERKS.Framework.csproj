@@ -75,7 +75,7 @@
     <Compile Include="Entities\LLD_PBL.cs" />
     <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\Manager_Group.cs" />
-    <Compile Include="DAL\MockErksDbContext.cs" />
+    <Compile Include="DAL\MockERKSDb.cs" />
     <Compile Include="Entities\Officer.cs" />
     <Compile Include="Entities\Operation.cs" />
     <Compile Include="Entities\Organization.cs" />

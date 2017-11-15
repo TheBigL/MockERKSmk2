@@ -13,30 +13,38 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class ClientController
     {
-        /*Yo! I've set up the project for guys. Remember to comment on your code whenever you create
-         * the class. We want to make sure we can tell who's working on which part.
-         * I don't want you guys to get confused. We can go to each other and consult about
-         * how it all gets done, but try not to make me do this for you.
-         * 
-         * I'm currently going to move on with my part of the project. 
-         * NOTE: Remember what Steve said about the workload. Don't force me to do everything.
-         * 
-         * Sincerely,
-         * --Leban Mohamed
-         */
+
 
         
-        /* Create Organization
-         * Description: Creates an Organization
+        /* List Client Description
+         * Description: Creates a list of Client Descriptions for a dropdown list.
          * Author: Leban Mohamed
-         * Author's Comments: I figured this object would be simple. Add the Organization and call it a day.
-         * If there are any business rules, I will change the method accordingly.
-         * Note: This code is incomplete; Wenyu, this is your time to shine.
+         * Author's Comments: I figured this object would be simple. Add a list with an ID and a descripton and call it a day.
          */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Organization> ListClientDescription()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var odescriptions = from org in context.Organizations
+                                    orderby org.Organization_Description
+                                    select new Organization()
+                                    {
+                                        Organization_ID = org.Organization_ID,
+                                        Organization_Description = org.Organization_Description
+                                    };
+
+                return odescriptions.ToList();
+            }
+
+        }
+
+
+
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public void RegisterOrganization(string clientName, string Description, int Phone, string email)
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 Organization newOrg = new Organization();
                 newOrg.Organization_Name = clientName;
@@ -84,7 +92,7 @@ namespace MockERKS.Framework.BLL
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public void addOrganizationInfoFromForm()
         {
-            using (var context = new MockErksDbContext())
+            using (var context = new MockERKSDb())
             {
                 //Add items to the list. Or a possible LINQ Query.
             }
