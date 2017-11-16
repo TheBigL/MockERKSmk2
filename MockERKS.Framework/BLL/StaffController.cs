@@ -15,7 +15,7 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class StaffController
     {
-        
+        #region Lookup Organizations
         /* Look Up All Organizations
         * Description: List all of the Organizations in the Database.
         * Author: Leban Mohamed
@@ -31,7 +31,10 @@ namespace MockERKS.Framework.BLL
                 return context.Organizations.ToList();
             }
         }
+        #endregion
 
+
+        #region LookupOrganizationByName
         /* Look Up Organizations By Name
         * Description: List all of the Organizations in the Database by name.
         * Author: Leban Mohamed
@@ -44,18 +47,34 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var results = from org in context.Organizations
-                              where org.Organization_Name.Contains(name)
+                              where org.Organization_Name == name
                               select org;
 
                 return results.ToList();
             }
 
         }
+        #endregion
+
+        #region LookupFilesByCategory
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Site_File> LookupFilesOrderByCategory(string cDescription)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var results = from fileList in context.Site_File
+                              where fileList.Category.Description == cDescription
+                              select fileList;
+
+                return results.ToList();
+            }
+        }
+        #endregion
 
 
-
+        #region LookupAdmin
         /*Lookup Admins
-         * Simple lookups of the Admins
+         * Simple lookups of the Admins by Last Name
          * Author: Leban Mohamed
          * 
          * 
@@ -66,37 +85,50 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var result = from admin in context.Managers
+                             orderby admin.Last_Name
                              select admin;
 
                 return result.ToList();
             }
         }
+        #endregion
 
+
+        #region LookupStaff
         /*
          * Lookup Staff
          * Simple Lookup on all Staff Members.
          * Author: Leban Mohamed
          * 
          * */
-        [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public List<Officer> LookupStaff()
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Officer> LookupOfficers()
         {
             using (var context = new MockERKSDb())
             {
-                var results = from staffC in context.Officers
-                              select staffC;
-
+                var results = from officerList in context.Officers
+                              orderby officerList.Last_Name
+                              select officerList;
 
                 return results.ToList();
-            };
-
-            
+            }
 
         }
+        #endregion
 
-        
+        #region LookupFiles
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Site_File> LookupFiles()
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Site_File.ToList();
+            }
+        }
+        #endregion
 
 
+        #region LookupFileByOrganization
         /*
          * LookupFilebyOrganization
          *Author: Leban Mohamed 
@@ -111,25 +143,16 @@ namespace MockERKS.Framework.BLL
                 //Simple LINQ Query for a list of file based on a matching Organization ID (or Client ID if they decide to change it).
                 var results = from file in context.Site_File
                               where file.Organization.Organization_ID == orgID
-                              select new Site_File
-                              {
-                                  Organization_ID = orgID,
-                                  File_ID = file.File_ID,
-                                  Category_ID = file.Category.Category_ID,
-                                  Document_Type_ID = file.Document_Type_ID,
-                                  File_Status = file.File_Status,
-                                  Type_ID = file.Type_ID,
-                                  Operation_ID = file.Operation_ID,
-                                  LLD_PBL = file.LLD_PBL,
-                                  LINC_Number = file.LINC_Number,
-                                  Security_Classification_ID = file.Security_Classification_ID,
-                              };
+                              select file;
                 return results.ToList();
             }
 
 
         }
+        #endregion
 
+
+        #region GetOfficerByID
         /*
         * LookupOfficerByOfficerID
         *Author: Sayed
@@ -143,49 +166,14 @@ namespace MockERKS.Framework.BLL
                 return context.Officers.Find(Officer_ID);
             }
         }
+        #endregion
 
-       
 
 
-            
-        }
 
-        /*Delete_Staff Method
-         * 
-         * Description: Removes the Record Detail Connections associated with the Staff Member and remove the Staff Member.
-         * Author: Leban Mohamed
-         * 
-         *
-        [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void Delete_Staff(int staffID, List<Record_Details> rdetails)
-        {
-            using (var context = new MockERKSDb())
-            {
-                //Find the StaffID
-                Officer RemoveStaff = context.Officers.Find(staffID);
-                List<Record_Details> toRemove = new List<Record_Details>();
-
-                foreach(var item in RemoveStaff.Record_Details)
-                {
-                    bool rdetailsMatch = rdetails.Any(x => x.Officer_ID == RemoveStaff.Officer_ID);
-                    if(rdetailsMatch)
-                    {
-                        toRemove.Add(item);
-                    }
-
-                }
-
-                foreach(var item in toRemove)
-                {
-                    toRemove.Remove(item);
-                }
-                context.Officers.Remove(RemoveStaff);
-                context.SaveChanges();
-
-                
-
-            }
-            
-        }*/
 
     }
+
+
+
+}
