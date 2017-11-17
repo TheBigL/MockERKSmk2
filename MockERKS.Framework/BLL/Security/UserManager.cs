@@ -71,11 +71,11 @@ namespace MockERKS.Framework.BLL.Security
 
               
                 var UserOfficer = from x in Users.ToList()
-                                    where x.OfficerID.HasValue
+                                    where x.Officer_ID.HasValue
                                     select new RegisteredOfficerPOCO
                                     {
                                         UserName = x.UserName,
-                                        Officer_ID = int.Parse(x.OfficerID.ToString())
+                                        Officer_ID = int.Parse(x.Officer_ID.ToString())
                                     };
              
                 foreach (var officer in currentStaff)
@@ -93,7 +93,7 @@ namespace MockERKS.Framework.BLL.Security
                             Email = string.Format(STR_EMAIL_FORMAT, newUserName),
                             EmailConfirmed = true
                         };
-                        userAccount.OfficerID = officer.Officer_ID;
+                        userAccount.Officer_ID = officer.Officer_ID;
                         //create the Users record
                         IdentityResult result = this.Create(userAccount, STR_DEFAULT_PASSWORD);
 
@@ -145,8 +145,8 @@ namespace MockERKS.Framework.BLL.Security
                              UserName = person.UserName,
                              Email = person.Email,
                              EmailConfirmed = person.EmailConfirmed,
-                             StaffID = person.OfficerID,
-                             OrganizationID = person.OrganizationID,
+                             Officer_ID = person.Officer_ID,
+                             Organization_ID = person.Organization_ID,
                              RoleMemberships = person.Roles.Select(r => rm.FindById(r.RoleId).Name)
                          };
 
@@ -154,17 +154,17 @@ namespace MockERKS.Framework.BLL.Security
             {
                 foreach (var person in result)
                 {
-                    if (person.OrganizationID.HasValue)
+                    if (person.Organization_ID.HasValue)
                     {
                         
-                        person.FirstName = context.Managers.Find(person.StaffID).First_Name;
-                        person.LastName = context.Managers.Find(person.StaffID).Last_Name;
+                        person.First_Name = context.Managers.Find(person.Officer_ID).First_Name;
+                        person.Last_Name = context.Managers.Find(person.Officer_ID).Last_Name;
                     }
 
-                    else if (person.StaffID.HasValue)
+                    else if (person.Officer_ID.HasValue)
                     {
-                        person.FirstName = context.Officers.Find(person.StaffID).First_Name;
-                        person.LastName = context.Officers.Find(person.StaffID).Last_Name;
+                        person.First_Name = context.Officers.Find(person.Officer_ID).First_Name;
+                        person.Last_Name = context.Officers.Find(person.Officer_ID).Last_Name;
                     }
 
                 }
@@ -174,21 +174,22 @@ namespace MockERKS.Framework.BLL.Security
         }
 
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-        public void AddUser(UserProfile userInfo)
+        public void AddUser(UserProfile organizationInfo)
         {
             var userAccount = new ApplicationUser()
             {
-                UserName = userInfo.UserName,
-                Email = userInfo.Email
+                UserName = organizationInfo.UserName,
+                Email = organizationInfo.Email,
 
             };
 
             this.Create(userAccount, STR_DEFAULT_PASSWORD);
-            foreach (var roleName in userInfo.RoleMemberships)
+            foreach (var roleName in organizationInfo.RoleMemberships)
                 this.AddToRole(userAccount.Id, roleName);
 
         }
 
+       
 
 
 

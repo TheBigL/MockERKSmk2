@@ -10,7 +10,10 @@ namespace MockERKS.Framework.Entities.Security
 {
     public class ApplicationUser : IdentityUser
     {
-        public int? OfficerID { get; set; }
-        public int? OrganizationID { get; set; }
+        public int? Officer_ID { get; set; }
+        public int? Organization_ID { get; set; }
+        public int? Phone { get; set; }
+        public string Organization_Description { get; set; }
+       
     }
 }
