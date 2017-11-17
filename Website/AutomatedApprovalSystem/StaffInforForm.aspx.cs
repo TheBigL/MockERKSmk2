@@ -33,8 +33,8 @@ public partial class AutomatedApprovalSystem_StaffForm : System.Web.UI.Page
         {
             MessageUserControl.TryRun(() =>
             {
-                
-            })
+
+            });
         }
     }
 }

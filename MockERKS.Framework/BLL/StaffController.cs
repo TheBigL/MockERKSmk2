@@ -117,12 +117,22 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region LookupFiles
+        /*
+         * Author: Leban Mohamed
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Site_File> LookupFiles()
         {
             using (var context = new MockERKSDb())
             {
-                return context.Site_File.ToList();
+                var result = from staffList in context.Site_File
+                             orderby staffList.File_Status
+                             select staffList;
+
+                return result.ToList();
+
             }
         }
         #endregion
