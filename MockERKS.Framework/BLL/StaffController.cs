@@ -59,14 +59,21 @@ namespace MockERKS.Framework.BLL
 
         #region LookupFilesByCategory
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Site_File> LookupFilesOrderByCategory(string cDescription)
+        public List<FileSummary> LookupFilesOrderByCategory(int catID)
         {
             using (var context = new MockERKSDb())
             {
-                var results = from fileList in context.Site_File
-                              where fileList.Category.Description == cDescription
-                              select fileList;
-
+                var results = from f in context.Site_File
+                              where f.Category_ID == catID
+                              select new FileSummary
+                              {
+                                  fileID = f.File_ID,
+                                  categoryName = f.Category.Category_Name,
+                                  docTypeDescription = f.Document_Type.Document_Type_Description,
+                                  operationName = f.Operation.Operation_Name,
+                                  organizationName = f.Organization.Organization_Name,
+                                  securityClassificationTypeName = f.Security_Classification.Security_Classification_Name
+                              };
                 return results.ToList();
             }
         }
@@ -103,13 +110,18 @@ namespace MockERKS.Framework.BLL
          * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Officer> LookupOfficers()
+        public List<OfficerListPOCO> LookupOfficers()
         {
             using (var context = new MockERKSDb())
             {
                 var results = from officerList in context.Officers
                               orderby officerList.Last_Name
-                              select officerList;
+                              select new OfficerListPOCO
+                              {
+                                  Officer_ID = officerList.Officer_ID,
+                                  First_Name = officerList.First_Name,
+                                  Last_Name = officerList.Last_Name
+                              };
 
                 return results.ToList();
             }
@@ -122,17 +134,28 @@ namespace MockERKS.Framework.BLL
          * Author: Leban Mohamed
          * 
          * 
-         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Site_File> LookupFiles()
+        public List<FileSummary> LookupFiles()
         {
             using (var context = new MockERKSDb())
             {
-                
+                var files = from f in context.Site_File
+                            select new FileSummary
+                            {
+                                fileID = f.File_ID,
+                                categoryName = f.Category.Category_Name,
+                                docTypeDescription = f.Document_Type.Document_Type_Description,
+                                operationName = f.Operation.Operation_Name,
+                                securityClassificationTypeName = f.Security_Classification.Security_Classification_Name,
+                                organizationName = f.Organization.Organization_Name
+                            };
+
+                            return files.ToList();
 
             }
         }
-        */
+       
         #endregion
 
 

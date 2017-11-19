@@ -5,64 +5,25 @@
         <AlternatingItemTemplate>
             <tr style="background-color:#FFF8DC;">
                 <td>
-                    <asp:Label ID="File_IDLabel" runat="server" Text='<%# Eval("File_ID") %>' />
+                    <asp:Label ID="fileIDLabel" runat="server" Text='<%# Eval("fileID") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Type_IDLabel" runat="server" Text='<%# Eval("Type_ID") %>' />
+                    <asp:Label ID="categoryNameLabel" runat="server" Text='<%# Eval("categoryName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Operation_IDLabel" runat="server" Text='<%# Eval("Operation_ID") %>' />
+                    <asp:Label ID="categoryDescriptionLabel" runat="server" Text='<%# Eval("categoryDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="PBL_IDLabel" runat="server" Text='<%# Eval("PBL_ID") %>' />
+                    <asp:Label ID="docTypeDescriptionLabel" runat="server" Text='<%# Eval("docTypeDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Category_IDLabel" runat="server" Text='<%# Eval("Category_ID") %>' />
+                    <asp:Label ID="securityClassificationTypeNameLabel" runat="server" Text='<%# Eval("securityClassificationTypeName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="LINC_NumberLabel" runat="server" Text='<%# Eval("LINC_Number") %>' />
+                    <asp:Label ID="organizationNameLabel" runat="server" Text='<%# Eval("organizationName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Organization_IDLabel" runat="server" Text='<%# Eval("Organization_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_Type_IDLabel" runat="server" Text='<%# Eval("Document_Type_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_Classification_IDLabel" runat="server" Text='<%# Eval("Security_Classification_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_StatusLabel" runat="server" Text='<%# Eval("File_Status") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Closed_DateLabel" runat="server" Text='<%# Eval("Closed_Date") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="CategoryLabel" runat="server" Text='<%# Eval("Category") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_TypeLabel" runat="server" Text='<%# Eval("Document_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_TypeLabel" runat="server" Text='<%# Eval("File_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="LLD_PBLLabel" runat="server" Text='<%# Eval("LLD_PBL") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OperationLabel" runat="server" Text='<%# Eval("Operation") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OrganizationLabel" runat="server" Text='<%# Eval("Organization") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_ClassificationLabel" runat="server" Text='<%# Eval("Security_Classification") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="SPIN_IILabel" runat="server" Text='<%# Eval("SPIN_II") %>' />
+                    <asp:Label ID="operationNameLabel" runat="server" Text='<%# Eval("operationName") %>' />
                 </td>
             </tr>
         </AlternatingItemTemplate>
@@ -73,64 +34,25 @@
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                 </td>
                 <td>
-                    <asp:TextBox ID="File_IDTextBox" runat="server" Text='<%# Bind("File_ID") %>' />
+                    <asp:TextBox ID="fileIDTextBox" runat="server" Text='<%# Bind("fileID") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Type_IDTextBox" runat="server" Text='<%# Bind("Type_ID") %>' />
+                    <asp:TextBox ID="categoryNameTextBox" runat="server" Text='<%# Bind("categoryName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Operation_IDTextBox" runat="server" Text='<%# Bind("Operation_ID") %>' />
+                    <asp:TextBox ID="categoryDescriptionTextBox" runat="server" Text='<%# Bind("categoryDescription") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="PBL_IDTextBox" runat="server" Text='<%# Bind("PBL_ID") %>' />
+                    <asp:TextBox ID="docTypeDescriptionTextBox" runat="server" Text='<%# Bind("docTypeDescription") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Category_IDTextBox" runat="server" Text='<%# Bind("Category_ID") %>' />
+                    <asp:TextBox ID="securityClassificationTypeNameTextBox" runat="server" Text='<%# Bind("securityClassificationTypeName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="LINC_NumberTextBox" runat="server" Text='<%# Bind("LINC_Number") %>' />
+                    <asp:TextBox ID="organizationNameTextBox" runat="server" Text='<%# Bind("organizationName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Organization_IDTextBox" runat="server" Text='<%# Bind("Organization_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Document_Type_IDTextBox" runat="server" Text='<%# Bind("Document_Type_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Security_Classification_IDTextBox" runat="server" Text='<%# Bind("Security_Classification_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="File_StatusTextBox" runat="server" Text='<%# Bind("File_Status") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Closed_DateTextBox" runat="server" Text='<%# Bind("Closed_Date") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="CategoryTextBox" runat="server" Text='<%# Bind("Category") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Document_TypeTextBox" runat="server" Text='<%# Bind("Document_Type") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="File_TypeTextBox" runat="server" Text='<%# Bind("File_Type") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="LLD_PBLTextBox" runat="server" Text='<%# Bind("LLD_PBL") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="OperationTextBox" runat="server" Text='<%# Bind("Operation") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="OrganizationTextBox" runat="server" Text='<%# Bind("Organization") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Record_DetailsTextBox" runat="server" Text='<%# Bind("Record_Details") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Security_ClassificationTextBox" runat="server" Text='<%# Bind("Security_Classification") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="SPIN_IITextBox" runat="server" Text='<%# Bind("SPIN_II") %>' />
+                    <asp:TextBox ID="operationNameTextBox" runat="server" Text='<%# Bind("operationName") %>' />
                 </td>
             </tr>
         </EditItemTemplate>
@@ -148,128 +70,50 @@
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                 </td>
                 <td>
-                    <asp:TextBox ID="File_IDTextBox" runat="server" Text='<%# Bind("File_ID") %>' />
+                    <asp:TextBox ID="fileIDTextBox" runat="server" Text='<%# Bind("fileID") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Type_IDTextBox" runat="server" Text='<%# Bind("Type_ID") %>' />
+                    <asp:TextBox ID="categoryNameTextBox" runat="server" Text='<%# Bind("categoryName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Operation_IDTextBox" runat="server" Text='<%# Bind("Operation_ID") %>' />
+                    <asp:TextBox ID="categoryDescriptionTextBox" runat="server" Text='<%# Bind("categoryDescription") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="PBL_IDTextBox" runat="server" Text='<%# Bind("PBL_ID") %>' />
+                    <asp:TextBox ID="docTypeDescriptionTextBox" runat="server" Text='<%# Bind("docTypeDescription") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Category_IDTextBox" runat="server" Text='<%# Bind("Category_ID") %>' />
+                    <asp:TextBox ID="securityClassificationTypeNameTextBox" runat="server" Text='<%# Bind("securityClassificationTypeName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="LINC_NumberTextBox" runat="server" Text='<%# Bind("LINC_Number") %>' />
+                    <asp:TextBox ID="organizationNameTextBox" runat="server" Text='<%# Bind("organizationName") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="Organization_IDTextBox" runat="server" Text='<%# Bind("Organization_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Document_Type_IDTextBox" runat="server" Text='<%# Bind("Document_Type_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Security_Classification_IDTextBox" runat="server" Text='<%# Bind("Security_Classification_ID") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="File_StatusTextBox" runat="server" Text='<%# Bind("File_Status") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Closed_DateTextBox" runat="server" Text='<%# Bind("Closed_Date") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="CategoryTextBox" runat="server" Text='<%# Bind("Category") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Document_TypeTextBox" runat="server" Text='<%# Bind("Document_Type") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="File_TypeTextBox" runat="server" Text='<%# Bind("File_Type") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="LLD_PBLTextBox" runat="server" Text='<%# Bind("LLD_PBL") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="OperationTextBox" runat="server" Text='<%# Bind("Operation") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="OrganizationTextBox" runat="server" Text='<%# Bind("Organization") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Record_DetailsTextBox" runat="server" Text='<%# Bind("Record_Details") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Security_ClassificationTextBox" runat="server" Text='<%# Bind("Security_Classification") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="SPIN_IITextBox" runat="server" Text='<%# Bind("SPIN_II") %>' />
+                    <asp:TextBox ID="operationNameTextBox" runat="server" Text='<%# Bind("operationName") %>' />
                 </td>
             </tr>
         </InsertItemTemplate>
         <ItemTemplate>
             <tr style="background-color:#DCDCDC;color: #000000;">
                 <td>
-                    <asp:Label ID="File_IDLabel" runat="server" Text='<%# Eval("File_ID") %>' />
+                    <asp:Label ID="fileIDLabel" runat="server" Text='<%# Eval("fileID") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Type_IDLabel" runat="server" Text='<%# Eval("Type_ID") %>' />
+                    <asp:Label ID="categoryNameLabel" runat="server" Text='<%# Eval("categoryName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Operation_IDLabel" runat="server" Text='<%# Eval("Operation_ID") %>' />
+                    <asp:Label ID="categoryDescriptionLabel" runat="server" Text='<%# Eval("categoryDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="PBL_IDLabel" runat="server" Text='<%# Eval("PBL_ID") %>' />
+                    <asp:Label ID="docTypeDescriptionLabel" runat="server" Text='<%# Eval("docTypeDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Category_IDLabel" runat="server" Text='<%# Eval("Category_ID") %>' />
+                    <asp:Label ID="securityClassificationTypeNameLabel" runat="server" Text='<%# Eval("securityClassificationTypeName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="LINC_NumberLabel" runat="server" Text='<%# Eval("LINC_Number") %>' />
+                    <asp:Label ID="organizationNameLabel" runat="server" Text='<%# Eval("organizationName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Organization_IDLabel" runat="server" Text='<%# Eval("Organization_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_Type_IDLabel" runat="server" Text='<%# Eval("Document_Type_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_Classification_IDLabel" runat="server" Text='<%# Eval("Security_Classification_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_StatusLabel" runat="server" Text='<%# Eval("File_Status") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Closed_DateLabel" runat="server" Text='<%# Eval("Closed_Date") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="CategoryLabel" runat="server" Text='<%# Eval("Category") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_TypeLabel" runat="server" Text='<%# Eval("Document_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_TypeLabel" runat="server" Text='<%# Eval("File_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="LLD_PBLLabel" runat="server" Text='<%# Eval("LLD_PBL") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OperationLabel" runat="server" Text='<%# Eval("Operation") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OrganizationLabel" runat="server" Text='<%# Eval("Organization") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_ClassificationLabel" runat="server" Text='<%# Eval("Security_Classification") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="SPIN_IILabel" runat="server" Text='<%# Eval("SPIN_II") %>' />
+                    <asp:Label ID="operationNameLabel" runat="server" Text='<%# Eval("operationName") %>' />
                 </td>
             </tr>
         </ItemTemplate>
@@ -279,26 +123,13 @@
                     <td runat="server">
                         <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
                             <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
-                                <th runat="server">File_ID</th>
-                                <th runat="server">Type_ID</th>
-                                <th runat="server">Operation_ID</th>
-                                <th runat="server">PBL_ID</th>
-                                <th runat="server">Category_ID</th>
-                                <th runat="server">LINC_Number</th>
-                                <th runat="server">Organization_ID</th>
-                                <th runat="server">Document_Type_ID</th>
-                                <th runat="server">Security_Classification_ID</th>
-                                <th runat="server">File_Status</th>
-                                <th runat="server">Closed_Date</th>
-                                <th runat="server">Category</th>
-                                <th runat="server">Document_Type</th>
-                                <th runat="server">File_Type</th>
-                                <th runat="server">LLD_PBL</th>
-                                <th runat="server">Operation</th>
-                                <th runat="server">Organization</th>
-                                <th runat="server">Record_Details</th>
-                                <th runat="server">Security_Classification</th>
-                                <th runat="server">SPIN_II</th>
+                                <th runat="server">fileID</th>
+                                <th runat="server">categoryName</th>
+                                <th runat="server">categoryDescription</th>
+                                <th runat="server">docTypeDescription</th>
+                                <th runat="server">securityClassificationTypeName</th>
+                                <th runat="server">organizationName</th>
+                                <th runat="server">operationName</th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
                             </tr>
@@ -307,6 +138,13 @@
                 </tr>
                 <tr runat="server">
                     <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                        <asp:DataPager ID="DataPager1" runat="server">
+                            <Fields>
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                <asp:NumericPagerField />
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                            </Fields>
+                        </asp:DataPager>
                     </td>
                 </tr>
             </table>
@@ -314,64 +152,25 @@
         <SelectedItemTemplate>
             <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
                 <td>
-                    <asp:Label ID="File_IDLabel" runat="server" Text='<%# Eval("File_ID") %>' />
+                    <asp:Label ID="fileIDLabel" runat="server" Text='<%# Eval("fileID") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Type_IDLabel" runat="server" Text='<%# Eval("Type_ID") %>' />
+                    <asp:Label ID="categoryNameLabel" runat="server" Text='<%# Eval("categoryName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Operation_IDLabel" runat="server" Text='<%# Eval("Operation_ID") %>' />
+                    <asp:Label ID="categoryDescriptionLabel" runat="server" Text='<%# Eval("categoryDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="PBL_IDLabel" runat="server" Text='<%# Eval("PBL_ID") %>' />
+                    <asp:Label ID="docTypeDescriptionLabel" runat="server" Text='<%# Eval("docTypeDescription") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Category_IDLabel" runat="server" Text='<%# Eval("Category_ID") %>' />
+                    <asp:Label ID="securityClassificationTypeNameLabel" runat="server" Text='<%# Eval("securityClassificationTypeName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="LINC_NumberLabel" runat="server" Text='<%# Eval("LINC_Number") %>' />
+                    <asp:Label ID="organizationNameLabel" runat="server" Text='<%# Eval("organizationName") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="Organization_IDLabel" runat="server" Text='<%# Eval("Organization_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_Type_IDLabel" runat="server" Text='<%# Eval("Document_Type_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_Classification_IDLabel" runat="server" Text='<%# Eval("Security_Classification_ID") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_StatusLabel" runat="server" Text='<%# Eval("File_Status") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Closed_DateLabel" runat="server" Text='<%# Eval("Closed_Date") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="CategoryLabel" runat="server" Text='<%# Eval("Category") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Document_TypeLabel" runat="server" Text='<%# Eval("Document_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="File_TypeLabel" runat="server" Text='<%# Eval("File_Type") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="LLD_PBLLabel" runat="server" Text='<%# Eval("LLD_PBL") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OperationLabel" runat="server" Text='<%# Eval("Operation") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="OrganizationLabel" runat="server" Text='<%# Eval("Organization") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="Security_ClassificationLabel" runat="server" Text='<%# Eval("Security_Classification") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="SPIN_IILabel" runat="server" Text='<%# Eval("SPIN_II") %>' />
+                    <asp:Label ID="operationNameLabel" runat="server" Text='<%# Eval("operationName") %>' />
                 </td>
             </tr>
         </SelectedItemTemplate>
@@ -379,11 +178,11 @@
     </h2>
     <p>
         
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiles" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+        
     </p>
 
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiles" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
-
-       
+           
 
 
 
