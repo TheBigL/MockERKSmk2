@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using MockERKS.Framework.Entities;
 using MockERKS.Framework.DAL;
+using MockERKS.Framework.Entities.POCOs;
 #endregion
 
 namespace MockERKS.Framework.BLL
@@ -94,7 +95,7 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
-        #region LookupStaff
+        #region LookupOfficers
         /*
          * Lookup Staff
          * Simple Lookup on all Staff Members.
@@ -121,20 +122,17 @@ namespace MockERKS.Framework.BLL
          * Author: Leban Mohamed
          * 
          * 
-         * */
+         * 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Site_File> LookupFiles()
         {
             using (var context = new MockERKSDb())
             {
-                var result = from staffList in context.Site_File
-                             orderby staffList.File_Status
-                             select staffList;
-
-                return result.ToList();
+                
 
             }
         }
+        */
         #endregion
 
 
@@ -177,6 +175,52 @@ namespace MockERKS.Framework.BLL
             }
         }
         #endregion
+
+        #region LookupRegisteredOrganizations
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<organizationRegistrationPOCO> LookupRegisteredOrganizations()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var list = from orglist in context.Organizations
+                           orderby orglist.Organization_Name
+                           select new organizationRegistrationPOCO
+                           {
+                               Organization_ID = orglist.Organization_ID,
+                               Organization_Name = orglist.Organization_Name,
+                               Organization_Description = orglist.Organization_Description,
+                               Email = orglist.Email,
+                               Phone = orglist.Phone
+                           };
+                return list.ToList();
+            }
+        }
+
+
+
+        #endregion
+
+        #region LookupRegisteredOfficers
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        List<RegisteredOfficerPOCO> LookupRegisteredOfficers()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var officerList = from o in context.Officers
+                                  orderby o.Last_Name
+                                  select new RegisteredOfficerPOCO
+                                  {
+                                      Officer_ID = o.Officer_ID,
+                                      UserName = o.First_Name
+                                  };
+
+                return officerList.ToList();
+            }
+        }
+
+        #endregion
+
+
 
 
 

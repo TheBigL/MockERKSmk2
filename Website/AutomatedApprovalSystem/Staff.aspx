@@ -4,7 +4,7 @@
 
 <asp:content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <div class="row">
-        <h2>Staff List<asp:ListView ID="ListView1" runat="server" DataSourceID="StaffListData">
+        <h2>Staff List<asp:ListView ID="ListView1" runat="server" DataSourceID="ObjectDataSource1">
             <AlternatingItemTemplate>
                 <tr style="background-color:#FFF8DC;">
                     <td>
@@ -167,8 +167,7 @@
 
 
         
-            <asp:ObjectDataSource ID="StaffListData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupStaff" TypeName="MockERKS.Framework.BLL.StaffController">
-            </asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
 
 
