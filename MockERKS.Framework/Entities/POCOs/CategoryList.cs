@@ -9,6 +9,6 @@ namespace MockERKS.Framework.Entities.POCOs
     public class CategoryList
     {
         public int categoryID { get; set; }
-        public int categoryName { get; set; }
+        public string categoryName { get; set; }
     }
 }

@@ -102,6 +102,44 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
+        #region CategoryDropdown
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        List<CategoryList> CategoryDropdown()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var categories = from c in context.Categories
+                                 select new CategoryList
+                                 {
+                                     categoryID = c.Category_ID,
+                                     categoryName = c.Category_Name
+                                 };
+                return categories.ToList();
+            }
+        }
+
+        #endregion
+
+        #region SecurityClassifcationDropdownList
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<SecurityClassificationSummary> CategoryDropDown()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var results = from scs in context.Security_Classification
+                              select new SecurityClassificationSummary
+                              {
+                                  securityClassificationID = scs.Security_Classification_ID,
+                                  securityClassificationName = scs.Security_Classification_Name
+
+                              };
+                return results.ToList();
+            }
+                
+        }
+
+        #endregion
+
         #region LookupOfficers
         /*
          * Lookup Staff
@@ -223,25 +261,7 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        #region LookupRegisteredOfficers
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        List<RegisteredOfficerPOCO> LookupRegisteredOfficers()
-        {
-            using (var context = new MockERKSDb())
-            {
-                var officerList = from o in context.Officers
-                                  orderby o.Last_Name
-                                  select new RegisteredOfficerPOCO
-                                  {
-                                      Officer_ID = o.Officer_ID,
-                                      UserName = o.First_Name
-                                  };
-
-                return officerList.ToList();
-            }
-        }
-
-        #endregion
+       
 
 
 

@@ -16,15 +16,6 @@
                     <td>
                         <asp:Label ID="Last_NameLabel" runat="server" Text='<%# Eval("Last_Name") %>' />
                     </td>
-                    <td>
-                        <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
-                    </td>
                 </tr>
             </AlternatingItemTemplate>
             <EditItemTemplate>
@@ -41,15 +32,6 @@
                     </td>
                     <td>
                         <asp:TextBox ID="Last_NameTextBox" runat="server" Text='<%# Bind("Last_Name") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="Record_DetailsTextBox" runat="server" Text='<%# Bind("Record_Details") %>' />
                     </td>
                 </tr>
             </EditItemTemplate>
@@ -75,15 +57,6 @@
                     <td>
                         <asp:TextBox ID="Last_NameTextBox" runat="server" Text='<%# Bind("Last_Name") %>' />
                     </td>
-                    <td>
-                        <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="Record_DetailsTextBox" runat="server" Text='<%# Bind("Record_Details") %>' />
-                    </td>
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
@@ -97,15 +70,6 @@
                     <td>
                         <asp:Label ID="Last_NameLabel" runat="server" Text='<%# Eval("Last_Name") %>' />
                     </td>
-                    <td>
-                        <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
-                    </td>
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
@@ -117,9 +81,6 @@
                                     <th runat="server">Officer_ID</th>
                                     <th runat="server">First_Name</th>
                                     <th runat="server">Last_Name</th>
-                                    <th runat="server">Phone</th>
-                                    <th runat="server">Email</th>
-                                    <th runat="server">Record_Details</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -147,15 +108,6 @@
                     </td>
                     <td>
                         <asp:Label ID="Last_NameLabel" runat="server" Text='<%# Eval("Last_Name") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="Record_DetailsLabel" runat="server" Text='<%# Eval("Record_Details") %>' />
                     </td>
                 </tr>
             </SelectedItemTemplate>
