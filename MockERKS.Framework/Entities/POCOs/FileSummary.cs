@@ -13,7 +13,6 @@ namespace MockERKS.Framework.Entities.POCOs
         public string docTypeDescription { get; set; }
         public DateTime datePosted { get; set; }
         public string securityClassificationTypeDescription { get; set; }
-        public string location { get; set; }
         public string organizationName { get; set; }
 
 
