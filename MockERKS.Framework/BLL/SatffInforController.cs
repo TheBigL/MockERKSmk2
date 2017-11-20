@@ -50,5 +50,23 @@ namespace MockERKS.Framework.BLL
                 return categories.ToList();
             }
         }
+
+
+        /* Author: Wenyu Zhang */
+        /* Founction: Catch the list of Category to show in the dropdown list */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<SecurityClassificationList> DropDownSecurityClassification()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var securityClassifications = from securityClassification in context.Security_Classification
+                                              select new SecurityClassificationList
+                                              {
+                                                  securityClassificationID = securityClassification.Security_Classification_ID,
+                                                  securityClassificationName = securityClassification.Security_Classification_Name
+                                              };
+                return securityClassifications.ToList();
+            }
+        }
     }
 }
