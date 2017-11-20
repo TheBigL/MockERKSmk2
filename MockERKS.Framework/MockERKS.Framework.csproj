@@ -83,6 +83,7 @@
     <Compile Include="Entities\POCOs\OrganizationDescription.cs" />
     <Compile Include="Entities\POCOs\organizationRegistrationPOCO.cs" />
     <Compile Include="Entities\POCOs\RegisteredOfficerPOCO.cs" />
+    <Compile Include="Entities\POCOs\SecurityClassificationList.cs" />
     <Compile Include="Entities\POCOs\SecurityClassificationSummary.cs" />
     <Compile Include="Entities\Record_Details.cs" />
     <Compile Include="Entities\Security\ApplicationUser.cs" />
