@@ -17,19 +17,37 @@ namespace MockERKS.Framework.BLL
     public class SatffInforController
     {
         /* Author: Wenyu Zhang */
+        /* Founction: Catch the list of File Type to show in the dropdown list */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public  List<FileTypeList> DropDownFileType()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var fileTypes = from fileType in context.File_Type
+                                select new FileTypeList
+                                {
+                                    typeID = fileType.Type_ID,
+                                    typeDescription = fileType.Type_Description
+                                };
+                return fileTypes.ToList();
+            }
+        }
+
+
+        /* Author: Wenyu Zhang */
         /* Founction: Catch the list of Category to show in the dropdown list */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<CategoryList> DropDownCategory()
         {
             using (var context = new MockERKSDb())
             {
-                var category = from categories in context.Categories
+                var categories = from category in context.Categories
                                select new CategoryList
                                {
-                                   categoryID = categories.Category_ID,
-                                   categoryName = categories.Category_Name
+                                   categoryID = category.Category_ID,
+                                   categoryName = category.Category_Name
                                };
-                return category.ToList();
+                return categories.ToList();
             }
         }
     }

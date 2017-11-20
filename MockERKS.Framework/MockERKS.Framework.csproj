@@ -78,10 +78,12 @@
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Entities\POCOs\CategoryList.cs" />
     <Compile Include="Entities\POCOs\FileSummary.cs" />
+    <Compile Include="Entities\POCOs\FileTypeList.cs" />
     <Compile Include="Entities\POCOs\OfficerListPOCO.cs" />
     <Compile Include="Entities\POCOs\OrganizationDescription.cs" />
     <Compile Include="Entities\POCOs\organizationRegistrationPOCO.cs" />
     <Compile Include="Entities\POCOs\RegisteredOfficerPOCO.cs" />
+    <Compile Include="Entities\POCOs\SecurityClassificationList.cs" />
     <Compile Include="Entities\POCOs\SecurityClassificationSummary.cs" />
     <Compile Include="Entities\Record_Details.cs" />
     <Compile Include="Entities\Security\ApplicationUser.cs" />
