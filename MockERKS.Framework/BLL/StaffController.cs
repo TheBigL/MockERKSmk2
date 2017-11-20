@@ -17,9 +17,56 @@ namespace MockERKS.Framework.BLL
     public class StaffController
     {
 
-        
+        #region CategoryDropdown
+        /*Dropdown Category
+         * Author: Leban Mohamed
+         * Brings up a list of Categories for a dropdown List
+         * 
+         * */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<CategoryList> DropdownCategories()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var categories = from c in context.Categories
+                                 select new CategoryList
+                                 {
+                                     categoryID = c.Category_ID,
+                                     categoryName = c.Category_Name
+                                 };
+
+                return categories.ToList();
+            }
+        }
 
 
+        #endregion
+
+        #region OrganizationDescriptionDropdown
+        /*
+         * OrganizationDescriptionDropdown
+         * 
+         * Author: Leban Mohamed
+         * Returns a List of Organization Descriptions. This class is meant to be used for the student.
+         * It simply return a POCO class that is used
+         * */
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<OrganizationDescription> OrganizationDescriptionDropdown()
+        {
+            using(var context = new MockERKSDb())
+            {
+                var odList = from od in context.Organizations
+                             select new OrganizationDescription
+                             {
+                                 organizationDescription = od.Organization_Description
+                             };
+                return odList.ToList();
+
+            }
+
+        }
+
+        #endregion
 
 
         #region LookupOrganizationByName
