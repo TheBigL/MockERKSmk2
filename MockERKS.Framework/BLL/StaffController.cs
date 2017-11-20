@@ -47,8 +47,8 @@ namespace MockERKS.Framework.BLL
          * OrganizationDescriptionDropdown
          * 
          * Author: Leban Mohamed
-         * Returns a List of Organization Descriptions. This class is meant to be used for the student.
-         * It simply return a POCO class that is used
+         * Returns a List of Organization Descriptions. This class is meant to be used for
+         * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrganizationDescription> OrganizationDescriptionDropdown()
