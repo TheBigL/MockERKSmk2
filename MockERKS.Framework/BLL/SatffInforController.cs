@@ -53,7 +53,7 @@ namespace MockERKS.Framework.BLL
 
 
         /* Author: Wenyu Zhang */
-        /* Founction: Catch the list of Category to show in the dropdown list */
+        /* Founction: Catch the list of Security Classification to show in the dropdown list */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<SecurityClassificationList> DropDownSecurityClassification()
         {
