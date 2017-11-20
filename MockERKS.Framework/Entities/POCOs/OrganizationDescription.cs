@@ -8,6 +8,8 @@ namespace MockERKS.Framework.Entities.POCOs
 {
     public class OrganizationDescription
     {
+        
+        public int organizationDescriptionID { get; set; }
         public string organizationDescription { get; set; }
     }
 }
