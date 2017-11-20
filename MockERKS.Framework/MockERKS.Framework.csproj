@@ -78,6 +78,7 @@
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Entities\POCOs\CategoryList.cs" />
     <Compile Include="Entities\POCOs\FileSummary.cs" />
+    <Compile Include="Entities\POCOs\FileTypeList.cs" />
     <Compile Include="Entities\POCOs\OfficerListPOCO.cs" />
     <Compile Include="Entities\POCOs\OrganizationDescription.cs" />
     <Compile Include="Entities\POCOs\organizationRegistrationPOCO.cs" />
