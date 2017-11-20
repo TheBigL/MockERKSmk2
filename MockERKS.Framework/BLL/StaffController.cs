@@ -16,23 +16,10 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class StaffController
     {
-        #region Lookup Organizations
-        /* Look Up All Organizations
-        * Description: List all of the Organizations in the Database.
-        * Author: Leban Mohamed
-        * Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
-        */
 
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Organization> LookupAllOrganizations()
-        {
-            //Simple Lookup for All Organizations
-            using (var context = new MockERKSDb())
-            {
-                return context.Organizations.ToList();
-            }
-        }
-        #endregion
+        
+
+
 
 
         #region LookupOrganizationByName
@@ -153,7 +140,6 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var results = from officerList in context.Officers
-                              orderby officerList.Last_Name
                               select new OfficerListPOCO
                               {
                                   Officer_ID = officerList.Officer_ID,
@@ -170,7 +156,7 @@ namespace MockERKS.Framework.BLL
         #region LookupFiles
         /*
          * Author: Leban Mohamed
-         * 
+         * Makes a List of Files using a POCO class
          * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select)]
@@ -238,6 +224,12 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region LookupRegisteredOrganizations
+
+        /* Look Up All Organizations
+        * Description: List all of the Organizations in the Database.
+        * Author: Leban Mohamed
+        * Author's Comments: Access the Database and put all the Organizations to the List. Easy as Apple Pie!
+        */
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<organizationRegistrationPOCO> LookupRegisteredOrganizations()
         {
