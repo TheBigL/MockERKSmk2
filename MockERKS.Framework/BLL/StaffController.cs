@@ -17,6 +17,13 @@ namespace MockERKS.Framework.BLL
     public class StaffController
     {
         #region FileTypeDropdown
+        /*
+         * File Type Dropdown
+         * Author: Leban Mohamed
+         * BLL method meant to bring down the options for the file types.
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<FileTypeList> FileTypeDropdown()
         {
@@ -69,7 +76,7 @@ namespace MockERKS.Framework.BLL
          * Author: Leban Mohamed
          * Returns a List of Organization Descriptions. This class is meant to be used for the Organization Description Dropdown
          * 
-         * */
+         * 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrganizationDescription> OrganizationDescriptionDropdown()
         {
@@ -85,7 +92,8 @@ namespace MockERKS.Framework.BLL
             }
 
         }
-
+        **
+        * */
         #endregion
 
 
