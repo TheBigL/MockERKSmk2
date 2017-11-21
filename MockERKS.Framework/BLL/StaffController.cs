@@ -16,6 +16,37 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class StaffController
     {
+
+        #region RegisteredOfficerDropdown
+        /*
+         * Officer Dropdown
+         * Author: Leban Mohamed
+         * Description: Spits out a list of users registered to the system. This method is designed for dropdowns.
+         * Author's Comments: As a practical rule, we may need to have user names restricted to the staff member's first and last names.
+         * 
+         * */
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<RegisteredOfficerPOCO> RegisteredStaffDropdown()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var round1 = from ro in context.Officers
+                             orderby ro.Last_Name
+                             select new RegisteredOfficerPOCO
+                             {
+                                 Officer_ID = ro.Officer_ID,
+                                 UserName = ro.First_Name + " " + ro.Last_Name
+                             };
+                return round1.ToList();
+            }
+
+        }
+
+
+        #endregion
+
+
+
         #region FileTypeDropdown
         /*
          * File Type Dropdown
