@@ -16,6 +16,26 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class StaffController
     {
+        #region FileTypeDropdown
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<FileTypeList> FileTypeDropdown()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var fileTypeCollection = from ft in context.File_Type
+                                         select new FileTypeList
+                                         {
+                                             typeID = ft.Type_ID,
+                                             typeDescription = ft.Type_Description
+                                         };
+                return fileTypeCollection.ToList();
+
+            }
+
+        }
+
+
+        #endregion
 
         #region CategoryDropdown
         /*Dropdown Category
@@ -47,7 +67,7 @@ namespace MockERKS.Framework.BLL
          * OrganizationDescriptionDropdown
          * 
          * Author: Leban Mohamed
-         * Returns a List of Organization Descriptions. This class is meant to be used for
+         * Returns a List of Organization Descriptions. This class is meant to be used for the Organization Description Dropdown
          * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select)]
