@@ -9,7 +9,6 @@ namespace MockERKS.Framework.Entities.POCOs
     public class RecordDetailsSummary
     {
         public int? officerID { get; set; }
-        public string? officerName { get; set; }
         public DateTime recordDate { get; set; }
         public int status { get; set; }
         public DateTime statusDate { get; set; }
