@@ -363,7 +363,30 @@ namespace MockERKS.Framework.BLL
 
 
         #region GenerateRecordDetailsByOfficerID
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<RecordDetailsSummary> RDSummaryByOfficerID(int officerID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var rdList = from rd in context.Record_Details
+                             where rd.Officer_ID == officerID
+                             select new RecordDetailsSummary
+                             {
+                                 officerID = rd.Officer_ID,
+                                 essential = rd.Essential,
+                                 status = rd.Status,
+                                 statusDate = rd.Status_Date,
+                                 dateRecieved = rd.Recieved_Date,
+                                 subject = rd.Subject,
+                                 recordDate = rd.Record_Date,
+                                 updateCyclePeroid = rd.Update_Cycle_Period
 
+
+                             };
+                return rdList.ToList();
+            }
+
+        }
         
 
 
