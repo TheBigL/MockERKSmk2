@@ -379,8 +379,9 @@ namespace MockERKS.Framework.BLL
                                  dateRecieved = rd.Recieved_Date,
                                  subject = rd.Subject,
                                  recordDate = rd.Record_Date,
-                                 updateCyclePeroid = rd.Update_Cycle_Period
-
+                                 updateCyclePeroid = rd.Update_Cycle_Period,
+                                 offical = rd.Offcial
+                                 
 
                              };
                 return rdList.ToList();
