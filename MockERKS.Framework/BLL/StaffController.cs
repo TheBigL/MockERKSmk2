@@ -43,6 +43,7 @@ namespace MockERKS.Framework.BLL
         }
 
 
+
         #endregion
 
 
@@ -359,8 +360,14 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-       
 
+
+        #region GenerateRecordDetailsByOfficerID
+
+        
+
+
+        #endregion
 
 
 
