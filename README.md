@@ -2,6 +2,8 @@
 
 Created by Leban Mohamed, Wenyu Zhang, Sayed Quadri
 
+Written by Leban Mohamed.
+
 This project is a part our NAIT capstone project.
 
 # System Roles
@@ -21,3 +23,15 @@ Also, only admins can add, change the roles of the people who log in. They can r
 # Functions
 
 In this section, we will highlight each function and tell you how they work.
+
+
+First, in order to execute many of the applications, we will need to register the user.
+
+For the sake of easy access to the system, we've initallized a webmaster account.
+
+# Entities
+
+For the sake of simplicity, we've set up simplified the entity table. We feel that since this project is
+a proof of concept 
+ 
+
