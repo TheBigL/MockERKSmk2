@@ -388,11 +388,26 @@ namespace MockERKS.Framework.BLL
             }
 
         }
-        
+
 
 
         #endregion
 
+
+        #region GetFilesAssociatedByUser
+        /*GetFilesAssociatedByUser
+         * Author: Leban Mohamed
+         * 
+         * 
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<> GetFilesAssociatedByStaff()
+        {
+
+
+        }
+        */
+        #endregion
 
 
 
