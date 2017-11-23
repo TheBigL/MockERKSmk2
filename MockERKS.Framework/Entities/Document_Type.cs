@@ -11,7 +11,7 @@ namespace MockERKS.Framework.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Document_Type()
         {
-            Site_File = new HashSet<Site_File>();
+            Documents = new HashSet<Document>();
         }
 
         [Key]
@@ -19,16 +19,9 @@ namespace MockERKS.Framework.Entities
 
         [Column(TypeName = "text")]
         [Required]
-        public string Document_Type_Description { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime From_Date { get; set; }
-
-        public int Microfilm_Roll_Number { get; set; }
-
-        public int Microfilm_Frame_Number { get; set; }
+        public string Type_Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Site_File> Site_File { get; set; }
+        public virtual ICollection<Document> Documents { get; set; }
     }
 }

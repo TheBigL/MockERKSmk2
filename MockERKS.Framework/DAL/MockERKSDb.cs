@@ -13,6 +13,7 @@ namespace MockERKS.Framework.Entities
         }
 
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<Document_Type> Document_Type { get; set; }
         public virtual DbSet<File_Type> File_Type { get; set; }
         public virtual DbSet<LLD_ATS> LLD_ATS { get; set; }
@@ -22,6 +23,7 @@ namespace MockERKS.Framework.Entities
         public virtual DbSet<Officer> Officers { get; set; }
         public virtual DbSet<Operation> Operations { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
+        public virtual DbSet<Organization_Description> Organization_Description { get; set; }
         public virtual DbSet<Record_Details> Record_Details { get; set; }
         public virtual DbSet<Security_Classification> Security_Classification { get; set; }
         public virtual DbSet<Site_Address> Site_Address { get; set; }
@@ -39,11 +41,15 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Document_Type>()
-                .Property(e => e.Document_Type_Description)
+                .Property(e => e.Type_Description)
                 .IsUnicode(false);
 
             modelBuilder.Entity<File_Type>()
                 .Property(e => e.Type_Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.Quarter_Section_Number)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Manager>()
@@ -52,6 +58,10 @@ namespace MockERKS.Framework.Entities
 
             modelBuilder.Entity<Manager>()
                 .Property(e => e.Last_Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Manager>()
+                .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Manager>()
@@ -75,6 +85,10 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Officer>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Officer>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
@@ -87,11 +101,19 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Organization>()
-                .Property(e => e.Organization_Description)
+                .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Organization>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Organization_Description>()
+                .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Record_Details>()
+                .Property(e => e.Status)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Record_Details>()
@@ -155,11 +177,7 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<SPIN_II>()
-                .Property(e => e.Street_Range)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SPIN_II>()
-                .Property(e => e.Avenue_Range)
+                .Property(e => e.Area_Range)
                 .IsUnicode(false);
         }
     }

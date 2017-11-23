@@ -19,10 +19,7 @@ namespace MockERKS.Framework.Entities
         public int LINC_Number { get; set; }
 
         [StringLength(50)]
-        public string Street_Range { get; set; }
-
-        [StringLength(50)]
-        public string Avenue_Range { get; set; }
+        public string Area_Range { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site_File> Site_File { get; set; }

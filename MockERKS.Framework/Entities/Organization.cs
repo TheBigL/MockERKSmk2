@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
 namespace MockERKS.Framework.Entities
 {
-   
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("Organization")]
     public partial class Organization
@@ -21,19 +20,21 @@ namespace MockERKS.Framework.Entities
 
         public int? Location_Code { get; set; }
 
-        [StringLength(50)]
+        [Required]
+        [StringLength(225)]
         public string Organization_Name { get; set; }
 
-        [Column(TypeName = "text")]
+        public int? Description_ID { get; set; }
+
         [Required]
-        public string Organization_Description { get; set; }
+        [StringLength(10)]
+        public string Phone { get; set; }
 
-        public int? Phone { get; set; }
-
+        [Required]
         [StringLength(125)]
         public string Email { get; set; }
 
-
+        public virtual Organization_Description Organization_Description { get; set; }
 
         public virtual Site_Address Site_Address { get; set; }
 
