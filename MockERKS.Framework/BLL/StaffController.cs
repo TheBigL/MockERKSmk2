@@ -26,16 +26,16 @@ namespace MockERKS.Framework.BLL
          * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<RegisteredOfficerPOCO> RegisteredStaffDropdown()
+        public List<OfficerFullNameList> RegisteredStaffDropdown()
         {
             using (var context = new MockERKSDb())
             {
                 var round1 = from ro in context.Officers
                              orderby ro.Last_Name
-                             select new RegisteredOfficerPOCO
+                             select new OfficerFullNameList
                              {
-                                 Officer_ID = ro.Officer_ID,
-                                 UserName = ro.First_Name + " " + ro.Last_Name
+                                 officerID = ro.Officer_ID,
+                                 fullName = ro.Last_Name  + ", " + ro.First_Name
                              };
                 return round1.ToList();
             }
