@@ -26,7 +26,9 @@ namespace MockERKS.Framework.Entities
         [StringLength(25)]
         public string Last_Name { get; set; }
 
-        public int Phone { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string Phone { get; set; }
 
         [Required]
         [StringLength(125)]

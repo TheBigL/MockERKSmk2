@@ -25,7 +25,8 @@ namespace MockERKS.Framework.Entities
 
         public int? Section_Number { get; set; }
 
-        public int? Quarter_Section_Number { get; set; }
+        [StringLength(2)]
+        public string Quarter_Section_Number { get; set; }
 
         public int? LSD { get; set; }
 

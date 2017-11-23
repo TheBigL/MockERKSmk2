@@ -1,5 +1,6 @@
-﻿using MockERKS.Framework.DAL;
+﻿//////using MockERKS.Framework.DAL;
 using MockERKS.Framework.Entities;
+using MockERKS.Framework.Entities.POCOs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,20 +16,20 @@ namespace MockERKS.Framework.BLL
     {
 
 
-        
+
         /* List Client Description
          * Description: Creates a list of Client Descriptions for a dropdown list.
          * Author: Leban Mohamed
          * Author's Comments: I figured this object would be simple. Add a list with an ID and a descripton and call it a day.
          */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Organization> ListClientDescription()
+        public List<OrganizationDescription> ListClientDescription()
         {
             using (var context = new MockERKSDb())
             {
                 var odescriptions = from org in context.Organizations
                                     orderby org.Organization_Description
-                                    select new Organization()
+                                    select new OrganizationDescription()
                                     {
                                         Organization_ID = org.Organization_ID,
                                         Organization_Description = org.Organization_Description
@@ -55,10 +56,10 @@ namespace MockERKS.Framework.BLL
                 context.Organizations.Add(newOrg);
 
                 context.SaveChanges();
-                
+
             }
 
-            
+
 
         }
 

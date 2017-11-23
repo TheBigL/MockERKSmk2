@@ -6,23 +6,22 @@ namespace MockERKS.Framework.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Operation")]
-    public partial class Operation
+    public partial class Organization_Description
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Operation()
+        public Organization_Description()
         {
-            Site_File = new HashSet<Site_File>();
+            Organizations = new HashSet<Organization>();
         }
 
         [Key]
-        public int Operation_ID { get; set; }
+        public int Description_ID { get; set; }
 
+        [Column(TypeName = "text")]
         [Required]
-        [StringLength(225)]
-        public string Operation_Name { get; set; }
+        public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Site_File> Site_File { get; set; }
+        public virtual ICollection<Organization> Organizations { get; set; }
     }
 }

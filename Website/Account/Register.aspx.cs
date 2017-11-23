@@ -9,17 +9,18 @@ using System.Data.SqlClient;
 
 public partial class Account_Register : Page
 {
-
+    
+    //Author :Sayed
     protected void CreateUser_Click(object sender, EventArgs e)
     {
-        string organizationName = OrganizationName.Text;
-        string phone = Phone.Text;
-        string email = Email.Text;
-        string description = Description.SelectedValue;
+        //string organizationName = OrganizationName.Text;
+        //string phone = Phone.Text;
+        //string email = Email.Text;
+        //string description = Description.SelectedValue;
 
-        ClientController sysmgr = new ClientController();
+        //ClientController sysmgr = new ClientController();
 
-        sysmgr.RegisterOrganization(organizationName,description,Convert.ToInt32(phone),email);
+        //sysmgr.RegisterOrganization(organizationName,description,Convert.ToInt32(phone),email);
 
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };

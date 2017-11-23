@@ -20,10 +20,12 @@ namespace MockERKS.Framework.Entities
         [Column(TypeName = "date")]
         public DateTime Record_Date { get; set; }
 
-        public int Status { get; set; }
+        [Required]
+        [StringLength(25)]
+        public string Status { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime Status_Date { get; set; }
+        public DateTime? Status_Date { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Recieved_Date { get; set; }
@@ -52,7 +54,6 @@ namespace MockERKS.Framework.Entities
         public DateTime? Last_Review_Date { get; set; }
 
         [Column(TypeName = "text")]
-        [Required]
         public string RM_Classification { get; set; }
 
         [Column(TypeName = "text")]

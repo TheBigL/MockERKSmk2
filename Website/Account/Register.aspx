@@ -7,7 +7,7 @@
     </p>
 
     <div class="form-horizontal">
-        <h4>Create a new account.</h4>
+        <h4><span style="background-color: #FFFFFF">Create a new account.</span></h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
@@ -15,78 +15,78 @@
         Author : Sayed Quadri--%>
 
         <div class="form-group">
-            <asp:Label ID="Label" runat="server" AssociatedControlID="OrganizationName" CssClass="col-md-2 control-label">Client/Organization Name</asp:Label>
+            <asp:Label ID="Label" runat="server" AssociatedControlID="OrganizationName" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Client/Organization Name</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox ID="OrganizationName" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="OrganizationName"
-                    CssClass="text-danger" ErrorMessage="The user name field is required." />
+                    CssClass="text-danger" ErrorMessage="The user name field is required." style="background-color: #FFFFFF" />
             </div>
         </div>
 
 
 
         <div class="form-group">
-            <asp:Label ID="Label1" runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label">Description</asp:Label>
+            <asp:Label ID="Label1" runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Description</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList ID="Description" runat="server" CssClass="form-control">
                     <asp:ListItem>Induvidual</asp:ListItem>
                     <asp:ListItem>Organization</asp:ListItem>
-                </asp:DropDownList><br />
+                </asp:DropDownList><br style="background-color: #FFFFFF" />
             </div>
         </div>
 
         <div class="form-group">
-            <asp:Label ID="Label2" runat="server" AssociatedControlID="Phone" CssClass="col-md-2 control-label">Phone</asp:Label>
+            <asp:Label ID="Label2" runat="server" AssociatedControlID="Phone" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Phone</asp:Label>
 
             <div class="col-md-10">
                 <asp:TextBox ID="Phone" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone"
-                    CssClass="text-danger" ErrorMessage="A Phone Number is required."></asp:RequiredFieldValidator>
+                    CssClass="text-danger" ErrorMessage="A Phone Number is required." style="background-color: #FFFFFF"></asp:RequiredFieldValidator>
             </div>
         </div>
 
 
         <div class="form-group">
 
-            <asp:Label ID="Label3" runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
+            <asp:Label ID="Label3" runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Email</asp:Label>
 
             <div class="col-md-10">
                 <asp:TextBox ID="Email" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                    CssClass="text-danger" ErrorMessage="An Email is required."></asp:RequiredFieldValidator>
+                    CssClass="text-danger" ErrorMessage="An Email is required." style="background-color: #FFFFFF"></asp:RequiredFieldValidator>
             </div>
         </div>
 
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">User name</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">User name</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                    CssClass="text-danger" ErrorMessage="The user name field is required." />
+                    CssClass="text-danger" ErrorMessage="The user name field is required." style="background-color: #FFFFFF" />
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Password</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="The password field is required." />
+                    CssClass="text-danger" ErrorMessage="The password field is required." style="background-color: #FFFFFF" />
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Confirm password</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." style="background-color: #FFFFFF" />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." style="background-color: #FFFFFF" />
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" BorderColor="#33CC33" />
             </div>
         </div>
 

@@ -29,7 +29,7 @@ namespace MockERKS.Framework.Entities
 
         public int? Organization_ID { get; set; }
 
-        public int? Document_Type_ID { get; set; }
+        public int? Document_ID { get; set; }
 
         public int? Security_Classification_ID { get; set; }
 
@@ -42,7 +42,7 @@ namespace MockERKS.Framework.Entities
 
         public virtual Category Category { get; set; }
 
-        public virtual Document_Type Document_Type { get; set; }
+        public virtual Document Document { get; set; }
 
         public virtual File_Type File_Type { get; set; }
 
