@@ -42,12 +42,12 @@ namespace MockERKS.Framework.BLL
 
 
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void RegisterOrganization(string clientName, string Description, int Phone, string email)
+        public void RegisterOrganization(string organizationName, string Description, int Phone, string email)
         {
             using (var context = new MockERKSDb())
             {
                 Organization newOrg = new Organization();
-                newOrg.Organization_Name = clientName;
+                newOrg.Organization_Name = organizationName;
                 newOrg.Organization_Description = Description;
                 newOrg.Email = email;
                 newOrg.Phone = Phone;

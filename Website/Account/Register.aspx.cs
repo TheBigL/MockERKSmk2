@@ -10,18 +10,16 @@ using System.Data.SqlClient;
 public partial class Account_Register : Page
 {
 
-    SqlCommand cmd = new SqlCommand();
-    SqlConnection sysmgr = new SqlConnection();
-
     protected void CreateUser_Click(object sender, EventArgs e)
     {
+        string organizationName = OrganizationName.Text;
+        string phone = Phone.Text;
+        string email = Email.Text;
+        string description = Description.SelectedValue;
 
-        SqlCommand cmd = new SqlCommand("insert into Organization" + "Organization_Name,Email,Phone,Description)values (@Organization_Name,@Email,@Phone,@Description)",sysmgr);
-        cmd.Parameters.AddWithValue("@Organization_Name", OrganizationName.Text);
-        cmd.Parameters.AddWithValue("@Email", Email.Text);
-        cmd.Parameters.AddWithValue("@Description", Description.SelectedItem.Value);
-        cmd.Parameters.AddWithValue("@Phone", OrganizationName.Text);
-        cmd.ExecuteNonQuery();
+        ClientController sysmgr = new ClientController();
+
+        sysmgr.RegisterOrganization(organizationName,description,Convert.ToInt32(phone),email);
 
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };
