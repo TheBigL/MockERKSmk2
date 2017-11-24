@@ -163,7 +163,7 @@ namespace MockERKS.Framework.BLL
                               {
                                   fileID = f.File_ID,
                                   categoryName = f.Category.Category_Name,
-                                  docTypeDescription = f.Document_Type.Document_Type_Description,
+                                  docTypeDescription = f.Document.Document_Type.Type_Description,
                                   operationName = f.Operation.Operation_Name,
                                   organizationName = f.Organization.Organization_Name,
                                   securityClassificationTypeName = f.Security_Classification.Security_Classification_Name
@@ -276,7 +276,7 @@ namespace MockERKS.Framework.BLL
                             {
                                 fileID = f.File_ID,
                                 categoryName = f.Category.Category_Name,
-                                docTypeDescription = f.Document_Type.Document_Type_Description,
+                                docTypeDescription = f.Document.Document_Type.Type_Description,
                                 operationName = f.Operation.Operation_Name,
                                 securityClassificationTypeName = f.Security_Classification.Security_Classification_Name,
                                 organizationName = f.Organization.Organization_Name
@@ -349,7 +349,7 @@ namespace MockERKS.Framework.BLL
                            {
                                Organization_ID = orglist.Organization_ID,
                                Organization_Name = orglist.Organization_Name,
-                               Organization_Description = orglist.Organization_Description,
+                               Organization_Description = orglist.Organization_Description.Description,
                                Email = orglist.Email,
                                Phone = orglist.Phone
                            };

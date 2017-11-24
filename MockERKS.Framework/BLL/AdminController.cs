@@ -38,9 +38,9 @@ namespace MockERKS.Framework.BLL
                 else context.Categories.Remove(file.Category);
 
 
-                bool typeMatch = context.Document_Type.Any(x => x.Document_Type_ID == file.Document_Type_ID);
+                bool typeMatch = context.Document_Type.Any(x => x.Document_Type_ID == file.Document.Document_Type_ID);
                 if (!typeMatch) throw new Exception("No Document Type Exists");
-                else context.Document_Type.Remove(file.Document_Type);
+                else context.Document_Type.Remove(file.Document.Document_Type);
 
 
                 bool operMatch = context.Operations.Any(x => x.Operation_ID == file.Operation_ID);

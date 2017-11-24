@@ -13,7 +13,7 @@ namespace MockERKS.Framework.Entities.POCOs
         public string Organization_Description { get; set; }
        
         public int? Organization_ID { get; set; }
-        public int? Phone { get; set; }
+        public string Phone { get; set; }
         public string Email { get;  set; }
 
 

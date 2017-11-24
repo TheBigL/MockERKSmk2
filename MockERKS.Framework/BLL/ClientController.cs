@@ -23,16 +23,16 @@ namespace MockERKS.Framework.BLL
          * Author's Comments: I figured this object would be simple. Add a list with an ID and a descripton and call it a day.
          */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<OrganizationDescription> ListClientDescription()
+        public List<Organization_Description> ListClientDescription()
         {
             using (var context = new MockERKSDb())
             {
-                var odescriptions = from org in context.Organizations
-                                    orderby org.Organization_Description
-                                    select new OrganizationDescription()
+                var odescriptions = from org in context.Organization_Description
+                                    orderby org.Description
+                                    select new Organization_Description
                                     {
-                                        Organization_ID = org.Organization_ID,
-                                        Organization_Description = org.Organization_Description
+                                       Description_ID = org.Description_ID,
+                                       Description = org.Description
                                     };
 
                 return odescriptions.ToList();
@@ -43,13 +43,13 @@ namespace MockERKS.Framework.BLL
 
 
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void RegisterOrganization(string organizationName, string Description, int Phone, string email)
+        public void RegisterOrganization(string organizationName, string Description, string Phone, string email)
         {
             using (var context = new MockERKSDb())
             {
                 Organization newOrg = new Organization();
                 newOrg.Organization_Name = organizationName;
-                newOrg.Organization_Description = Description;
+                newOrg.Organization_Description.Description = Description;
                 newOrg.Email = email;
                 newOrg.Phone = Phone;
 
