@@ -6,12 +6,9 @@
 
     <span><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
         <Columns>
-            <asp:BoundField DataField="fileID" HeaderText="fileID" SortExpression="fileID" />
-            <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName" />
-            <asp:BoundField DataField="docTypeDescription" HeaderText="docTypeDescription" SortExpression="docTypeDescription" />
-            <asp:BoundField DataField="securityClassificationTypeName" HeaderText="securityClassificationTypeName" SortExpression="securityClassificationTypeName" />
-            <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName" />
-            <asp:BoundField DataField="operationName" HeaderText="operationName" SortExpression="operationName" />
+            <asp:BoundField DataField="Officer_ID" HeaderText="Officer_ID" SortExpression="Officer_ID" />
+            <asp:BoundField DataField="First_Name" HeaderText="First_Name" SortExpression="First_Name" />
+            <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" SortExpression="Last_Name" />
         </Columns>
         </asp:GridView></span>
 
@@ -24,7 +21,7 @@
 
 
 
-     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiles" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
 
 
