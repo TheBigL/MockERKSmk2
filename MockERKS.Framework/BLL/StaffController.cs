@@ -109,46 +109,45 @@ namespace MockERKS.Framework.BLL
          * Returns a List of Organization Descriptions. This class is meant to be used for the Organization Description Dropdown
          * 
          * 
+         *   **
+        * */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<OrganizationDescription> OrganizationDescriptionDropdown()
+        public List<Organization_Description> OrganizationDescriptionDropdown()
         {
             using(var context = new MockERKSDb())
             {
-                var odList = from od in context.Organizations
-                             select new OrganizationDescription
-                             {
-                                 organizationDescription = od.Organization_Description
+                var odList = from od in context.Organization_Description
+                             select new Organization_Description
+                             {Description_ID = od.Description_ID,
+                             Description = od.Description
                              };
                 return odList.ToList();
 
             }
 
         }
-        **
-        * */
+
         #endregion
 
 
-        #region LookupOrganizationByName
-        /* Look Up Organizations By Name
-        * Description: List all of the Organizations in the Database by name.
-        * Author: Leban Mohamed
-        * Author's Comments: Nothinng in particular.
-        */
-
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Organization> LookupOrganizationByName(string name)
+        #region OrganizationDropdown
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<OrganizationList> organizationDropdown()
         {
             using (var context = new MockERKSDb())
             {
-                var results = from org in context.Organizations
-                              where org.Organization_Name == name
-                              select org;
+                var orgList = from org in context.Organizations
+                              select new OrganizationList
+                              {
+                                  organizationID = org.Organization_ID,
+                                  organizationName = org.Organization_Name
+                              };
+               return orgList.ToList();
 
-                return results.ToList();
             }
 
         }
+
         #endregion
 
         #region LookupFilesByCategory

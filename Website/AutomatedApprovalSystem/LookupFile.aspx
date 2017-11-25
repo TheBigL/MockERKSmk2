@@ -4,11 +4,21 @@
     <h2>File List
     </h2>
 
-    <span><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+    <div>
+    <ul class="nav nav-tabs">
+                <li class="active"><a href="#FileLookUp" data-toggle="tab">File Look Up</a></li>
+                <li ><a href="#organization" data-toggle="tab">Organizations</a></li>
+                
+    </ul>
+
+    <span><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" AllowPaging="True">
         <Columns>
-            <asp:BoundField DataField="Officer_ID" HeaderText="Officer_ID" SortExpression="Officer_ID" />
-            <asp:BoundField DataField="First_Name" HeaderText="First_Name" SortExpression="First_Name" />
-            <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" SortExpression="Last_Name" />
+            <asp:CommandField ShowSelectButton="True" />
+            <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name" />
+            <asp:BoundField DataField="Organization_Description" HeaderText="Organization_Description" SortExpression="Organization_Description" />
+            <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" SortExpression="Organization_ID" />
+            <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
         </Columns>
         </asp:GridView></span>
 
@@ -21,8 +31,8 @@
 
 
 
-     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupRegisteredOrganizations" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
-
+    </div>
 
      </asp:Content>
