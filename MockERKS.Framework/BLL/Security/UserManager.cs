@@ -52,6 +52,8 @@ namespace MockERKS.Framework.BLL.Security
 
                 this.AddToRole(webmasterAccount.Id, SecurityRoles.WebAdmins);
             }
+
+     
         }
 
         //Author:Sayed
