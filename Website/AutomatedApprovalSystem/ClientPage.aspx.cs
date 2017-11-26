@@ -9,6 +9,12 @@ public partial class AutomatedApprovalSystem_ClientPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
 
+    }
+
+    protected void AddNew_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/FileForm.aspx");
     }
 }

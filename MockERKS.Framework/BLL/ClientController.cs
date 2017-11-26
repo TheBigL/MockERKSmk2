@@ -28,11 +28,11 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var odescriptions = from org in context.Organization_Description
-                                    orderby org.Description 
+                                    orderby org.Description
                                     select new Organization_Description
                                     {
-                                       Description_ID = org.Description_ID,
-                                       Description = org.Description
+                                        Description_ID = org.Description_ID,
+                                        Description = org.Description
                                     };
 
                 return odescriptions.ToList();
@@ -118,9 +118,26 @@ namespace MockERKS.Framework.BLL
         }
 
 
+
+
         /*  Author: Wenyu */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<CreatedFile> 
+        public List<CreatedFile> CreatedFiles ()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var files = from file in context.Site_File
+                            select new CreatedFile
+                            {
+                                fileID = file.File_ID,
+                                organizationName = file.Organization.Organization_Name,
+                                categoryName = file.Category.Category_Name,
+                                operationName = file.Operation.Operation_Name
+                            };
+
+                return files.ToList();
+            }
+        }
 
     }
 }

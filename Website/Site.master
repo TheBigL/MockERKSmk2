@@ -57,7 +57,7 @@
                         
                         <asp:LoginView runat="server" ViewStateMode="Disabled">
                             <LoggedInTemplate>
-                        <li><a runat="server" href="~/AutomatedApprovalSystem/ClientForm.aspx">Client Form</a></li>
+                        <li><a runat="server" href="~/AutomatedApprovalSystem/ClientPage.aspx">Client Created File</a></li>
                         <li><a runat="server" href="~/AutomatedApprovalSystem/LookupFile.aspx">Lookup File</a></li>
                         <li><a runat="server" href="~/AutomatedApprovalSystem/Staff.aspx">Look Up Staff</a></li>
                              </LoggedInTemplate>
