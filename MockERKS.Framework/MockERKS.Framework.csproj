@@ -79,6 +79,7 @@
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Entities\Organization_Description.cs" />
     <Compile Include="Entities\POCOs\CategoryList.cs" />
+    <Compile Include="Entities\POCOs\CreatedFile.cs" />
     <Compile Include="Entities\POCOs\DescriptionList.cs" />
     <Compile Include="Entities\POCOs\FileSummary.cs" />
     <Compile Include="Entities\POCOs\FileTypeList.cs" />

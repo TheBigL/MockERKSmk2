@@ -118,5 +118,9 @@ namespace MockERKS.Framework.BLL
         }
 
 
+        /*  Author: Wenyu */
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<CreatedFile> 
+
     }
 }
