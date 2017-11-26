@@ -9,7 +9,15 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(!Request.IsAuthenticated)
+        {
+            Response.Redirect("~/Account/Login.aspx");
+        }
 
+        if(!User.IsInRole("WebsiteAdmins")||!User.IsInRole("Staff"))
+        {
+            Response.Redirect("~/Default.aspx");
+        }
 
     }
 }
