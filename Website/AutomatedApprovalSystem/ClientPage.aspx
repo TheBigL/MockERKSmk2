@@ -1,16 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ClientPage.aspx.cs" Inherits="AutomatedApprovalSystem_ClientPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ClientPage.aspx.cs" Inherits="AutomatedApprovalSystem_ClientPage" %>
 
-<!DOCTYPE html>
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    <div class="row">
+        <h2>Created File List</h2>
+        <asp:Button ID="AddNew" runat="server" Text="Add New File" />
+        <div class="row">
+            <asp:GridView ID="CreatedFile" runat="server" AutoGenerateColumns="false"></asp:GridView>
+        </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+
