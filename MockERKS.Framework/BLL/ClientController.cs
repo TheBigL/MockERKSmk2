@@ -28,7 +28,7 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var odescriptions = from org in context.Organization_Description
-                                    orderby org.Description
+                                    orderby org.Description 
                                     select new Organization_Description
                                     {
                                        Description_ID = org.Description_ID,
@@ -42,16 +42,34 @@ namespace MockERKS.Framework.BLL
 
 
 
+
+        //Author :Sayed
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Organization_Description> DescriptionList()
+        {
+            using (var context = new MockERKSDb())
+            {
+
+                return context.Organization_Description.ToList();
+            }
+
+        }
+
+
+
+
+
+        //Author :Sayed
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void RegisterOrganization(string organizationName, string Description, string Phone, string email)
+        public void RegisterOrganization(string organizationName, int description, string phone, string email)
         {
             using (var context = new MockERKSDb())
             {
                 Organization newOrg = new Organization();
                 newOrg.Organization_Name = organizationName;
-                newOrg.Organization_Description.Description = Description;
+                newOrg.Description_ID = description;
                 newOrg.Email = email;
-                newOrg.Phone = Phone;
+                newOrg.Phone = phone;
 
                 context.Organizations.Add(newOrg);
 

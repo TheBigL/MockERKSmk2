@@ -20,7 +20,7 @@ public partial class Account_Register : Page
 
         ClientController sysmgr = new ClientController();
 
-        sysmgr.RegisterOrganization(organizationName,description,phone,email);
+        sysmgr.RegisterOrganization(organizationName,int.Parse(description),phone,email);
 
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };

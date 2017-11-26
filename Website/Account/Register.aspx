@@ -28,9 +28,7 @@
         <div class="form-group">
             <asp:Label ID="Label1" runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label" style="background-color: #FFFFFF">Description</asp:Label>
             <div class="col-md-10">
-                <asp:DropDownList ID="Description" runat="server" CssClass="form-control">
-                    <asp:ListItem>Induvidual</asp:ListItem>
-                    <asp:ListItem>Organization</asp:ListItem>
+                <asp:DropDownList ID="Description" runat="server" CssClass="form-control" DataSourceID="ObjectDataSource1" DataTextField="Description" DataValueField="Description_ID">
                 </asp:DropDownList><br style="background-color: #FFFFFF" />
             </div>
         </div>
@@ -90,8 +88,8 @@
             </div>
         </div>
 
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="DescriptionList" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
        
-      
     </div>
    
 </asp:Content>
