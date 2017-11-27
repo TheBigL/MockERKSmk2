@@ -34,13 +34,19 @@
             <!-- Form -->
             <fieldset class="form-horizontal">
                 <asp:Label ID="Label" runat="server" Text="File Type:" AssociatedControlID="FileType"></asp:Label>
-                <asp:DropDownList ID="FileType" runat="server"></asp:DropDownList><br />
+                <asp:DropDownList ID="FileType" runat="server" DataSourceID="FileTypeODS" DataTextField="typeDescription" DataValueField="typeID"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="FileTypeODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownFileType" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <br />
 
                 <asp:Label ID="Label1" runat="server" Text="Category:" AssociatedControlID="Category"></asp:Label>
-                <asp:DropDownList ID="Category" runat="server"></asp:DropDownList><br />
+                <asp:DropDownList ID="Category" runat="server" DataSourceID="CategoryListODS" DataTextField="categoryName" DataValueField="categoryID"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="CategoryListODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownCategory" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <br />
 
                 <asp:Label ID="Label2" runat="server" Text="Security Classification:" AssociatedControlID="SecurityClassification"></asp:Label>
-                <asp:DropDownList ID="SecurityClassification" runat="server"></asp:DropDownList><br />
+                <asp:DropDownList ID="SecurityClassification" runat="server" DataSourceID="SecurityClassificationODS" DataTextField="securityClassificationName" DataValueField="securityClassificationID"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="SecurityClassificationODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownSecurityClassification" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <br />
                 <br />
                 <br />
 
@@ -59,7 +65,9 @@
                 <h5>Site Location</h5>
 
                 <asp:Label ID="Label12" runat="server" Text="Location:" AssociatedControlID="Location"></asp:Label>
-                <asp:DropDownList ID="Location" runat="server"></asp:DropDownList><br />
+                <asp:DropDownList ID="Location" runat="server" DataSourceID="LocationODS" DataTextField="location" DataValueField="locationCode"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="LocationODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownLocation" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <br />
 
                 <asp:Label ID="Label13" runat="server" Text="Address:" AssociatedControlID="Address"></asp:Label>
                 <asp:TextBox ID="Address" runat="server"></asp:TextBox><br />

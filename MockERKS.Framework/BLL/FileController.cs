@@ -68,5 +68,22 @@ namespace MockERKS.Framework.BLL
                 return securityClassifications.ToList();
             }
         }
+
+        /* Author: Wenyu Zhang */
+        /* Founction: Catch the list of Location to show in the dropdown list */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<LocationList> DropDownLocation()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var locations = from location in context.Site_Address
+                                              select new LocationList
+                                              {
+                                                  locationCode = location.Location_Code,
+                                                  location = location.Location
+                                              };
+                return locations.ToList();
+            }
+        }
     }
 }
