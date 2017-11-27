@@ -43,7 +43,8 @@
                 <asp:TextBox ID="ClientName" runat="server"></asp:TextBox><br />
 
                 <asp:Label  runat="server" Text="Description:" AssociatedControlID="ClientDescription"></asp:Label>
-                <asp:DropDownList ID="ClientDescription" runat="server"></asp:DropDownList><br />
+                <asp:DropDownList ID="ClientDescription" runat="server" DataSourceID="ClientDescriptionODS" DataTextField="Description" DataValueField="Description_ID"></asp:DropDownList><asp:ObjectDataSource runat="server" ID="ClientDescriptionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DescriptionList" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
+                <br />
 
                 <asp:Label  runat="server" Text="Phone:" AssociatedControlID="ClientPhone"></asp:Label>
                 <asp:TextBox ID="ClientPhone" runat="server"></asp:TextBox><br />
