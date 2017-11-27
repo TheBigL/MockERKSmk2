@@ -9,6 +9,8 @@ namespace MockERKS.Framework.Entities.POCOs
     public class FileReport
     {
         public int fileID { get; set; }
+        public string typeDescription { get; set; }
+        public string categoryName { get; set; }
         public string operationName { get; set; }
         public int operationID { get; set; }
         public string location { get; set; }
