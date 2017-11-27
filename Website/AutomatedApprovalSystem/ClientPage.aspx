@@ -12,6 +12,7 @@
         <div class="row">
             <asp:GridView ID="CreatedFile" runat="server" AutoGenerateColumns="false" DataSourceID="CreatedFileData" AllowPaging="True">
                 <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="fileID" HeaderText="fileID" SortExpression="fileID"></asp:BoundField>
                     <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName"></asp:BoundField>
                     <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName"></asp:BoundField>
