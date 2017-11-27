@@ -14,7 +14,7 @@ using MockERKS.Framework.Entities.POCOs;
 namespace MockERKS.Framework.BLL
 {
     [DataObject]
-    public class SatffInforController
+    public class FileController
     {
         /* Author: Wenyu Zhang */
         /* Founction: Catch the list of File Type to show in the dropdown list */
