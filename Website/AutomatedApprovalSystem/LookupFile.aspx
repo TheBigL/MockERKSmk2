@@ -34,7 +34,7 @@
         <div id="filelookup" class="tab-pane fade" role="tabpanel">
         <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="FilesDataSource">
             <Columns>
-                <asp:CommandField ShowSelectButton="true" />
+                <asp:CommandField ShowSelectButton="false" />
                 <asp:BoundField DataField="fileID" HeaderText="fileID" SortExpression="fileID" />
                 <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName" />
                 <asp:BoundField DataField="docTypeDescription" HeaderText="docTypeDescription" SortExpression="docTypeDescription" />
