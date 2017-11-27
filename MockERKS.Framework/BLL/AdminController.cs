@@ -16,12 +16,18 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class AdminController
     {
-      
 
 
+        public Officer Officer_Get(int officerid)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Officers.Find(officerid);
+            }
+        }
         //TODO Create a Delete File Function For the Admin.
         #region DeleteFile
-       
+
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteFile(int fileID, List<Record_Details> rdetails)
