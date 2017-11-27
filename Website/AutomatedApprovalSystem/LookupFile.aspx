@@ -14,7 +14,7 @@
     <div id="organization" class="tab-pane fade in active" role="tabpanel">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="OrganizationData" AllowPaging="True">
         <Columns>
-            <asp:CommandField ShowSelectButton="True" />
+            <asp:CommandField ShowSelectButton="false" />
             <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name" />
             <asp:BoundField DataField="Organization_Description" HeaderText="Organization_Description" SortExpression="Organization_Description" />
             <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" SortExpression="Organization_ID" />
