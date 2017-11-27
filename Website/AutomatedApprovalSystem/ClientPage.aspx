@@ -6,6 +6,9 @@
     <div class="row">
         <h2>Created File List</h2>
         <asp:Button ID="AddNew" runat="server" Text="Add New File" OnClick="AddNew_Click" />
+        <br />
+        <br />
+
         <div class="row">
             <asp:GridView ID="CreatedFile" runat="server" AutoGenerateColumns="false" DataSourceID="CreatedFileData" AllowPaging="True">
                 <Columns>
@@ -16,7 +19,7 @@
 
                 </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource runat="server" ID="CreatedFileData" OldValuesParameterFormatString="original_{0}" SelectMethod="CreatedFiles" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
+            <asp:ObjectDataSource runat="server" ID="CreatedFileData" OldValuesParameterFormatString="original_{0}" SelectMethod="ListFilebyClient" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>

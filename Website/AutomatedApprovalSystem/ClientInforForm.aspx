@@ -43,7 +43,7 @@
                 <asp:TextBox ID="ClientName" runat="server"></asp:TextBox><br />
 
                 <asp:Label  runat="server" Text="Description:" AssociatedControlID="ClientDescription"></asp:Label>
-                <asp:DropDownList ID="ClientDescription" runat="server" DataSourceID="DropDownData" DataTextField="Organization_Description" DataValueField="Organization_ID"></asp:DropDownList><br />
+                <asp:DropDownList ID="ClientDescription" runat="server"></asp:DropDownList><br />
 
                 <asp:Label  runat="server" Text="Phone:" AssociatedControlID="ClientPhone"></asp:Label>
                 <asp:TextBox ID="ClientPhone" runat="server"></asp:TextBox><br />
