@@ -12,8 +12,7 @@ namespace MockERKS.Framework.Entities.Security
     {
         public int? Officer_ID { get; set; }
         public int? Organization_ID { get; set; }
-        public int? Phone { get; set; }
-        public string Organization_Description { get; set; }
+     
        
     }
 }

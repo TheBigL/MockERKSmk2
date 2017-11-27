@@ -128,13 +128,87 @@
                    </asp:UpdatePanel>
                       </div>
 
-                   <%--<div class="tab-pane fade in active" id="role">
+                   <div class="tab-pane fade in active" id="role">
                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
+
+                            <asp:ListView ID="RoleListView" runat="server" 
+                                DataSourceID="RoleODS"
+                                InsertItemPosition="LastItem"
+                                 DataKeyNames="RoleID"
+                                 ItemType="MockERKS.Framework.Entities.Security.RoleProfile"
+                                 OnItemDeleted="RefreshAll"
+                               OnItemInserted="RefreshAll">
+
+                                <EditItemTemplate>
+                                   <span>No Security roles have been set up.</span>
+                               </EditItemTemplate>
+
+                                <LayoutTemplate>
+                                    
+                                       <div class="row bginfo">
+                                       <div class="col-sm-3 h4">Action</div>
+                                       <div class="col-sm-3 h4">Role</div>
+                                       <div class="col-sm-6 h4">Member</div>
+                                   </div>
+                                   <div runat="server" id="itemPlaceholder"></div>
+                                    
+                                    </LayoutTemplate>
+                                      <ItemTemplate>
+                                   <div class="row">
+                                       <div class="col-sm-3">
+                                           <asp:LinkButton ID="DeleteButton" runat="server"
+                                               text="Delete" CommandName="Delete"></asp:LinkButton>
+                                       </div>
+                                       <div class="col-sm-3">
+                                           <%# Item.RoleName %>
+                                       </div>
+                                       <div class="col-sm-6">
+                                           <asp:Repeater ID="RoleUserRepeater" runat="server"
+                                               DataSource="<%# Item.UserNames %>"
+                                               ItemType="System.String">
+                                               <ItemTemplate>
+                                                   <%# Item %>
+                                               </ItemTemplate>
+                                           </asp:Repeater>
+                                       </div>
+                                   </div>
+                               </ItemTemplate>
+                                 <InsertItemTemplate>
+                                   <div class="row">
+                                       <div class="col-sm-3">
+                                           <asp:LinkButton ID="InsertButton" runat="server"
+                                               Text="Insert" CommandName="Insert"></asp:LinkButton>
+                                            <asp:LinkButton ID="CancelButton" runat="server"
+                                               Text="Cancel" CommandName="Cancel"></asp:LinkButton>
+                                       </div>
+                                       <div class="col-sm-3">
+                                           <asp:TextBox ID="RoleNameTextBox" runat="server"
+                                               Text="<%# BindItem.RoleName %>" 
+                                               placeholder="Role Name"></asp:TextBox>
+                                       </div>
+                                   </div>
+                               </InsertItemTemplate>
+
+                            </asp:ListView>
+
+
+                            <asp:ObjectDataSource ID="RoleODS" runat="server" 
+                                DataObjectTypeName="MockERKS.Framework.Entities.Security.RoleProfile"
+                                DeleteMethod="DeleteRole" 
+                                InsertMethod="AddRole" 
+                                OldValuesParameterFormatString="original_{0}" 
+                                SelectMethod="ListAllRoles" 
+                                TypeName="MockERKS.Framework.BLL.Security.RoleManager"
+                                onDeleted="CheckForException"
+                                OnInserted="CheckForException"
+                                OnSelected="CheckForException">
+
+                            </asp:ObjectDataSource>
                             </ContentTemplate>
                    </asp:UpdatePanel>
-                      </div>--%>
-                  </div>
+                 </div>
+               </div>
         </div>
      </div>  
   
