@@ -131,6 +131,13 @@ namespace MockERKS.Framework.BLL
 
 
         #region OrganizationDropdown
+        /*
+         * Organization Dropdown
+         * Author: Leban Mohamed 
+         * Used for an Organization Dropdown.
+         * 
+         * 
+         */
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrganizationList> organizationDropdown()
         {
@@ -394,20 +401,7 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
-        #region GetFilesAssociatedByUser
-        /*GetFilesAssociatedByUser
-         * Author: Leban Mohamed
-         * 
-         * 
-
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<> GetFilesAssociatedByStaff()
-        {
-
-
-        }
-        */
-        #endregion
+       
 
 
 
