@@ -13,6 +13,7 @@ using System.Web.Security;
 
 namespace MockERKS.Framework.BLL.Security
 {
+    [DataObject]
     public class RoleManager : RoleManager<IdentityRole>
     {
         public RoleManager() : base(new RoleStore<IdentityRole>(new ApplicationDbContext()))
@@ -37,7 +38,7 @@ namespace MockERKS.Framework.BLL.Security
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<string> ListAllRoleNames()
         {
-            return this.Roles.Where(r => r.Name != SecurityRoles.Staff).Select(r => r.Name).ToList();
+            return this.Roles.Where(r => r.Name != SecurityRoles.Client).Select(r => r.Name).ToList();
         }
 
 
@@ -46,12 +47,12 @@ namespace MockERKS.Framework.BLL.Security
         public List<RoleProfile> ListAllRoles()
         {
             var um = new UserManager();
-            var result = from data in Roles.ToList()
+            var result = from role in Roles.ToList()
                          select new RoleProfile()
                          {
-                             RoleId = data.Id,
-                             RoleName = data.Name,
-                             UserNames = data.Users.Select(u => um.FindById(u.UserId).UserName)
+                             RoleId = role.Id,
+                             RoleName = role.Name,
+                             UserNames = role.Users.Select(u => um.FindById(u.UserId).UserName)
                          };
 
             return result.ToList();

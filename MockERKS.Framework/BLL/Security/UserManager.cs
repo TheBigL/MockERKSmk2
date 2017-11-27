@@ -178,22 +178,58 @@ namespace MockERKS.Framework.BLL.Security
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
         public void AddUser(UserProfile organizationInfo)
         {
-            var userAccount = new ApplicationUser()
+            if (string.IsNullOrEmpty(organizationInfo.Officer_ID.ToString()))
             {
-                UserName = organizationInfo.UserName,
-                Email = organizationInfo.Email,
+                throw new Exception("Staff ID is missing. Remember Staff must be on file to get an user account.");
 
-            };
-
-            this.Create(userAccount, STR_DEFAULT_PASSWORD);
-            foreach (var roleName in organizationInfo.RoleMemberships)
-                this.AddToRole(userAccount.Id, roleName);
+            }
+            else
+            {
+                AdminController sysmgr = new AdminController();
+                Officer existing = sysmgr.Officer_Get(int.Parse(organizationInfo.Officer_ID.ToString()));
+                if (existing == null)
+                {
+                    throw new Exception("Staff must be on file to get an user account.");
+                }
+                else
+                {
+                    var userAccount = new ApplicationUser()
+                    {
+                        Officer_ID = organizationInfo.Officer_ID,
+                        Organization_ID = organizationInfo.Organization_ID,
+                        UserName = organizationInfo.UserName,
+                        Email = organizationInfo.Email
+                    };
+                    IdentityResult result = this.Create(userAccount,
+                        string.IsNullOrEmpty(organizationInfo.RequestedPassord) ? STR_DEFAULT_PASSWORD
+                        : organizationInfo.RequestedPassord);
+                    if (!result.Succeeded)
+                    {
+                        //name was already in use
+                        //get a UserName that is not already on the Users Table
+                        //the method will suggest an alternate UserName
+                        userAccount.UserName = VerifyNewUserName(organizationInfo.UserName);
+                        this.Create(userAccount, STR_DEFAULT_PASSWORD);
+                    }
+                    foreach (var roleName in organizationInfo.RoleMemberships)
+                    {
+                        //this.AddToRole(userAccount.Id, roleName);
+                        AddUserToRole(userAccount, roleName);
+                    }
+                }
+            }
 
         }
 
-       
+        public void AddUserToRole(ApplicationUser userAccount, string roleName)
+        {
+            this.AddToRole(userAccount.Id, roleName);
+        }
 
-
+        public void RemoveUser(UserProfile organizationifo)
+        {
+            this.Delete(this.FindById(organizationifo.UserId));
+        }
 
     }
 }
