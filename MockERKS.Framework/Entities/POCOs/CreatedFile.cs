@@ -12,5 +12,6 @@ namespace MockERKS.Framework.Entities.POCOs
         public string organizationName { get; set; }
         public string categoryName { get; set; }
         public string operationName { get; set; }
+        
     }
 }
