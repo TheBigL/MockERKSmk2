@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MockERKS.Framework.Entities;
+using System.Web.Security;
 
 namespace MockERKS.Framework.BLL.Security
 {
@@ -25,6 +26,13 @@ namespace MockERKS.Framework.BLL.Security
         /// <summary>Requires FirstName and LastName</summary>
         private const string STR_USERNAME_FORMAT = "{0}.{1}";
         /// <summary>Requires UserName</summary>
+        /// 
+        private const string STR_EMP_USERNAME = "sayed";
+        private const string STR_DEFAULT_EMP_PASSWORD = "WorkinG!";
+
+        private const string STR_USR_USERNAME = "sayed47";
+        private const string STR_DEFAULT_USR_PASSWORD = "password123";
+
         private const string STR_EMAIL_FORMAT = "{0}@Mockerks.ca";
         private const string STR_WEBMASTER_USERNAME = "Webmaster";
         #endregion
@@ -33,15 +41,15 @@ namespace MockERKS.Framework.BLL.Security
         {
         }
         //Author:Sayed
-        public void AddWebMaster()
+        public void StartupUsers()
         {
             //Users accesses all the records on the AspNetUsers table
-            
+
             if (!Users.Any(u => u.UserName.Equals(STR_WEBMASTER_USERNAME)))
             {
                 //create a new instance that will be used as the data to
                 //   add a new record to the AspNetUsers table
-                
+
                 var webmasterAccount = new ApplicationUser()
                 {
                     UserName = STR_WEBMASTER_USERNAME,
@@ -51,8 +59,31 @@ namespace MockERKS.Framework.BLL.Security
                 this.Create(webmasterAccount, STR_DEFAULT_PASSWORD);
 
                 this.AddToRole(webmasterAccount.Id, SecurityRoles.WebAdmins);
-            }
 
+
+                if (!Users.Any(u => u.UserName.Equals(STR_EMP_USERNAME)))
+                {
+                    var employeeAccount = new ApplicationUser()
+                    {
+                        UserName = STR_EMP_USERNAME,
+                        Email = string.Format(STR_EMAIL_FORMAT, STR_EMP_USERNAME)
+                    };
+                    this.Create(employeeAccount, STR_DEFAULT_EMP_PASSWORD);
+                    this.AddToRole(employeeAccount.Id, SecurityRoles.Staff);
+                }
+                //default user
+                if (!Users.Any(u => u.UserName.Equals(STR_USR_USERNAME)))
+                {
+                    var usersAccount = new ApplicationUser()
+                    {
+                        UserName = STR_USR_USERNAME,
+                        Email = string.Format(STR_EMAIL_FORMAT, STR_USR_USERNAME)
+                    };
+                    this.Create(usersAccount, STR_DEFAULT_USR_PASSWORD);
+                    this.AddToRole(usersAccount.Id, SecurityRoles.Client);
+
+                }
+            }
      
         }
 
@@ -178,22 +209,58 @@ namespace MockERKS.Framework.BLL.Security
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
         public void AddUser(UserProfile organizationInfo)
         {
-            var userAccount = new ApplicationUser()
+            if (string.IsNullOrEmpty(organizationInfo.Officer_ID.ToString()))
             {
-                UserName = organizationInfo.UserName,
-                Email = organizationInfo.Email,
+                throw new Exception("Staff ID is missing. Remember Staff must be on file to get an user account.");
 
-            };
-
-            this.Create(userAccount, STR_DEFAULT_PASSWORD);
-            foreach (var roleName in organizationInfo.RoleMemberships)
-                this.AddToRole(userAccount.Id, roleName);
+            }
+            else
+            {
+                AdminController sysmgr = new AdminController();
+                Officer existing = sysmgr.Officer_Get(int.Parse(organizationInfo.Officer_ID.ToString()));
+                if (existing == null)
+                {
+                    throw new Exception("Staff must be on file to get an user account.");
+                }
+                else
+                {
+                    var userAccount = new ApplicationUser()
+                    {
+                        Officer_ID = organizationInfo.Officer_ID,
+                        Organization_ID = organizationInfo.Organization_ID,
+                        UserName = organizationInfo.UserName,
+                        Email = organizationInfo.Email
+                    };
+                    IdentityResult result = this.Create(userAccount,
+                        string.IsNullOrEmpty(organizationInfo.RequestedPassord) ? STR_DEFAULT_PASSWORD
+                        : organizationInfo.RequestedPassord);
+                    if (!result.Succeeded)
+                    {
+                        //name was already in use
+                        //get a UserName that is not already on the Users Table
+                        //the method will suggest an alternate UserName
+                        userAccount.UserName = VerifyNewUserName(organizationInfo.UserName);
+                        this.Create(userAccount, STR_DEFAULT_PASSWORD);
+                    }
+                    foreach (var roleName in organizationInfo.RoleMemberships)
+                    {
+                        //this.AddToRole(userAccount.Id, roleName);
+                        AddUserToRole(userAccount, roleName);
+                    }
+                }
+            }
 
         }
 
-       
+        public void AddUserToRole(ApplicationUser userAccount, string roleName)
+        {
+            this.AddToRole(userAccount.Id, roleName);
+        }
 
-
+        public void RemoveUser(UserProfile organizationifo)
+        {
+            this.Delete(this.FindById(organizationifo.UserId));
+        }
 
     }
 }

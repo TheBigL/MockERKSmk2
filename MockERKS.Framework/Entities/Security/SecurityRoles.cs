@@ -11,6 +11,8 @@ namespace MockERKS.Framework.Entities.Security
         public const string WebAdmins = "WebAdmins";
         public const string Staff = "Staff";
         public const string Client = "Client";
+       
+
 
         public static List<string> StartUpSecurityRoles
         {
@@ -20,6 +22,7 @@ namespace MockERKS.Framework.Entities.Security
                 value.Add(WebAdmins);
                 value.Add(Client);
                 value.Add(Staff);
+               
                 return value;
             }
         }

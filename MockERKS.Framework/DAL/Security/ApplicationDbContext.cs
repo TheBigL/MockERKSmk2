@@ -12,9 +12,9 @@ using MockERKS.Framework.Entities.Security;
 
 namespace MockERKS.Framework.DAL.Security
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("name=MockERKSDb")
+        public ApplicationDbContext() : base("DefaultConnection")
         { }
     }
 }

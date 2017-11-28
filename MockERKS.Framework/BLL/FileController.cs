@@ -14,7 +14,7 @@ using MockERKS.Framework.Entities.POCOs;
 namespace MockERKS.Framework.BLL
 {
     [DataObject]
-    public class SatffInforController
+    public class FileController
     {
         /* Author: Wenyu Zhang */
         /* Founction: Catch the list of File Type to show in the dropdown list */
@@ -66,6 +66,23 @@ namespace MockERKS.Framework.BLL
                                                   securityClassificationName = securityClassification.Security_Classification_Name
                                               };
                 return securityClassifications.ToList();
+            }
+        }
+
+        /* Author: Wenyu Zhang */
+        /* Founction: Catch the list of Location to show in the dropdown list */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<LocationList> DropDownLocation()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var locations = from location in context.Site_Address
+                                              select new LocationList
+                                              {
+                                                  locationCode = location.Location_Code,
+                                                  location = location.Location
+                                              };
+                return locations.ToList();
             }
         }
     }

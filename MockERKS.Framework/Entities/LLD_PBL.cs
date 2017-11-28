@@ -17,7 +17,7 @@ namespace MockERKS.Framework.Entities
         [Key]
         public int PBL_ID { get; set; }
 
-        public int Plan_Number { get; set; }
+        public int? Plan_Number { get; set; }
 
         public int? Block_NUmber { get; set; }
 

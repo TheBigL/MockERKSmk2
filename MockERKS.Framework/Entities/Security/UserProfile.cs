@@ -16,6 +16,7 @@ namespace MockERKS.Framework.Entities.Security
         public string Last_Name { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
+        public string RequestedPassord { get; set; }
         public IEnumerable<string> RoleMemberships { get; set; }
 
 

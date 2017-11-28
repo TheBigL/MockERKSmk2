@@ -11,13 +11,12 @@
         RouteConfig.RegisterRoutes(RouteTable.Routes);
         BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-        ////Add startup roles
-        //var roleManager = new RoleManager();
-        //roleManager.AddStartupRoles();
+        var rolemgr = new RoleManager();
+        rolemgr.AddStartupRoles();
 
-        ////Load default admin acc.
-        //var userManager = new MockERKS.Framework.BLL.Security.UserManager();
-        //userManager.AddStartupRoles();
+        var usermgr = new MockERKS.Framework.BLL.Security.UserManager();
+        usermgr.StartupUsers();
+
     }
 
 </script>
