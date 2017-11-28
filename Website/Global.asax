@@ -10,11 +10,12 @@
     {
         RouteConfig.RegisterRoutes(RouteTable.Routes);
         BundleConfig.RegisterBundles(BundleTable.Bundles);
-        //var rolemgr = new RoleManager();
-        //rolemgr.AddStartupRoles();
 
-        //var usermgr = new MockERKS.Framework.BLL.Security.UserManager();
-        //usermgr.StartupUsers();
+        var rolemgr = new RoleManager();
+        rolemgr.AddStartupRoles();
+
+        var usermgr = new MockERKS.Framework.BLL.Security.UserManager();
+        usermgr.StartupUsers();
 
     }
 
