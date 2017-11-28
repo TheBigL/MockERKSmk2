@@ -400,8 +400,40 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
+        #region GetApprovalFilesBasedOnOrganizationID
+        /*
+         * Author Leban Mohamed
+         * Waiting untill the Database has been changed...
+         * Will work on it soon after.
+         * 
+         * 
+         * 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<ApprovalFile> getApprovalFileByID(int organizationID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var fileList = from f in context.Site_File
+                               where f.Organization_ID == organizationID
+                               select new ApprovalFile
+                               {
+                                   organizationID = f.Organization.Organization_ID,
+                                   organizationName = f.Organization.Organization_Name,
+                                   operationName = f.Operation.Operation_Name,
+                                   fileID = f.File_ID,
+                                   securityClassification = f.Security_Classification.Security_Classification_Name,
+                                   
+                                   //I need the approval boolean in order to finish this BLL method.
 
-       
+
+                               };
+                return fileList.ToList();
+            }
+
+        }
+        */
+        #endregion
+
 
 
 

@@ -11,6 +11,14 @@
 
     <asp:ObjectDataSource ID="ODSOrganizationReport" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupRegisteredOrganizations" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
         
+        <rsweb:ReportViewer ID="OrganizationReport" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+            <LocalReport ReportPath="AutomatedApprovalSystem\Organization.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="ODSOrganizationReport" Name="GeneralOrganizationDS" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+        
     </div>
 
 

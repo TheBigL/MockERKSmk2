@@ -5,11 +5,8 @@
     </h2>
 
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="UserName" DataValueField="Officer_ID"></asp:DropDownList>
-
-
-
     <br />
-    <br />
+
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RegisteredStaffDropdown" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
     <br />
 

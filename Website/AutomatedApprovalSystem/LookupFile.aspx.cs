@@ -14,7 +14,7 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
             Response.Redirect("~/Account/Login.aspx");
         }
 
-        if(!User.IsInRole("WebsiteAdmins")||!User.IsInRole("Staff"))
+        else if(User.IsInRole("Client"))
         {
             Response.Redirect("~/Default.aspx");
         }
