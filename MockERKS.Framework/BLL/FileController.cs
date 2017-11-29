@@ -85,5 +85,46 @@ namespace MockERKS.Framework.BLL
                 return locations.ToList();
             }
         }
+
+
+        /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownMeridian()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var merdians = from meridian in context.LLD_ATS
+                               select new ATSList
+                               {
+                                   ATSID = meridian.ATS_ID,
+                                   meridian = meridian.Meridian_Number
+                               };
+                return merdians.ToList();
+            }
+        }
+
+
+        /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownRange()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var ranges = from range in context.LLD_ATS
+                             select new ATSList
+                             {
+                                 ATSID = range.ATS_ID,
+                                 range = range.Range_Number
+                             };
+                return ranges.ToList();
+            }
+        }
+
+
+        /* Author: Wenyu Zhang */
+
+        /* Author: Wenyu Zhang */
+        /* Author: Wenyu Zhang */
+        /* Author: Wenyu Zhang */
     }
 }
