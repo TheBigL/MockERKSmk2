@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MockERKS.Framework.Entities.POCOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,21 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
         {
             Response.Redirect("~/Default.aspx");
         }
+
+    }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+        GridView1.DataBind();
+
+
+        FileSummary file = new FileSummary();
+
+        GridViewRow gvr = GridView1.SelectedRow; 
+
+
+
 
     }
 }
