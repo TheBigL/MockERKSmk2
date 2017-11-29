@@ -25,7 +25,9 @@ namespace MockERKS.Framework.Entities
 
         public int? Category_ID { get; set; }
 
-        public int? LINC_Number { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string LINC_Number { get; set; }
 
         public int? Organization_ID { get; set; }
 
@@ -34,7 +36,7 @@ namespace MockERKS.Framework.Entities
         public int? Security_Classification_ID { get; set; }
 
         [Required]
-        [StringLength(25)]
+        [StringLength(6)]
         public string File_Status { get; set; }
 
         [Column(TypeName = "date")]

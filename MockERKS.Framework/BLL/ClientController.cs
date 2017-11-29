@@ -140,37 +140,37 @@ namespace MockERKS.Framework.BLL
         }
 
         /*  Author: Wenyu */
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<FileReport> GetFileReport()
-        {
-            using (MockERKSDb context = new MockERKSDb())
-            {
-                var results = from f in context.Site_File
-                              select new FileReport
-                              {
-                                  fileID = f.File_ID,
-                                  typeDescription = f.File_Type.Type_Description,
-                                  categoryName = f.Category.Category_Name,
-                                  operationName = f.Operation.Operation_Name,
-                                  operationID = f.Operation.Operation_ID,
-                                  location = f.Organization.Site_Address.Location,
-                                  address = f.Organization.Site_Address.Address,
-                                  merdianNumber = f.Organization.Site_Address.LLD_ATS.Meridian_Number,
-                                  rangeNumber = f.Organization.Site_Address.LLD_ATS.Range_Number,
-                                  townshipNumber = f.Organization.Site_Address.LLD_ATS.Township_Number,
-                                  sectionNumber = f.Organization.Site_Address.LLD_ATS.Section_Number,
-                                  quarterSectionNumber = f.Organization.Site_Address.LLD_ATS.Quarter_Section_Number,
-                                  lsd = f.Organization.Site_Address.LLD_ATS.LSD,
-                                  planNumber = f.LLD_PBL.Plan_Number,
-                                  blockNumber = f.LLD_PBL.Block_NUmber,
-                                  lotNumber = f.LLD_PBL.Lot_Number,
-                                  linc = f.SPIN_II.LINC_Number,
-                                  fileStatus = f.File_Status,
-                                  closedDate = f.Closed_Date
-                              };
-                return results.ToList();
-            }
-        }
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        //public List<FileReport> GetFileReport()
+        //{
+        //    using (MockERKSDb context = new MockERKSDb())
+        //    {
+        //        var results = from f in context.Site_File
+        //                      select new FileReport
+        //                      {
+        //                          fileID = f.File_ID,
+        //                          typeDescription = f.File_Type.Type_Description,
+        //                          categoryName = f.Category.Category_Name,
+        //                          operationName = f.Operation.Operation_Name,
+        //                          operationID = f.Operation.Operation_ID,
+        //                          location = f.Organization.Site_Address.Location,
+        //                          address = f.Organization.Site_Address.Address,
+        //                          merdianNumber = f.Organization.Site_Address.LLD_ATS.Meridian_Number,
+        //                          rangeNumber = f.Organization.Site_Address.LLD_ATS.Range_Number,
+        //                          townshipNumber = f.Organization.Site_Address.LLD_ATS.Township_Number,
+        //                          sectionNumber = f.Organization.Site_Address.LLD_ATS.Section_Number,
+        //                          quarterSectionNumber = f.Organization.Site_Address.LLD_ATS.Quarter_Section_Number,
+        //                          lsd = f.Organization.Site_Address.LLD_ATS.LSD,
+        //                          planNumber = f.LLD_PBL.Plan_Number,
+        //                          blockNumber = f.LLD_PBL.Block_NUmber,
+        //                          lotNumber = f.LLD_PBL.Lot_Number,
+        //                          linc = f.SPIN_II.LINC_Number,
+        //                          fileStatus = f.File_Status,
+        //                          closedDate = f.Closed_Date
+        //                      };
+        //        return results.ToList();
+        //    }
+        //}
 
     }
 }

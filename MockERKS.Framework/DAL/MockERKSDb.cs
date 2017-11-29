@@ -40,6 +40,14 @@ namespace MockERKS.Framework.Entities
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Document>()
+                .Property(e => e.Microfilm_Roll_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Document>()
+                .Property(e => e.Microfilm_Frame_Number)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Document_Type>()
                 .Property(e => e.Type_Description)
                 .IsUnicode(false);
@@ -49,7 +57,39 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.Meridian_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.Range_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.Township_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.Section_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
                 .Property(e => e.Quarter_Section_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_ATS>()
+                .Property(e => e.LSD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_PBL>()
+                .Property(e => e.Plan_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_PBL>()
+                .Property(e => e.Block_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LLD_PBL>()
+                .Property(e => e.Lot_Number)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Manager>()
@@ -173,12 +213,25 @@ namespace MockERKS.Framework.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Site_File>()
+                .Property(e => e.LINC_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Site_File>()
                 .Property(e => e.File_Status)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SPIN_II>()
+                .Property(e => e.LINC_Number)
                 .IsUnicode(false);
 
             modelBuilder.Entity<SPIN_II>()
                 .Property(e => e.Area_Range)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<SPIN_II>()
+                .HasMany(e => e.Site_File)
+                .WithRequired(e => e.SPIN_II)
+                .WillCascadeOnDelete(false);
         }
     }
 }

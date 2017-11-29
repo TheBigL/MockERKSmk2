@@ -15,8 +15,8 @@ namespace MockERKS.Framework.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int LINC_Number { get; set; }
+        [StringLength(10)]
+        public string LINC_Number { get; set; }
 
         [StringLength(50)]
         public string Area_Range { get; set; }

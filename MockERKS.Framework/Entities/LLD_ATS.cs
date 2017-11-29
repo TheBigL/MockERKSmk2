@@ -17,18 +17,28 @@ namespace MockERKS.Framework.Entities
         [Key]
         public int ATS_ID { get; set; }
 
-        public int? Meridian_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Meridian_Number { get; set; }
 
-        public int? Range_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Range_Number { get; set; }
 
-        public int? Township_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Township_Number { get; set; }
 
-        public int? Section_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Section_Number { get; set; }
 
-        [StringLength(2)]
+        [StringLength(6)]
         public string Quarter_Section_Number { get; set; }
 
-        public int? LSD { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string LSD { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site_Address> Site_Address { get; set; }

@@ -17,11 +17,17 @@ namespace MockERKS.Framework.Entities
         [Key]
         public int PBL_ID { get; set; }
 
-        public int? Plan_Number { get; set; }
+        [Required]
+        [StringLength(7)]
+        public string Plan_Number { get; set; }
 
-        public int? Block_NUmber { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Block_Number { get; set; }
 
-        public int? Lot_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Lot_Number { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site_File> Site_File { get; set; }

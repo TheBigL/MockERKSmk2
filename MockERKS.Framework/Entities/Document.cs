@@ -23,9 +23,13 @@ namespace MockERKS.Framework.Entities
         [Column(TypeName = "date")]
         public DateTime From_Date { get; set; }
 
-        public int? Microfilm_Roll_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Microfilm_Roll_Number { get; set; }
 
-        public int? Microfilm_Frame_Number { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Microfilm_Frame_Number { get; set; }
 
         public virtual Document_Type Document_Type { get; set; }
 
