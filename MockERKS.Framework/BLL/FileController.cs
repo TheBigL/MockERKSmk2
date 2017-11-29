@@ -188,5 +188,21 @@ namespace MockERKS.Framework.BLL
                 return LSDS.ToList();
             }
         }
+
+        /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<FileStatusList> DropDownStatus()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var status = from fileStatus in context.Site_File
+                             select new FileStatusList
+                             {
+                                 fileID = fileStatus.File_ID,
+                                 fileStatus = fileStatus.File_Status
+                             };
+                return status.ToList();
+            }
+        }
     }
 }
