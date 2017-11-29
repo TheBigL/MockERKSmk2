@@ -85,6 +85,7 @@
     <Compile Include="Entities\POCOs\FileSummary.cs" />
     <Compile Include="Entities\POCOs\FileTypeList.cs" />
     <Compile Include="Entities\POCOs\LocationList.cs" />
+    <Compile Include="Entities\POCOs\ManagerSummary.cs" />
     <Compile Include="Entities\POCOs\OfficerFullNameList.cs" />
     <Compile Include="Entities\POCOs\OfficerListPOCO.cs" />
     <Compile Include="Entities\POCOs\OrganizationList.cs" />
