@@ -20,12 +20,6 @@ public partial class WebPages_FileForm : System.Web.UI.Page
             Response.Redirect("~/Account/Login.aspx");
         }
 
-        //Redirects the user if the user is neither a Website Admin or a Staff member.
-        else if (!User.IsInRole("WebAdmin") || !User.IsInRole("Staff"))
-        {
-            Response.Redirect("~/Account/Login.aspx");
-        }
-
     }
 
     protected void ResetForm_Click(object sender, EventArgs e)

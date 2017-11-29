@@ -14,15 +14,15 @@
             <asp:ValidationSummary ID="ContrestValidationSummary" runat="server"
                 HeaderText="Please correct the folowing parts of the form brfore submitting:<br />" />
             <asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
-                ControlToValidate="PlanNumber" ValidationExpression="^[A-Z\d]{7}$"
+                ControlToValidate="Plan" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionBlockNumber" runat="server" Display="None"
-                ControlToValidate="BlockNumber" ValidationExpression="^[A-Z\d]{4}$"
+                ControlToValidate="Block" ValidationExpression="^[A-Z\d]{4}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Block Number. Block number can be alpha (U), numeric(3), or alpha numberic (17A) - maximum 4 characters, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionLotNumber" runat="server" Display="None"
-                ControlToValidate="LotNumber" ValidationExpression="^[A-Z\d]{6}$"
+                ControlToValidate="Lot" ValidationExpression="^[A-Z\d]{6}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Lot Number. Lot number can be alpha (X), numeric (7), or alpha numeric (21B) - maximum 6 characters, no spaces.">
             </asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionLINC" runat="server" Display="None"
