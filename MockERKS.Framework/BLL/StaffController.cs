@@ -302,7 +302,6 @@ namespace MockERKS.Framework.BLL
          * LookupFilebyOrganization
          *Author: Leban Mohamed 
          * Note: I may change the Site File variables based on what is important to display.
-         * Comments: Note that I focus on the foreign keys first BEFORE I go on to remove the files.
          */
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Site_File> LookupFileByOrganization(int orgID)
@@ -388,7 +387,12 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        
+        #region LookupManagers
+        /*
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<OfficerListPOCO> getManager
+        */
+        #endregion
 
         #region GenerateRecordDetailsByOfficerID
         [DataObjectMethod(DataObjectMethodType.Select,false)]
