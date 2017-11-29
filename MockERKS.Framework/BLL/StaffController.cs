@@ -321,6 +321,20 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
+        #region GetOrganization
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public Organization getOrganization(int ID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Organizations.Find(ID);
+            }
+        }
+
+
+        #endregion
+
+
         #region GetOfficerByID
         /*
         * LookupOfficerByOfficerID

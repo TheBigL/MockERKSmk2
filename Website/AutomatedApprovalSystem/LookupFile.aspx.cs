@@ -1,4 +1,5 @@
-﻿using MockERKS.Framework.Entities.POCOs;
+﻿using MockERKS.Framework.BLL;
+using MockERKS.Framework.Entities.POCOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,9 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
         organizationRegistrationPOCO org = new organizationRegistrationPOCO();
 
         GridViewRow gvr = GridView1.SelectedRow;
-        org.Organization_ID = int.Parse(GridView1.Rows[gvr.RowIndex].Cells[2].Text);
-        org.Organization_Name = GridView1.Rows[gvr.RowIndex].Cells[0].Text;
-        org.Phone = GridView1.Rows[gvr.RowIndex].Cells[3].Text;
-        org.Organization_Description = GridView1.Rows[gvr.RowIndex].Cells[1].Text;
-        org.Email = GridView1.Rows[gvr.RowIndex].Cells[4].Text;
-
+        int ID = int.Parse(GridView1.Rows[gvr.RowIndex].Cells[2].Text);
+        StaffController sc = new StaffController();
+        sc.getOrganization(ID);
 
 
 

@@ -12,7 +12,7 @@
     </ul>
 
     <div id="organization" class="tab-pane fade in active" role="tabpanel">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="OrganizationData" AllowPaging="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="OrganizationData" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:CommandField ShowSelectButton="true" />
             <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name" />
