@@ -28,9 +28,14 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
         GridView1.DataBind();
 
 
-        FileSummary file = new FileSummary();
+        organizationRegistrationPOCO org = new organizationRegistrationPOCO();
 
-        GridViewRow gvr = GridView1.SelectedRow; 
+        GridViewRow gvr = GridView1.SelectedRow;
+        org.Organization_ID = int.Parse(GridView1.Rows[gvr.RowIndex].Cells[2].Text);
+        org.Organization_Name = GridView1.Rows[gvr.RowIndex].Cells[0].Text;
+        org.Phone = GridView1.Rows[gvr.RowIndex].Cells[3].Text;
+        org.Organization_Description = GridView1.Rows[gvr.RowIndex].Cells[1].Text;
+        org.Email = GridView1.Rows[gvr.RowIndex].Cells[4].Text;
 
 
 
