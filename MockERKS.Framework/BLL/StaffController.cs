@@ -321,7 +321,14 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
-        #region GetOrganization
+        #region GetOrganizationByID
+        /*GetOrganizationByID
+         * Author: Leban Mohamed
+         * 
+         * 
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public Organization getOrganization(int ID)
         {
@@ -381,17 +388,7 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        #region GetOrganizationByOrganizationID
-        [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public Organization getOrganizationByID(int orgID)
-        {
-            using (var context = new MockERKSDb())
-            {
-                return context.Organizations.Find(orgID);
-            }
-        }
-
-        #endregion
+        
 
         #region GenerateRecordDetailsByOfficerID
         [DataObjectMethod(DataObjectMethodType.Select,false)]
