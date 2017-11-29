@@ -122,9 +122,71 @@ namespace MockERKS.Framework.BLL
 
 
         /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownTownship ()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var townships = from township in context.LLD_ATS
+                                select new ATSList
+                                {
+                                    ATSID = township.ATS_ID,
+                                    township = township.Township_Number
+                                };
+                return townships.ToList();
+            }
+        }
+
 
         /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownSection()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var sections = from section in context.LLD_ATS
+                                select new ATSList
+                                {
+                                    ATSID = section.ATS_ID,
+                                    section = section.Section_Number
+                                };
+                return sections.ToList();
+            }
+        }
+
+
+
         /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownQuarterSection()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var quarterSections = from quarterSection in context.LLD_ATS
+                               select new ATSList
+                               {
+                                   ATSID = quarterSection.ATS_ID,
+                                   quarterSection = quarterSection.Quarter_Section_Number
+                               };
+                return quarterSections.ToList();
+            }
+        }
+
+
         /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<ATSList> DropDownLSD()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var LSDS = from lsd in context.LLD_ATS
+                                      select new ATSList
+                                      {
+                                          ATSID = lsd.ATS_ID,
+                                          lsd = lsd.LSD
+                                      };
+                return LSDS.ToList();
+            }
+        }
     }
 }
