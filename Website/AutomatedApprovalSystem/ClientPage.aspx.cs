@@ -15,6 +15,6 @@ public partial class AutomatedApprovalSystem_ClientPage : System.Web.UI.Page
 
     protected void AddNew_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/FileForm.aspx");
+        Response.Redirect("FileForm.aspx");
     }
 }
