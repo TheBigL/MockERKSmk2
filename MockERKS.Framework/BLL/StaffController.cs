@@ -388,10 +388,25 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region LookupManagers
-        /*
+        
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<OfficerListPOCO> getManager
-        */
+        public List<ManagerSummary> LookupManager()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var managerList = from m in context.Managers
+                                  select new ManagerSummary
+                                  {
+                                      managerID = m.Manager_ID,
+                                      fullName = m.First_Name + " " + m.Last_Name,
+                                      email = m.Email,
+                                      phone = m.Phone
+                                  };
+                return managerList.ToList();
+            }
+
+        }
+        
         #endregion
 
         #region GenerateRecordDetailsByOfficerID
