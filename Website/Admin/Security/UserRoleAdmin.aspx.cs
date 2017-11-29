@@ -36,6 +36,10 @@ public partial class Admin_Security_UserRoleAdmin : System.Web.UI.Page
 
     protected void UserListView_ItemInserting(object sender, ListViewInsertEventArgs e)
    {        //collect roles the user will be assigned to
+
+
+        
+
         var addtoroles = new List<string>();
 
        var roles = e.Item.FindControl("RoleMemberships") as CheckBoxList;
@@ -48,9 +52,12 @@ public partial class Admin_Security_UserRoleAdmin : System.Web.UI.Page
                if (item.Selected)
                 {
                    addtoroles.Add(item.Value);
+                   
                }
            }
            e.Values["RoleMemberships"] = addtoroles;
         }
+
+       
     }
 }

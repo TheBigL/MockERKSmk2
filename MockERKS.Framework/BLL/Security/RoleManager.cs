@@ -43,6 +43,8 @@ namespace MockERKS.Framework.BLL.Security
 
 
 
+
+
         [DataObjectMethod(DataObjectMethodType.Select, true)]
         public List<RoleProfile> ListAllRoles()
         {

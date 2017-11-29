@@ -20,6 +20,7 @@
                 <li class="active"><a href="#user" data-toggle="tab">User</a></li>
                 <li ><a href="#role" data-toggle="tab">Role</a></li>
             </ul>
+
               <div class="tab-content"> 
                   <div class="tab-pane fade in active" id="user">
                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
@@ -61,14 +62,14 @@
                                         <%# Item.First_Name + " " + Item.Last_Name %>
                                         </div>
                                         <div class="col-sm-3">
-                                            <asp:Repeater ID="RoleUserReapter" runat="server"
-                                                DataSource="<%# Item.RoleMemberships%>"
+                                            <asp:Repeater ID="RoleUserReapeter" runat="server"
+                                                DataSource="<%# Item.RoleMemberships %>"
                                                 ItemType="System.String">
                                                 <ItemTemplate>
-                                                    <%# Item %>
-                                                </ItemTemplate>
-                                                <SeparatorTemplate>, </SeparatorTemplate>
-                                            </asp:Repeater>
+                                                    <%# Item  %>
+                                                    <SeparatorTemplate>, </SeparatorTemplate>
+                                                    </ItemTemplate>
+                                                    </asp:Repeater>
                                         </div>
                                     </div>
                                 </ItemTemplate>
@@ -92,14 +93,13 @@
                                         </div>
 
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="EmployeeID" runat="server"
+                                            <asp:TextBox ID="StaID" runat="server"
                                                 Text='<%# BindItem.Officer_ID %>' TextMode="Number"
                                                 placeholder="Staff ID"></asp:TextBox>
                                         </div>
                                         <div class="col-sm-3">
-                                            <asp:CheckBoxList ID="RoleMemberships" runat="server"
-                                                DataSourceID="RoleNames">
-                                            </asp:CheckBoxList>
+                                            <asp:CheckBoxList AssociatedControlID="RoleNames" ID="RoleMemberships" runat="server"
+                                                DataSourceID="RoleNames"></asp:CheckBoxList>
                                         </div>
                                     </div>
                                 </InsertItemTemplate>
@@ -111,17 +111,18 @@
                                  DataObjectTypeName="MockERKS.Framework.Entities.Security.UserProfile" 
                                 DeleteMethod="RemoveUser" 
                                 InsertMethod="AddUser"
-                                OldValuesParameterFormatString="original_{0}" 
                                 SelectMethod="ListAllUsers" 
+                                OldValuesParameterFormatString="original_{0}" 
                                 TypeName="MockERKS.Framework.BLL.Security.UserManager"
                                 OnDeleted="CheckForException"
                                 OnInserted="CheckForException"
                              OnSelected="CheckForException"></asp:ObjectDataSource>
 
                             <asp:ObjectDataSource ID="RoleNames"
-                             runat="server" OldValuesParameterFormatString="original_{0}" 
-                             SelectMethod="ListAllRoles" 
-                             TypeName="MockERKS.Framework.BLL.Security.RoleManager">
+                                runat="server"
+                                SelectMethod="ListAllRoleNames"
+                                OldValuesParameterFormatString="original_{0}"
+                                TypeName="MockERKS.Framework.BLL.Security.RoleManager">
                             </asp:ObjectDataSource>
                             </ContentTemplate>
 
