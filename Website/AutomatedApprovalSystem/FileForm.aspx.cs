@@ -19,7 +19,6 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         {
             Response.Redirect("~/Account/Login.aspx");
         }
-
     }
 
     protected void ResetForm_Click(object sender, EventArgs e)

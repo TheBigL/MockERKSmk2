@@ -127,8 +127,8 @@
                 <asp:TextBox ID="LINC" runat="server"></asp:TextBox><br />
 
                 <asp:Label ID="Label10" runat="server" Text="File Status:" AssociatedControlID="FileStatus"></asp:Label>
-                <asp:DropDownList ID="FileStatus" runat="server" DataSourceID="FileStatusODS" DataTextField="fileStatus" DataValueField="fileID"></asp:DropDownList>
-                <asp:ObjectDataSource runat="server" ID="FileStatusODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownStatus" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <asp:DropDownList ID="FileStatus" runat="server" DataSourceID="StatusODS" DataTextField="fileStatus" DataValueField="fileID"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="StatusODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownStatus" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
                 <br />
 
                 <asp:Label ID="Label11" runat="server" Text="Closed Date:" AssociatedControlID="ClosedDate"></asp:Label>
