@@ -116,15 +116,15 @@
                 <asp:TextBox ID="Plan" runat="server"></asp:TextBox><br />
 
                 <asp:Label ID="Label21" runat="server" Text="Block #:" AssociatedControlID="Block"></asp:Label>
-                <asp:TextBox ID="Block" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="Block" runat="server" Text="<None>"></asp:TextBox><br />
 
                 <asp:Label ID="Label22" runat="server" Text="Lot #:" AssociatedControlID="Lot"></asp:Label>
-                <asp:TextBox ID="Lot" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="Lot" runat="server" Text="<None>"></asp:TextBox><br />
                 <br />
                 <br />
 
                 <asp:Label ID="Label9" runat="server" Text="LINC:" AssociatedControlID="LINC"></asp:Label>
-                <asp:TextBox ID="LINC" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="LINC" runat="server" Text="<None>"></asp:TextBox><br />
 
                 <asp:Label ID="Label10" runat="server" Text="File Status:" AssociatedControlID="FileStatus"></asp:Label>
                 <asp:DropDownList ID="FileStatus" runat="server" DataSourceID="StatusODS" DataTextField="fileStatus" DataValueField="fileID"></asp:DropDownList>
