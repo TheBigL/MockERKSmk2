@@ -447,6 +447,7 @@ namespace MockERKS.Framework.BLL
         /*
          * getManagerByID
          * Author: Leban Mohamed
+         * Gets manager by ID 
          * 
          * */
         [DataObjectMethod(DataObjectMethodType.Select)]
