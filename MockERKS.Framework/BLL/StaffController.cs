@@ -443,7 +443,22 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
+        #region GetManagerByID
+        /*
+         * getManagerByID
+         * Author: Leban Mohamed
+         * 
+         * */
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public Manager getManagerByID(int ID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Managers.Find(ID);
+            }
+        }
 
+        #endregion
 
 
 
