@@ -17,7 +17,7 @@ namespace MockERKS.Framework.BLL
     public class FileController
     {
         /* Author: Wenyu Zhang */
-        /* Founction: Catch the list of File Type to show in the dropdown list */
+        /* Function: Catch the list of File Type to show in the dropdown list */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public  List<FileTypeList> DropDownFileType()
         {
