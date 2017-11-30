@@ -9,6 +9,14 @@ public partial class AutomatedApprovalSystem_OrganizationReport : System.Web.UI.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Request.IsAuthenticated)
+        {
+            Response.Redirect("~/Account/Login.aspx");
+        }
 
+        else if (User.IsInRole("Client"))
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }
