@@ -23,22 +23,7 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 
     }
 
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-        GridView1.DataBind();
-
-
-        organizationRegistrationPOCO org = new organizationRegistrationPOCO();
-
-        GridViewRow gvr = GridView1.SelectedRow;
-        int ID = int.Parse(GridView1.Rows[gvr.RowIndex].Cells[2].Text);
-        StaffController sc = new StaffController();
-        sc.getOrganization(ID);
-
-
-
-    }
 
     protected void ReportLink_Click(object sender, EventArgs e)
     {

@@ -14,9 +14,8 @@
     </ul>
 
     <div id="organization" class="tab-pane fade in active" role="tabpanel">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="OrganizationData" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="OrganizationData" AllowPaging="True">
         <Columns>
-            <asp:CommandField ShowSelectButton="true" />
             <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name" />
             <asp:BoundField DataField="Organization_Description" HeaderText="Organization_Description" SortExpression="Organization_Description" />
             <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" SortExpression="Organization_ID" />
@@ -39,7 +38,6 @@
            
         <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="FilesDataSource">
             <Columns>
-                <asp:CommandField ShowSelectButton="true" />
                 <asp:BoundField DataField="fileID" HeaderText="fileID" SortExpression="fileID" />
                 <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName" />
                 <asp:BoundField DataField="docTypeDescription" HeaderText="docTypeDescription" SortExpression="docTypeDescription" />
@@ -77,11 +75,20 @@
 
         </div>
 
-    <div id="managers" class="tab-pane fade">
+        <div id="managers" class="tab-pane fade">
 
 
+            <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ManagerDataSource">
+                <Columns>
+                    <asp:BoundField DataField="managerID" HeaderText="managerID" SortExpression="managerID" />
+                    <asp:BoundField DataField="fullName" HeaderText="fullName" SortExpression="fullName" />
+                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
+                    <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                </Columns>
+            </asp:GridView>
 
-    </div>
+            <asp:LinkButton ID="ManagerReportLink" runat="server">To Officer Report Page</asp:LinkButton>
+        </div>
 
 
 
