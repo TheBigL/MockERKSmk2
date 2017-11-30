@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LookupFile.aspx.cs" Inherits="AutomatedApprovalSystem_LookupFile" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Lookup.aspx.cs" Inherits="AutomatedApprovalSystem_LookupFile" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <h2>Look up Organization & File</h2>
@@ -8,6 +8,7 @@
                 <li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
                 <li ><a href="#filelookup" data-toggle="tab">Files</a></li>
                 <li><a href="#staff" data-toggle="tab">Officers</a></li>
+                <li><a href="#managers" data-toggle="tab">Managers</a></li>
                 
                 
     </ul>
@@ -23,6 +24,8 @@
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
         </Columns>
         </asp:GridView>
+        <asp:LinkButton ID="OrganizationLinkReport" runat="server" OnClick="OrganizationLinkReport_Click"></asp:LinkButton>
+
     </div>
 
            
@@ -74,7 +77,11 @@
 
         </div>
 
-    
+    <div id="managers" class="tab-pane fade">
+
+
+
+    </div>
 
 
 
@@ -83,6 +90,8 @@
         <asp:ObjectDataSource ID="FilesDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiles" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
         <asp:ObjectDataSource ID="OfficerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+
+        <asp:ObjectDataSource ID="ManagerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupManager" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
     </div>
 
