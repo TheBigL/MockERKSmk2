@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <h2>Look up Organization & File</h2>
 
-    <div>
+    <div class="row">
     <ul class="nav nav-tabs">
                 <li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
                 <li ><a href="#filelookup" data-toggle="tab">Files</a></li>
