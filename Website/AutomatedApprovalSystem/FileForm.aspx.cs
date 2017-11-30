@@ -45,8 +45,19 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         ClosedDate.SelectedDates.Clear();
     }
 
-    //protected void AddFile_Click(object sender, EventArgs e)
-    //{
+    protected void AddFile_Click(object sender, EventArgs e)
+    {
+        if (IsValid)
+        {
+            MessageUserControl.TryRun(() =>
+            {
+                
+            }, "Add File", "File has been successfuly added to the database";
+        }
+    }
 
-    //}
+    protected void CancelActivity_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ClientPage.aspx");
+    }
 }
