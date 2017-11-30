@@ -59,7 +59,6 @@
                             <LoggedInTemplate>
                         <li><a runat="server" href="~/AutomatedApprovalSystem/ClientPage.aspx">Client Created File</a></li>
                         <li><a runat="server" href="~/AutomatedApprovalSystem/LookupFile.aspx">Lookup File</a></li>
-                        <li><a runat="server" href="~/AutomatedApprovalSystem/Staff.aspx">Look Up Staff</a></li>
                         <li><a runat="server" href="~/Admin/Security/UserRoleAdmin.aspx">Security</a></li>
                              </LoggedInTemplate>
                         </asp:LoginView>

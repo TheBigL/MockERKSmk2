@@ -257,7 +257,9 @@ namespace MockERKS.Framework.BLL
                               {
                                   Officer_ID = officerList.Officer_ID,
                                   First_Name = officerList.First_Name,
-                                  Last_Name = officerList.Last_Name
+                                  Last_Name = officerList.Last_Name,
+                                  Phone = officerList.Phone,
+                                  Email = officerList.Email
                               };
 
                 return results.ToList();
@@ -440,7 +442,6 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-       
 
 
 

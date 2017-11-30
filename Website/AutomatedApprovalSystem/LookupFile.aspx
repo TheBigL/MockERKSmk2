@@ -6,7 +6,8 @@
     <div>
     <ul class="nav nav-tabs">
                 <li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
-                <li ><a href="#filelookup" data-toggle="tab">File Look Up</a></li>
+                <li ><a href="#filelookup" data-toggle="tab">Files</a></li>
+                <li><a href="#staff" data-toggle="tab">Officers</a></li>
                 
                 
     </ul>
@@ -32,6 +33,7 @@
 
 
         <div id="filelookup" class="tab-pane fade" role="tabpanel">
+           
         <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="FilesDataSource">
             <Columns>
                 <asp:CommandField ShowSelectButton="true" />
@@ -42,12 +44,35 @@
                 <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName" />
                 <asp:BoundField DataField="operationName" HeaderText="operationName" SortExpression="operationName" />
             </Columns>
-        </asp:GridView>
-            </div>
 
+        </asp:GridView>
+
+            <asp:LinkButton ID="ReportLink" runat="server" OnClick="ReportLink_Click">To the File Report</asp:LinkButton>
+
+            </div>
            
 
+        <div id="staff" class="tab-pane fade">
 
+
+
+
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="OfficerDataSource">
+                <Columns>
+                    <asp:BoundField DataField="Officer_ID" HeaderText="Officer_ID" SortExpression="Officer_ID" />
+                    <asp:BoundField DataField="First_Name" HeaderText="First_Name" SortExpression="First_Name" />
+                    <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" SortExpression="Last_Name" />
+                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                </Columns>
+            </asp:GridView>
+
+            <asp:LinkButton ID="ToOfficerReport" runat="server" OnClick="ToOfficerReport_Click">To Officer Report Page</asp:LinkButton>
+
+
+
+
+        </div>
 
     
 
@@ -56,6 +81,8 @@
      <asp:ObjectDataSource ID="OrganizationData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupRegisteredOrganizations" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
         <asp:ObjectDataSource ID="FilesDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiles" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+
+        <asp:ObjectDataSource ID="OfficerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
     </div>
 
