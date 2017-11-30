@@ -19,7 +19,6 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         {
             Response.Redirect("~/Account/Login.aspx");
         }
-
     }
 
     protected void ResetForm_Click(object sender, EventArgs e)
@@ -46,8 +45,8 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         ClosedDate.SelectedDates.Clear();
     }
 
-    protected void AddFile_Click(object sender, EventArgs e)
-    {
+    //protected void AddFile_Click(object sender, EventArgs e)
+    //{
 
-    }
+    //}
 }
