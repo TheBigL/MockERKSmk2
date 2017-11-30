@@ -17,14 +17,6 @@ namespace MockERKS.Framework.BLL
     public class AdminController
     {
 
-
-        public Officer Officer_Get(int officerid)
-        {
-            using (var context = new MockERKSDb())
-            {
-                return context.Officers.Find(officerid);
-            }
-        }
         //TODO Create a Delete File Function For the Admin.
         #region DeleteFile
 
@@ -137,6 +129,36 @@ namespace MockERKS.Framework.BLL
 
         }
 
+        #endregion
+
+
+
+
+        //TODO Create and Delete An Employee File Function For the Admin.
+        #region getOfficer
+        public Officer Officer_Get(int officerid)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Officers.Find(officerid);
+            }
+        }
+        #endregion
+
+        #region AddOfficer
+        #endregion
+
+        #region Remove Officer
+        #endregion
+
+        //TODO Create and Delete An Client File Function For the Admin.
+        #region getClient
+        #endregion
+
+        #region GetClientByID
+        #endregion
+
+        #region RemoveClient
         #endregion
 
 
