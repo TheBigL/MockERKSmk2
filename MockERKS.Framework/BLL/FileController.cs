@@ -204,5 +204,16 @@ namespace MockERKS.Framework.BLL
                 return status.ToList();
             }
         }
+
+        /* Author: Wenyu Zhang */
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void File_Add(Site_File item)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Site_File.Add(item);
+                context.SaveChanges();
+            }
+        }
     }
 }
