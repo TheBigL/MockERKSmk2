@@ -16,6 +16,9 @@
             <asp:RequiredFieldValidator ID="RequiredPlanNumber" runat="server" ErrorMessage="Plan Number is Required."
                 ControlToValidate="Plan" SetFocusOnError="true" Display="None">
             </asp:RequiredFieldValidator>
+            <asp:CustomValidator ID="Custom1" CssClass="errorTop" ClientValidationFunction="CheckBoxValidation" 
+                runat="server" ErrorMessage="You must check this box to proceed" ValidationGroup="AddMisc">
+            </asp:CustomValidator>
             <%--<asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
                 ControlToValidate="Plan" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
@@ -139,9 +142,15 @@
                 <br />
                 <br />
 
-                <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
+                <asp:CheckBox ID="Check" runat="server" Text="I hereby certify that the information above is true and accurate" />
+                <br />
+                <br />
+
+                <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
                 <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
-                <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" />
+                <button type="button" class="btn" id="cancel" onclick="window.history.back()">Cancel</button>
+                <%--<asp:Button CssClass="btn" ID="Update" runat="server" Text="Update" OnClick="Update_Click" />--%>
+                <%--<asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" CausesValidation="false" />--%>
                 <%--<asp:Button ID="AddFile" runat="server" CssClass="btn" Text="Add File" OnClick="AddFile_Click" />--%>
 
 
