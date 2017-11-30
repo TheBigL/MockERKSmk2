@@ -87,7 +87,7 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:LinkButton ID="ManagerReportLink" runat="server">To Officer Report Page</asp:LinkButton>
+            <asp:LinkButton ID="ManagerReportLink" runat="server" OnClick="ManagerReportLink_Click">To Manager Report Page</asp:LinkButton>
         </div>
 
 

@@ -39,4 +39,9 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
     {
         Response.Redirect("~/AutomatedApprovalSystem/OrganizationReport");
     }
+
+    protected void ManagerReportLink_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/AutomatedApprovalSystem/ManagerReport");
+    }
 }
