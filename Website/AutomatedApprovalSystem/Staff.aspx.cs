@@ -11,31 +11,16 @@ public partial class AutomatedApprovalSystem_Staff : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!Page.IsPostBack)
+        if (!Request.IsAuthenticated)
         {
-            using (var context = new MockERKSDb())
-            {
-
-            }
+            Response.Redirect("~/Account/Login.aspx");
         }
 
-        
-
-        
+        else if (User.IsInRole("Client"))
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 
-    protected void DeleteButton_Click(object sender, EventArgs e)
-    {
-        
-    }
 
-    protected void InsertButton_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void CancelButton_Click(object sender, EventArgs e)
-    {
-        
-    }
 }
