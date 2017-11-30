@@ -26,6 +26,5 @@ namespace MockERKS.Framework.Entities.POCOs
         public string lotNumber { get; set; }
         public string linc { get; set; }
         public string fileStatus { get; set; }
-        public DateTime? closedDate { get; set; }
     }
 }

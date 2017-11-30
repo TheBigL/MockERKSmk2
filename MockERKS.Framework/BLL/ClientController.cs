@@ -165,8 +165,7 @@ namespace MockERKS.Framework.BLL
                                   blockNumber = f.LLD_PBL.Block_Number,
                                   lotNumber = f.LLD_PBL.Lot_Number,
                                   linc = f.SPIN_II.LINC_Number,
-                                  fileStatus = f.File_Status,
-                                  closedDate = f.Closed_Date
+                                  fileStatus = f.File_Status
                               };
                 return results.ToList();
             }

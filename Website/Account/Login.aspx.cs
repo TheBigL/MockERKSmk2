@@ -39,5 +39,11 @@ public partial class Account_Login : Page
                     ErrorMessage.Visible = true;
                 }
             }
+
+            //// Author: Wenyu
+            //if (User.IsInRole("Client"))
+            //{
+            //    Response.Redirect("~/AutomatedApprovalSystem/ClientPage.aspx");
+            //}
         }
 }
