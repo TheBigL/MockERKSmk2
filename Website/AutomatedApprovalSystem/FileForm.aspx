@@ -13,7 +13,10 @@
             <!-- Validation controls on Insert tab panel -->
             <asp:ValidationSummary ID="ContrestValidationSummary" runat="server"
                 HeaderText="Please correct the folowing parts of the form brfore submitting:<br />" />
-            <asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
+            <asp:RequiredFieldValidator ID="RequiredPlanNumber" runat="server" ErrorMessage="Plan Number is Required."
+                ControlToValidate="Plan" SetFocusOnError="true" Display="None">
+            </asp:RequiredFieldValidator>
+            <%--<asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
                 ControlToValidate="Plan" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
             </asp:RegularExpressionValidator>
@@ -24,11 +27,11 @@
             <asp:RegularExpressionValidator ID="RegularExpressionLotNumber" runat="server" Display="None"
                 ControlToValidate="Lot" ValidationExpression="^[A-Z\d]{6}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Lot Number. Lot number can be alpha (X), numeric (7), or alpha numeric (21B) - maximum 6 characters, no spaces.">
-            </asp:RegularExpressionValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionLINC" runat="server" Display="None"
+            </asp:RegularExpressionValidator>--%>
+            <%--<asp:RegularExpressionValidator ID="RegularExpressionLINC" runat="server" Display="None"
                 ControlToValidate="LINC" ValidationExpression="^\d{10}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid LINC. LINC is 10 digit number.">
-            </asp:RegularExpressionValidator>
+            </asp:RegularExpressionValidator>--%>
 
 
             <!-- Form -->
@@ -136,7 +139,7 @@
                 <br />
                 <br />
 
-                <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
+                <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" />
                 <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
                 <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" />
                 <%--<asp:Button ID="AddFile" runat="server" CssClass="btn" Text="Add File" OnClick="AddFile_Click" />--%>
