@@ -19,22 +19,59 @@
                 }
             </script>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#user" data-toggle="tab">User</a></li>
-                <li ><a href="#role" data-toggle="tab">Role</a></li>
+                <li class="active"><a href="#FileLookup" data-toggle="tab">File Lookup</a></li>
+                <li ><a href="#Client" data-toggle="tab">Client Management</a></li>
+                <li ><a href="#Employee" data-toggle="tab">Employee Management</a></li>
             </ul>
 
             <div class="tab-content">
-                 <div class="tab-pane fade in active" id="File Lookup">
+
+
+
+
+                 <div class="tab-pane fade in active" id="FileLookup">
+                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
+                         <ContentTemplate>
+                     
+                     <asp:Button ID="ButtonSCD" runat="server" Text="Search SCD Files" />&nbsp;
+                     <asp:Button ID="ButtonCSU" runat="server" Text="Search CSU Files" />&nbsp;
+                     <asp:Button ID="ButtonPST" runat="server" Text="Search PST Files" />&nbsp;
+                     
+                         </ContentTemplate>
+                         </asp:UpdatePanel>
                      </div>
+                <br />
+
+
                  <div class="tab-pane fade in active" id="Client">
-                     </div>
-                      <div class="tab-pane fade in active" id="Employee">
-                          </div>
+                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                     <ContentTemplate>
+                     <asp:Button ID="SearchClients" runat="server" Text="Search All Clients" />
+                     <br />
+                     <br />
+
+                     <asp:Button ID="SeacrhClientByID" runat="server" Text="Search Client By ID" />
+                     </ContentTemplate>
+                    </asp:UpdatePanel>
+                 </div>
+
+
+                  <div class="tab-pane fade in active" id="Employee">
+                      <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                          <ContentTemplate>
+
+
+                     <asp:Button ID="SearchAllEmployees" runat="server" Text="Search All Employees" />
+                     <br />
+                     <br />
+                     <asp:Button ID="SearchEmployeeByID" runat="server" Text="Search Employee By ID" />
+                           
+                              
+                           </ContentTemplate>
+                          </asp:UpdatePanel>
+                  </div>
                 
                 </div>
-
-
-
 
             </div>
 
