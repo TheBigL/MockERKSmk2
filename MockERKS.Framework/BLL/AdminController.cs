@@ -96,8 +96,9 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
+
         #region UpdateFile
-   
+
         [DataObjectMethod(DataObjectMethodType.Update,true)]
         public void UpdateFile(Site_File file, List<Record_Details> rDetails)
         {
@@ -126,20 +127,21 @@ namespace MockERKS.Framework.BLL
         #region LookUpFiles
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<FileSummary> LookupFiles()
+        public List<FileTypePOCO> LookupFiles(int fileTypeId)
         {
             using (var context = new MockERKSDb())
             {
                 var files = from x in context.Site_File
-                            select new FileSummary
+                            where x.File_Type.Type_ID == fileTypeId
+                            select new FileTypePOCO
                             {
-                                fileID = x.File_ID,
-                                categoryName = x.Category.Category_Name,
-                                docTypeDescription = x.Document.Document_Type.Type_Description,
+                                FileID = x.File_ID,
+                                CategoryName = x.Category.Category_Name,
+                                DocumentType = x.Document.Document_Type.Type_Description,
                                 operationName = x.Operation.Operation_Name,
-                                securityClassificationTypeName = x.Security_Classification.Security_Classification_Name,
-                                organizationName = x.Organization.Organization_Name
-
+                                SecurityClassification = x.Security_Classification.Security_Classification_Name,
+                                organizationName = x.Organization.Organization_Name,
+                                FileStatus = x.File_Status
                             };
 
                 return files.ToList();
@@ -150,16 +152,7 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region Look Up files By TypeID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<File_Type> FileTypeDescriptionList()
-        {
-            using (var context = new MockERKSDb())
-            {
-
-                return context.File_Type.ToList();
-            }
-
-        }
+        
 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<FileTypePOCO> LookupFiletype(int typeId)
@@ -167,18 +160,18 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var files = from x in context.Site_File
-                            where x.Organization.Organization_Description.Description_ID == typeId
+                            where x.File_Type.Type_ID == typeId
                             orderby x.Organization.Organization_Name ascending
                             select new FileTypePOCO
                             {
-                                fileID = x.File_ID,
-                                categoryName = x.Category.Category_Name,
-                                docTypeDescription = x.Document.Document_Type.Type_Description,
+                                FileID = x.File_ID,
+                                CategoryName = x.Category.Category_Name,
+                                DocumentType = x.Document.Document_Type.Type_Description,
                                 operationName = x.Operation.Operation_Name,
-                                securityClassificationTypeName = x.Security_Classification.Security_Classification_Name,
+                                SecurityClassification = x.Security_Classification.Security_Classification_Name,
                                 organizationName = x.Organization.Organization_Name,
-                                organizationId = x.Organization.Organization_ID,
-                                typeName = x.Organization.Organization_Description.Description
+                                OrganizationID = x.Organization.Organization_ID,
+                                FileStatus = x.File_Status
 
                             };
 
@@ -189,6 +182,10 @@ namespace MockERKS.Framework.BLL
 
 
         #endregion
+
+
+
+
 
         //TODO Create and Delete An Employee File Function For the Admin.
         #region getOfficerByID

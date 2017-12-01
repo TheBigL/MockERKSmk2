@@ -30,15 +30,12 @@
                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
                         <ContentTemplate>
                             <div class="col-sm-2">
-<%--                                <asp:Button ID="seacrchAllFiles" runat="server" Text="Search All Files" OnClick="Button1_Click" />--%>
+
                                 <br />
                                 <br />
-                                <asp:Label ID="Label1" runat="server" Text="Search By Type"></asp:Label><br />
-                                <asp:DropDownList ID="FileTypeDDL" runat="server"
-                                    DataSourceID="FileTypeODS"
-                                    DataTextField="Type_Description"
-                                    DataValueField="Type_ID">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label1" runat="server" Text="Search By Type"></asp:Label>
+                                <br />
+                                <asp:DropDownList ID="FileTypeDDL" runat="server" DataSourceID="FileTypeODS" DataTextField="typeDescription" DataValueField="typeID"></asp:DropDownList>&nbsp;
                                 <asp:Button ID="Button2" runat="server" Text="Search" OnClick="Button2_Click" />
 
                                 <br />
@@ -46,22 +43,31 @@
 
                             </div>
 
-                            <div class="col-sm-10">
-                                <asp:GridView ID="GridView1" runat="server" DataSourceID="FileTypeGridview" AllowPaging="True"></asp:GridView>
+                            <div class="col-sm-9">
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
+                                    <Columns>
+                                        <asp:BoundField DataField="FileID" HeaderText="FileID" SortExpression="FileID"></asp:BoundField>
+                                        <asp:BoundField DataField="filetype" HeaderText="filetype" SortExpression="filetype"></asp:BoundField>
+                                        <asp:BoundField DataField="operationName" HeaderText="operationName" SortExpression="operationName"></asp:BoundField>
+                                        <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName"></asp:BoundField>
+                                        <asp:BoundField DataField="CategoryName" HeaderText="CategoryName" SortExpression="CategoryName"></asp:BoundField>
+                                        <asp:BoundField DataField="OrganizationID" HeaderText="OrganizationID" SortExpression="OrganizationID"></asp:BoundField>
+                                        <asp:BoundField DataField="DocumentType" HeaderText="DocumentType" SortExpression="DocumentType"></asp:BoundField>
+                                        <asp:BoundField DataField="SecurityClassification" HeaderText="SecurityClassification" SortExpression="SecurityClassification"></asp:BoundField>
+                                        <asp:BoundField DataField="FileStatus" HeaderText="FileStatus" SortExpression="FileStatus"></asp:BoundField>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
 
 
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
-                    <asp:ObjectDataSource ID="FileTypeODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="FileTypeDescriptionList" TypeName="MockERKS.Framework.BLL.AdminController" UpdateMethod="UpdateFile">
-                        <UpdateParameters>
-                            <asp:Parameter Name="file" Type="Object"></asp:Parameter>
-                            <asp:Parameter Name="rDetails" Type="Object"></asp:Parameter>
-                        </UpdateParameters>
-                    </asp:ObjectDataSource>
-                    <asp:ObjectDataSource ID="FileTypeGridview" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiletype" TypeName="MockERKS.Framework.BLL.AdminController" UpdateMethod="UpdateFile">
+                    <asp:ObjectDataSource ID="FileTypeODS" runat="server" OldValuesParameterFormatString="original_{0}"
+                        SelectMethod="DropDownFileType"
+                        TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                   
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFiletype" TypeName="MockERKS.Framework.BLL.AdminController" UpdateMethod="UpdateFile">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="FileTypeDDL" PropertyName="SelectedValue" Name="typeId" Type="Int32"></asp:ControlParameter>
                         </SelectParameters>

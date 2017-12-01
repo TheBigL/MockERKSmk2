@@ -8,18 +8,24 @@ namespace MockERKS.Framework.Entities.POCOs
 {
     public class FileTypePOCO
     {
-       
-        public int typeId { get; set; }
-        public string typeName { get; set; }
-        public int organizationId { get; set; }
-        public string organizationName { get; set; }
-        public string fileStatus { get; set; }
-        public DateTime? closedDate { get; set; }
-        public int fileID { get; set; }
-        public string categoryName { get; set; }
-        public string docTypeDescription { get; set; }
-        public string securityClassificationTypeName { get; set; }
+
+
+        public int FileID { get; set; }
+
+        public string filetype { get; set; }
         public string operationName { get; set; }
+        public string organizationName { get; set; }
+        public string CategoryName { get; set; }
+
+        public int OrganizationID { get; set; }
+
+        public string DocumentType { get; set; }
+
+        public string SecurityClassification { get; set; }
+
+       
+        public string FileStatus { get; set; }
+
 
 
 
