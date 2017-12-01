@@ -1,4 +1,6 @@
 ﻿using System;
+using MockERKS.Framework.BLL;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,5 +12,11 @@ public partial class Admin_Admin_File_Management : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+    }
+
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        
     }
 }

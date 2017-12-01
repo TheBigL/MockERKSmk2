@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 #region Extra Namespaces
 using System.ComponentModel;
-using MockERKS.Framework.DAL;
 using MockERKS.Framework.Entities;
+using MockERKS.Framework.DAL;
+using MockERKS.Framework.Entities.POCOs;
 #endregion
 
 namespace MockERKS.Framework.BLL
@@ -122,20 +123,75 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        #region DeleteUser
-        [DataObjectMethod(DataObjectMethodType.Delete, false)]
-        public void DeleteUser()
-        {
+        #region LookUpFiles
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<FileSummary> LookupFiles()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var files = from x in context.Site_File
+                            select new FileSummary
+                            {
+                                fileID = x.File_ID,
+                                categoryName = x.Category.Category_Name,
+                                docTypeDescription = x.Document.Document_Type.Type_Description,
+                                operationName = x.Operation.Operation_Name,
+                                securityClassificationTypeName = x.Security_Classification.Security_Classification_Name,
+                                organizationName = x.Organization.Organization_Name
+
+                            };
+
+                return files.ToList();
+
+            }
         }
 
         #endregion
 
+        #region Look Up files By TypeID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<File_Type> FileTypeDescriptionList()
+        {
+            using (var context = new MockERKSDb())
+            {
+
+                return context.File_Type.ToList();
+            }
+
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<FileTypePOCO> LookupFiletype(int typeId)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var files = from x in context.Site_File
+                            where x.Organization.Organization_Description.Description_ID == typeId
+                            orderby x.Organization.Organization_Name ascending
+                            select new FileTypePOCO
+                            {
+                                fileID = x.File_ID,
+                                categoryName = x.Category.Category_Name,
+                                docTypeDescription = x.Document.Document_Type.Type_Description,
+                                operationName = x.Operation.Operation_Name,
+                                securityClassificationTypeName = x.Security_Classification.Security_Classification_Name,
+                                organizationName = x.Organization.Organization_Name,
+                                organizationId = x.Organization.Organization_ID,
+                                typeName = x.Organization.Organization_Description.Description
+
+                            };
+
+                return files.ToList();
+
+            }
+        }
 
 
+        #endregion
 
         //TODO Create and Delete An Employee File Function For the Admin.
-        #region getOfficer
+        #region getOfficerByID
         public Officer Officer_Get(int officerid)
         {
             using (var context = new MockERKSDb())
@@ -152,13 +208,45 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         //TODO Create and Delete An Client File Function For the Admin.
-        #region getClient
+
+
+        #region Update Client
+        #endregion
+
+        #region getallClients
+    
         #endregion
 
         #region GetClientByID
+
+        public Organization Client_Get(int organizationId)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Organizations.Find(organizationId);
+            }
+        }
+
         #endregion
 
         #region RemoveClient
+
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+        public void DeleteClient(int organizationId, List<Organization_Description> rdetails)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var organization = context.Organizations.Find(organizationId);
+                if (organization == null) throw new ArgumentException("This file doesn't exist");
+
+                //Getting rid of all the Foreign Key Associted with the class.
+                bool descriptionMatch = context.Organization_Description.Any(x => x.Description_ID == organization.Description_ID);
+                if (!descriptionMatch) throw new Exception("No Category exists");
+                else context.Organization_Description.Remove(organization.Organization_Description);
+            }
+        }
+
+
         #endregion
 
 

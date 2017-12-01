@@ -81,6 +81,7 @@
     <Compile Include="Entities\POCOs\CategoryList.cs" />
     <Compile Include="Entities\POCOs\CreatedFile.cs" />
     <Compile Include="Entities\POCOs\DescriptionList.cs" />
+    <Compile Include="Entities\POCOs\FileTypePOCO.cs" />
     <Compile Include="Entities\POCOs\FileReport.cs" />
     <Compile Include="Entities\POCOs\FileStatusList.cs" />
     <Compile Include="Entities\POCOs\FileSummary.cs" />

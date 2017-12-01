@@ -24,7 +24,7 @@
 
 
               <div class="tab-content"> 
-                  <div class="tab-pane fade in active" id="user">
+                  <div role="tabpanel" class="tab-pane active" id="user">
                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
                         <ContentTemplate>
 
@@ -131,7 +131,7 @@
                    </asp:UpdatePanel>
                       </div>
 
-                   <div class="tab-pane fade in active" id="role">
+                   <div role="tabpanel" class="tab-pane" id="role">
                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
