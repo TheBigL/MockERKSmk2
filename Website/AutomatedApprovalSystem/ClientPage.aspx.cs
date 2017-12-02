@@ -17,4 +17,10 @@ public partial class AutomatedApprovalSystem_ClientPage : System.Web.UI.Page
     {
         Response.Redirect("FileForm.aspx");
     }
+
+    protected void CreatedFileData_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+
+    {
+        e.InputParameters["currOrganization_Name"] = User.Identity.Name;
+    }
 }

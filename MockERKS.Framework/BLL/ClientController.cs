@@ -122,11 +122,12 @@ namespace MockERKS.Framework.BLL
 
         /*  Author: Wenyu */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<CreatedFile> ListFilebyClient ()
+        public List<CreatedFile> ListFilebyClient (String currOrganization_Name)
         {
             using (var context = new MockERKSDb())
             {
                 var files = from file in context.Site_File
+                            where file.Organization.Organization_Name.Trim().Equals(currOrganization_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
                             select new CreatedFile
                             {
                                 fileID = file.File_ID,

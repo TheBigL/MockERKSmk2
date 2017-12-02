@@ -19,7 +19,11 @@
 
                 </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource runat="server" ID="CreatedFileData" OldValuesParameterFormatString="original_{0}" SelectMethod="ListFilebyClient" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
+            <asp:ObjectDataSource runat="server" ID="CreatedFileData" OldValuesParameterFormatString="original_{0}" SelectMethod="ListFilebyClient" TypeName="MockERKS.Framework.BLL.ClientController" OnSelecting ="CreatedFileData_Selecting">
+                <SelectParameters>
+                    <asp:Parameter Name ="currOrganization_Name" Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>
