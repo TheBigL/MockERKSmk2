@@ -201,7 +201,9 @@ namespace MockERKS.Framework.BLL
                                  fileID = fileStatus.File_ID,
                                  fileStatus = fileStatus.File_Status
                              };
-                return status.ToList();
+                foreach (FileStatusList li in status.Distinct().ToList())
+                    System.Diagnostics.Debug.Write(li.fileStatus);
+                return status.Distinct().ToList();
             }
         }
 

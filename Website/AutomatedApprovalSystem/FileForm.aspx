@@ -133,8 +133,10 @@
                 <asp:TextBox ID="LINC" runat="server" Text="<None>"></asp:TextBox><br />
 
                 <asp:Label ID="Label10" runat="server" Text="File Status:" AssociatedControlID="FileStatus"></asp:Label>
-                <asp:DropDownList ID="FileStatus" runat="server" DataSourceID="StatusODS" DataTextField="fileStatus" DataValueField="fileID"></asp:DropDownList>
-                <asp:ObjectDataSource runat="server" ID="StatusODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownStatus" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <asp:DropDownList ID="FileStatus" runat="server">
+                    <asp:ListItem Text="Open" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Close" Value="0"></asp:ListItem>
+                </asp:DropDownList>                
                 <br />
 
                 <asp:Label ID="Label11" runat="server" Text="Closed Date:" AssociatedControlID="ClosedDate"></asp:Label>
