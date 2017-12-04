@@ -22,20 +22,29 @@ public partial class Account_Login : Page
         }
 
         protected void LogIn(object sender, EventArgs e)
-        {
-            if (IsValid)
+    {
+        if (IsValid)
             {
-                // Validate the user password
-                var manager = new UserManager();
+
+            // Validate the user password
+            var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
-                if (user != null)
+            
+            if (user != null)
+            {
+                IdentityHelper.SignIn(manager, user, RememberMe.Checked);
+                if (!User.IsInRole("WebAdmins") && !User.IsInRole("Staff"))
                 {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                    Response.Redirect("~/AutomatedApprovalSystem/ClientPage.aspx");
                 }
                 else
                 {
-                    FailureText.Text = "Invalid username or password.";
+                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                }
+            }
+                else
+            {
+                FailureText.Text = "Invalid username or password.";
                     ErrorMessage.Visible = true;
                 }
             }

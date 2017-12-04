@@ -28,7 +28,14 @@ public partial class Account_Register : Page
         if (result.Succeeded)
         {
             IdentityHelper.SignIn(manager, user, isPersistent: false);
-            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+            if (!User.IsInRole("WebAdmins") && !User.IsInRole("Staff"))
+            {
+                Response.Redirect("~/AutomatedApprovalSystem/ClientPage.aspx");
+            }
+            else
+            {
+                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+            }
         }
         else
         {
