@@ -55,55 +55,55 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         ClosedDate.SelectedDates.Clear();
     }
 
-    class TempOrg
-    {
-        public int Organization_ID { get; set; }
-        public string Organization_Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-    }
+    //class TempOrg
+    //{
+    //    public int Organization_ID { get; set; }
+    //    public string Organization_Name { get; set; }
+    //    public string Phone { get; set; }
+    //    public string Email { get; set; }
+    //}
 
     protected void AddFile_Click(object sender, EventArgs e)
     {
         if (IsValid)
         {
-            IQueryable<TempOrg> orgs;
-            List<TempOrg> norgs;
-            TempOrg currTempOrg = new TempOrg();
-            Organization currOrg = new Organization();
+            //IQueryable<TempOrg> orgs;
+            //List<TempOrg> norgs;
+            //TempOrg currTempOrg = new TempOrg();
+            //Organization currOrg = new Organization();
 
-            using (var context = new MockERKSDb())
-            {
-                orgs = from org in context.Organizations
-                           //where org.Organization_Name.Trim().Equals(User.Identity.Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
-                           select new TempOrg
-                           {
-                               Organization_ID = org.Organization_ID,
-                               Organization_Name = org.Organization_Name,
-                               Phone = org.Phone,
-                               Email = org.Email
-                           };
-                currTempOrg = orgs.FirstOrDefault();
-                norgs = orgs.ToList();
-            }
+            //using (var context = new MockERKSDb())
+            //{
+            //    orgs = from org in context.Organizations
+            //               //where org.Organization_Name.Trim().Equals(User.Identity.Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
+            //               select new TempOrg
+            //               {
+            //                   Organization_ID = org.Organization_ID,
+            //                   Organization_Name = org.Organization_Name,
+            //                   Phone = org.Phone,
+            //                   Email = org.Email
+            //               };
+            //    currTempOrg = orgs.FirstOrDefault();
+            //    norgs = orgs.ToList();
+            //}
 
-            foreach (TempOrg norg in norgs){
-                System.Diagnostics.Debug.WriteLine(norg.Organization_Name);
-            }
-            if (currTempOrg == null)
-                System.Diagnostics.Debug.WriteLine(User.Identity.Name.Trim());
-            {
-                currOrg.Organization_ID = currTempOrg.Organization_ID;
-                currOrg.Organization_Name = currTempOrg.Organization_Name;
-                currOrg.Phone = currTempOrg.Phone;
-                currOrg.Email = currTempOrg.Email;
-            }
+            //foreach (TempOrg norg in norgs){
+            //    System.Diagnostics.Debug.WriteLine(norg.Organization_Name);
+            //}
+            //if (currTempOrg == null)
+            //    System.Diagnostics.Debug.WriteLine(User.Identity.Name.Trim());
+            //{
+            //    currOrg.Organization_ID = currTempOrg.Organization_ID;
+            //    currOrg.Organization_Name = currTempOrg.Organization_Name;
+            //    currOrg.Phone = currTempOrg.Phone;
+            //    currOrg.Email = currTempOrg.Email;
+            //}
 
             MessageUserControl.TryRun(() =>
             {
                 FileController sysmgr = new FileController();
                 Site_File newSiteFile = new Site_File();
-                newSiteFile.Organization = currOrg;
+                //newSiteFile.Organization = currOrg;
                 int i;
 
 
