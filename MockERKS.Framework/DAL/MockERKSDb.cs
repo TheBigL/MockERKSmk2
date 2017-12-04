@@ -149,6 +149,14 @@ namespace MockERKS.Framework.Entities
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Organization>()
+                .Property(e => e.User_Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Organization>()
+                .Property(e => e.User_Password)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Organization_Description>()
                 .Property(e => e.Description)
                 .IsUnicode(false);

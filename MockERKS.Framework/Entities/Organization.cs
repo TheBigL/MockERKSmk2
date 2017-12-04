@@ -35,6 +35,14 @@ namespace MockERKS.Framework.Entities
         [StringLength(125)]
         public string Email { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string User_Name { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string User_Password { get; set; }
+
         public virtual Organization_Description Organization_Description { get; set; }
 
         public virtual Site_Address Site_Address { get; set; }
