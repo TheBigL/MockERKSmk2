@@ -26,7 +26,7 @@
             <asp:DropDownList ID="OfficersDropdown" runat="server" DataSourceID="OfficerDropdownDS" DataTextField="fullName" DataValueField="officerID">
             </asp:DropDownList>
 
-            <asp:gridview ID="RecordDetailsByEmployeeDS" runat="server" AutoGenerateColumns="False" DataSourceID="RecordDetailGRidViewDS">
+            <asp:gridview ID="RecordDetailsByEmployeeDS" runat="server" AutoGenerateColumns="False" DataSourceID="RecordDetailGridViewDS">
                 <Columns>
                     <asp:BoundField DataField="officerID" HeaderText="officerID" SortExpression="officerID" />
                     <asp:BoundField DataField="managerID" HeaderText="managerID" SortExpression="managerID" />
@@ -45,7 +45,7 @@
 
 
 
-            <asp:ObjectDataSource ID="RecordDetailGRidViewDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RDSummaryByOfficerID" TypeName="MockERKS.Framework.BLL.StaffController">
+            <asp:ObjectDataSource ID="RecordDetailGridViewDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RDSummaryByOfficerID" TypeName="MockERKS.Framework.BLL.StaffController">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="OfficersDropdown" Name="officerID" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
