@@ -52,6 +52,8 @@
             </asp:ObjectDataSource>
             <asp:ObjectDataSource ID="OfficerDropdownDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RegisteredStaffDropdown" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
+            <asp:Button ID="OfficerDropdownReset" runat="server" Text="Reset Dropdown"/>
+
         </div>
 
 

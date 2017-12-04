@@ -10,12 +10,17 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       
     }
 
-    public void resetDropdownValues()
+    public void resetDropdownValues(string selectedValue)
     {
-        
+        OfficersDropdown.DataBind();
+        OfficersDropdown.Items.Insert(0, "[Select an Officer]");
+        if(OfficersDropdown.SelectedValue.Contains(selectedValue))
+        {
+            OfficersDropdown.SelectedIndex = 0;
+        }
     }
 
     public void GetRecordDetailInfo()
@@ -27,7 +32,8 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
     }
     #region Dropdowns
 
-  
+    
 
     #endregion
+
 }
