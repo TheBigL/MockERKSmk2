@@ -12,6 +12,7 @@ namespace MockERKS.Framework.Entities.POCOs
 
         public int? managerID { get; set; }
         public int? managerGroupID { get; set; }
+        public int? fileID { get; set; }
         public DateTime recordDate { get; set; }
         public string status { get; set; }
         public DateTime? statusDate { get; set; }

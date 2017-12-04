@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MockERKS.Framework.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,19 +14,17 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
     }
 
 
+
+    public void GetRecordDetailInfo()
+    {
+        StaffController stamgr = new StaffController();
+        var rdList = stamgr.RDSummaryByOfficerID(OfficersDropdown.SelectedIndex);
+        
+
+    }
     #region Dropdowns
 
-    #region Officer Dropdown
-    
-    #endregion
-
-    #region File Dropdown
-
-    #endregion
-
-    #region Manager Dropdown
-
-    #endregion
+  
 
     #endregion
 }

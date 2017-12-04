@@ -461,6 +461,33 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
+        #region LookupRecordDetailByFileID
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<RecordDetailsSummary> getRecordDetailsByID(int fileID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var RDList = from rd in context.Record_Details
+                             where rd.File_ID == fileID
+                             select new RecordDetailsSummary
+                             {
+                                 fileID = rd.File_ID,
+                                 status = rd.Status,
+                                 subject = rd.Subject,
+                                 dateRecieved = rd.Recieved_Date,
+                                 essential = rd.Essential,
+                                 statusDate = rd.Status_Date,
+                                 offical = rd.Offcial,
+                                 recordDate = rd.Record_Date,
+                                 updateCyclePeroid = rd.Update_Cycle_Period,
+                             };
+                return RDList.ToList();
+            }
+        }
+
+        #endregion
+
+
 
 
 
