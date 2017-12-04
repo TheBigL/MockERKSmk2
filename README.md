@@ -38,6 +38,7 @@ a proof of concept, we will loosely follow the original to make a scaled down ve
 
 All User roles can log in, but only the Website administrators can set the Roles for users.
 
+#Registering an Organization
 
  
 
