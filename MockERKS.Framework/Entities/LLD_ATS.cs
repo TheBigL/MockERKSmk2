@@ -17,26 +17,21 @@ namespace MockERKS.Framework.Entities
         [Key]
         public int ATS_ID { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string Meridian_Number { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string Range_Number { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string Township_Number { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string Section_Number { get; set; }
 
         [StringLength(6)]
         public string Quarter_Section_Number { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string LSD { get; set; }
 

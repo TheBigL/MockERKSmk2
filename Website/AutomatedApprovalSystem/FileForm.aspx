@@ -103,9 +103,17 @@
                 <asp:ObjectDataSource runat="server" ID="SectionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownSection" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
                 <br />
 
-                <asp:Label ID="Label18" runat="server" Text="Quarter Section #:" AssociatedControlID="QuarterSection"></asp:Label>
-                <asp:DropDownList ID="QuarterSection" runat="server" DataSourceID="QuarterSectionODS" DataTextField="quarterSection" DataValueField="ATSID"></asp:DropDownList>
-                <asp:ObjectDataSource runat="server" ID="QuarterSectionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownQuarterSection" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <%--<asp:Label ID="Label18" runat="server" Text="Quarter Section #:" AssociatedControlID="QuarterSection"></asp:Label>--%>
+                <%--<asp:DropDownList ID="QuarterSection" runat="server" DataSourceID="QuarterSectionODS" DataTextField="quarterSection" DataValueField="ATSID"></asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="QuarterSectionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownQuarterSection" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>--%>
+                <asp:Label ID="QuarterS" runat="server" Text="Quarter Section #:" AssociatedControlID="QuarterSection"></asp:Label>
+                <asp:DropDownList ID="QuarterSection" runat="server">
+                    <asp:ListItem Text="<None>" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="NW" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="NE" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="SW" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="SE" Value="4"></asp:ListItem>
+                </asp:DropDownList>
                 <br />
 
                 <asp:Label ID="Label19" runat="server" Text="LSD:" AssociatedControlID="LSD"></asp:Label>
@@ -119,24 +127,24 @@
                 <h5>Legal Land Description (LLD) PBL</h5>
 
                 <asp:Label ID="Label20" runat="server" Text="Plan #:" AssociatedControlID="Plan"></asp:Label>
-                <asp:TextBox ID="Plan" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="Plan" runat="server"> </asp:TextBox><br />
 
                 <asp:Label ID="Label21" runat="server" Text="Block #:" AssociatedControlID="Block"></asp:Label>
-                <asp:TextBox ID="Block" runat="server" Text="<None>"></asp:TextBox><br />
+                <asp:TextBox ID="Block" runat="server"> </asp:TextBox><br />
 
                 <asp:Label ID="Label22" runat="server" Text="Lot #:" AssociatedControlID="Lot"></asp:Label>
-                <asp:TextBox ID="Lot" runat="server" Text="<None>"></asp:TextBox><br />
+                <asp:TextBox ID="Lot" runat="server"> </asp:TextBox><br />
                 <br />
                 <br />
 
                 <asp:Label ID="Label9" runat="server" Text="LINC:" AssociatedControlID="LINC"></asp:Label>
-                <asp:TextBox ID="LINC" runat="server" Text="<None>"></asp:TextBox><br />
+                <asp:TextBox ID="LINC" runat="server"></asp:TextBox><br />
 
                 <asp:Label ID="Label10" runat="server" Text="File Status:" AssociatedControlID="FileStatus"></asp:Label>
                 <asp:DropDownList ID="FileStatus" runat="server">
                     <asp:ListItem Text="Open" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Close" Value="0"></asp:ListItem>
-                </asp:DropDownList>                
+                </asp:DropDownList>
                 <br />
 
                 <asp:Label ID="Label11" runat="server" Text="Closed Date:" AssociatedControlID="ClosedDate"></asp:Label>
@@ -149,7 +157,7 @@
                 <br />
 
                 <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
-                <asp:Button CssClass="btn" ID="ResetForm" runat="server" OnClick="ResetForm_Click" Text="Reset" />
+                <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" OnClick="ResetForm_Click" />
                 <button type="button" class="btn" id="cancel" onclick="window.history.back()">Cancel</button>
                 <%--<asp:Button CssClass="btn" ID="Update" runat="server" Text="Update" OnClick="Update_Click" />--%>
                 <%--<asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" CausesValidation="false" />--%>

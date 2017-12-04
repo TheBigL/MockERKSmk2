@@ -13,6 +13,7 @@ namespace MockERKS.Framework.Entities
         public Organization()
         {
             Site_File = new HashSet<Site_File>();
+            Site_Address = new Site_Address();
         }
 
         [Key]

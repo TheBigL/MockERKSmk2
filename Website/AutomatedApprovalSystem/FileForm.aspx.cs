@@ -55,18 +55,80 @@ public partial class WebPages_FileForm : System.Web.UI.Page
         ClosedDate.SelectedDates.Clear();
     }
 
+    class TempOrg
+    {
+        public int Organization_ID { get; set; }
+        public string Organization_Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+    }
+
     protected void AddFile_Click(object sender, EventArgs e)
     {
         if (IsValid)
         {
+            IQueryable<TempOrg> orgs;
+            List<TempOrg> norgs;
+            TempOrg currTempOrg = new TempOrg();
+            Organization currOrg = new Organization();
+
+            using (var context = new MockERKSDb())
+            {
+                orgs = from org in context.Organizations
+                           //where org.Organization_Name.Trim().Equals(User.Identity.Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
+                           select new TempOrg
+                           {
+                               Organization_ID = org.Organization_ID,
+                               Organization_Name = org.Organization_Name,
+                               Phone = org.Phone,
+                               Email = org.Email
+                           };
+                currTempOrg = orgs.FirstOrDefault();
+                norgs = orgs.ToList();
+            }
+
+            foreach (TempOrg norg in norgs){
+                System.Diagnostics.Debug.WriteLine(norg.Organization_Name);
+            }
+            if (currTempOrg == null)
+                System.Diagnostics.Debug.WriteLine(User.Identity.Name.Trim());
+            {
+                currOrg.Organization_ID = currTempOrg.Organization_ID;
+                currOrg.Organization_Name = currTempOrg.Organization_Name;
+                currOrg.Phone = currTempOrg.Phone;
+                currOrg.Email = currTempOrg.Email;
+            }
+
             MessageUserControl.TryRun(() =>
             {
                 FileController sysmgr = new FileController();
                 Site_File newSiteFile = new Site_File();
-                newSiteFile.Type_ID = int.Parse(FileType.SelectedValue);
-                newSiteFile.Category_ID = int.Parse(Category.SelectedValue);
-                newSiteFile.Security_Classification_ID = int.Parse(SecurityClassification.SelectedValue);
+                newSiteFile.Organization = currOrg;
+                int i;
+
+
+                if (int.TryParse(FileType.SelectedValue, out i))
+                    newSiteFile.Type_ID = i;
+                else
+                    newSiteFile.Type_ID = null;
+
+                if (int.TryParse(Category.SelectedValue, out i))
+                    newSiteFile.Category_ID = i;
+                else
+                    newSiteFile.Category_ID = null;
+
+                if (int.TryParse(SecurityClassification.SelectedValue, out i))
+                    newSiteFile.Security_Classification_ID = i;
+                else
+                    newSiteFile.Security_Classification_ID = null;
+
                 newSiteFile.Operation.Operation_Name = OperationName.Text;
+
+                if (int.TryParse(OperationID.Text, out i))
+                    newSiteFile.Operation_ID = i;
+                else
+                    newSiteFile.Operation_ID = null;
+
                 newSiteFile.Organization.Site_Address.Location = Location.SelectedValue;
                 newSiteFile.Organization.Site_Address.Address = Address.Text;
                 newSiteFile.Organization.Site_Address.LLD_ATS.Meridian_Number = Meridian.SelectedValue;
@@ -75,9 +137,25 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                 newSiteFile.Organization.Site_Address.LLD_ATS.Section_Number = Section.SelectedValue;
                 newSiteFile.Organization.Site_Address.LLD_ATS.Quarter_Section_Number = QuarterSection.SelectedValue;
                 newSiteFile.Organization.Site_Address.LLD_ATS.LSD = LSD.SelectedValue;
+
                 newSiteFile.LLD_PBL.Plan_Number = Plan.Text;
-                newSiteFile.LLD_PBL.Block_Number = Block.Text;
-                newSiteFile.LLD_PBL.Lot_Number = Lot.Text;
+
+
+                if (Block.Text.Trim().Equals(""))
+                    newSiteFile.LLD_PBL.Block_Number = "<None>";
+                else
+                    newSiteFile.LLD_PBL.Block_Number = Block.Text;
+
+                if (Lot.Text.Trim().Equals(""))
+                    newSiteFile.LLD_PBL.Lot_Number = "<None>";
+                else
+                    newSiteFile.LLD_PBL.Lot_Number = Lot.Text;
+
+                if (LINC.Text.Trim().Equals(""))
+                    newSiteFile.LINC_Number = "<None>";
+                else
+                    newSiteFile.LINC_Number = LINC.Text;
+
                 newSiteFile.File_Status = FileStatus.SelectedValue;
                 newSiteFile.Closed_Date = ClosedDate.SelectedDate;
 

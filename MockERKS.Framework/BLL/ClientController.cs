@@ -74,11 +74,7 @@ namespace MockERKS.Framework.BLL
                 context.Organizations.Add(newOrg);
 
                 context.SaveChanges();
-
             }
-
-
-
         }
 
 

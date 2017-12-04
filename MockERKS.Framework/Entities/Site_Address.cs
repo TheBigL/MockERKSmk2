@@ -19,12 +19,10 @@ namespace MockERKS.Framework.Entities
         public int Location_Code { get; set; }
 
         public int? ATS_ID { get; set; }
-
-        [Required]
+        
         [StringLength(255)]
         public string Location { get; set; }
-
-        [Required]
+        
         [StringLength(255)]
         public string Address { get; set; }
 
