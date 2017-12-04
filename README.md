@@ -32,6 +32,13 @@ For the sake of easy access to the system, we've initallized a webmaster account
 # Entities
 
 For the sake of simplicity, we've set up simplified the entity table. We feel that since this project is
-a proof of concept 
+a proof of concept, we will loosely follow the original to make a scaled down version of it.
+
+#Basics
+
+All User roles can log in, but only the Website administrators can set the Roles for users.
+
+#Registering an Organization
+
  
 
