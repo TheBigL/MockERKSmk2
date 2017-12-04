@@ -188,6 +188,21 @@ namespace MockERKS.Framework.BLL
 
 
         //TODO Create and Delete An Employee File Function For the Admin.
+        #region getOfficerLsit
+
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+
+        public List<Officer> ListAll_Officer()
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Officers.ToList();
+            }
+        }
+        #endregion
+
+
         #region getOfficerByID
         public Officer Officer_Get(int officerid)
         {
@@ -199,9 +214,45 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region AddOfficer
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void Officer_Add(Officer item)
+        {
+
+            using (var context = new MockERKSDb())
+            {
+                //any business rules
+                context.Officers.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+
         #endregion
 
         #region Remove Officer
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void Officer_Delete(Officer item)
+        {
+            Officer_Delete(item.Officer_ID);
+        }
+        public void Officer_Delete(int Officerid)
+        {
+            using (var context = new MockERKSDb())
+            {
+
+                var existing = context.Officers.Find(Officerid);
+
+                if (existing == null)
+                {
+                    throw new Exception("Officer does not exists on database.");
+                }
+                
+                context.Officers.Remove(existing);
+                
+                context.SaveChanges();
+            }
+        }
+
         #endregion
 
         //TODO Create and Delete An Client File Function For the Admin.
@@ -211,7 +262,16 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region getallClients
-    
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+         public List<Organization> List_AllClients()
+        {
+            using (var context = new MockERKSDb())
+            {
+                
+                return context.Organizations.ToList();
+            }
+        }
         #endregion
 
         #region GetClientByID

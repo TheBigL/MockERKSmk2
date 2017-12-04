@@ -15,8 +15,15 @@ public partial class Admin_Admin_File_Management : System.Web.UI.Page
     }
 
 
-    protected void Button2_Click(object sender, EventArgs e)
+   
+    protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
     {
-        
+        MessageUserControl.HandleDataBoundException(e);
+    }
+
+
+    protected void SearchAllEmployees_Click(object sender, EventArgs e)
+    {
+
     }
 }
