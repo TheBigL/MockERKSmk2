@@ -123,7 +123,7 @@ namespace MockERKS.Framework.BLL
             using (var context = new MockERKSDb())
             {
                 var files = from file in context.Site_File
-                            where file.Organization.Organization_Name.Trim().Equals(currOrganization_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
+                            //where file.Organization.Organization_Name.Trim().Equals(currOrganization_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
                             select new CreatedFile
                             {
                                 fileID = file.File_ID,
