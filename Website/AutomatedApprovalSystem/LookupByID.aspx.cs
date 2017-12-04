@@ -13,7 +13,10 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 
     }
 
-
+    public void resetDropdownValues()
+    {
+        
+    }
 
     public void GetRecordDetailInfo()
     {
