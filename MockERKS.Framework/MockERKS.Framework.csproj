@@ -91,6 +91,7 @@
     <Compile Include="Entities\POCOs\ATSList.cs" />
     <Compile Include="Entities\POCOs\OfficerFullNameList.cs" />
     <Compile Include="Entities\POCOs\OfficerListPOCO.cs" />
+    <Compile Include="Entities\POCOs\OrganizationListAdminPOCO.cs" />
     <Compile Include="Entities\POCOs\OrganizationList.cs" />
     <Compile Include="Entities\POCOs\organizationRegistrationPOCO.cs" />
     <Compile Include="Entities\POCOs\RecordDetailsSummary.cs" />

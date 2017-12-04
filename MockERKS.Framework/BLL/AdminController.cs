@@ -63,7 +63,7 @@ namespace MockERKS.Framework.BLL
 
                 //Get rid of the child class be creating a List of Record Details.
                 List<Record_Details> remove = new List<Record_Details>();
-                 
+      
                 //Adding the Record details to the new List.
                 foreach(var item in rdetails)
                 {
@@ -81,11 +81,6 @@ namespace MockERKS.Framework.BLL
                 }
 
 
-                
-                
-                
-
-
                 //Getting rid of the file class proper
                 context.Site_File.Remove(file);
 
@@ -96,7 +91,7 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
-
+        //Author:Sayed
         #region UpdateFile
 
         [DataObjectMethod(DataObjectMethodType.Update,true)]
@@ -107,9 +102,47 @@ namespace MockERKS.Framework.BLL
                 var sFile = context.Site_File.Find(file.File_ID);
                 if (sFile == null) throw new ArgumentNullException("Invalid File - The file does not exist");
 
-                foreach(var item in rDetails)
+                bool categoryMatch = context.Categories.Any(x => x.Category_ID == file.Category_ID);
+                if (!categoryMatch) throw new Exception("No Category exists");
+                else context.Categories.Add(file.Category);
+
+
+                bool typeMatch = context.Document_Type.Any(x => x.Document_Type_ID == file.Document.Document_Type_ID);
+                if (!typeMatch) throw new Exception("No Document Type Exists");
+                else context.Document_Type.Add(file.Document.Document_Type);
+
+
+                bool operMatch = context.Operations.Any(x => x.Operation_ID == file.Operation_ID);
+                if (!operMatch) throw new Exception("No Operation is associated with that message.");
+                else context.Operations.Add(file.Operation);
+
+
+                bool orgMatch = context.Organizations.Any(x => x.Organization_ID == file.Organization_ID);
+                if (!orgMatch) throw new Exception("No Organization is associated with that file.");
+                else context.Organizations.Add(file.Organization);
+
+                bool addressMatch = context.LLD_PBL.Any(x => x.PBL_ID == file.PBL_ID);
+                if (!addressMatch) throw new Exception("No Address has been found....");
+                else context.LLD_PBL.Add(file.LLD_PBL);
+
+                bool filetypeMatch = context.File_Type.Any(x => x.Type_ID == file.Type_ID);
+                if (!filetypeMatch) throw new Exception("No File Type has been found");
+                else context.File_Type.Add(file.File_Type);
+
+                List<Record_Details> update = new List<Record_Details>();
+
+                foreach (var item in rDetails)
                 {
-                    //TODO: Update the relevant parts (Including the Foreign Keys) of the File class. 
+                    bool rdMatch = context.Record_Details.Any(x => x.File_ID == file.File_ID);
+                    if (rdMatch)
+                    {
+                        update.Remove(item);
+                    }
+                }
+
+                foreach (var item in update)
+                {
+                    context.Record_Details.Add(item);
                 }
 
                 context.Entry<Site_File>(context.Site_File.Attach(file)).State = System.Data.Entity.EntityState.Modified;
@@ -264,14 +297,47 @@ namespace MockERKS.Framework.BLL
         #region getallClients
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-         public List<Organization> List_AllClients()
+         public List<OrganizationListAdminPOCO> List_AllClients()
         {
             using (var context = new MockERKSDb())
             {
-                
-                return context.Organizations.ToList();
+                var results = from x in context.Organizations
+                              from y in context.Site_File
+                              where x.Organization_ID == y.Organization_ID
+                              orderby x.Organization_Name ascending
+                              select new OrganizationListAdminPOCO
+                             
+                              {
+                                  OrganizationID = x.Organization_ID,
+                                  OrganizationName = x.Organization_Name,
+                                  DescriptionID = x.Organization_Description.Description_ID,
+                                  Description=x.Organization_Description.Description,
+                                  Phone=x.Phone,
+                                  Email=x.Email,
+                                  LocationCode=x.Site_Address.Location_Code,
+                                  LocationAddress=x.Site_Address.Location
+                              };
+                return results.ToList();
+
             }
         }
+        #endregion
+
+        #region AddClient
+
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void Client_Add(Organization item)
+        {
+
+            using (var context = new MockERKSDb())
+            {
+                //any business rules
+                context.Organizations.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+
         #endregion
 
         #region GetClientByID
@@ -287,19 +353,28 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region RemoveClient
+    
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
 
-        [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void DeleteClient(int organizationId, List<Organization_Description> rdetails)
+        public void Client_Delete(Organization item)
+        {
+            Client_Delete(item.Organization_ID);
+        }
+        public void Client_Delete(int organizationId)
         {
             using (var context = new MockERKSDb())
             {
-                var organization = context.Organizations.Find(organizationId);
-                if (organization == null) throw new ArgumentException("This file doesn't exist");
 
-                //Getting rid of all the Foreign Key Associted with the class.
-                bool descriptionMatch = context.Organization_Description.Any(x => x.Description_ID == organization.Description_ID);
-                if (!descriptionMatch) throw new Exception("No Category exists");
-                else context.Organization_Description.Remove(organization.Organization_Description);
+                var existing = context.Organizations.Find(organizationId);
+
+                if (existing == null)
+                {
+                    throw new Exception("Client/Organization does not exists on database.");
+                }
+
+                context.Organizations.Remove(existing);
+
+                context.SaveChanges();
             }
         }
 
