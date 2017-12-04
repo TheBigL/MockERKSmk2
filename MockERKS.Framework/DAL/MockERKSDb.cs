@@ -196,21 +196,6 @@ namespace MockERKS.Framework.Entities
                 .Property(e => e.Address)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Site_Address>()
-                .Property(e => e.Street)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Site_Address>()
-                .Property(e => e.City)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Site_Address>()
-                .Property(e => e.Province)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Site_Address>()
-                .Property(e => e.Postal_Code)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Site_File>()
                 .Property(e => e.LINC_Number)

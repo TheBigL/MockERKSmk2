@@ -12,6 +12,7 @@ namespace MockERKS.Framework.Entities
         public Site_Address()
         {
             Organizations = new HashSet<Organization>();
+            LLD_ATS = new LLD_ATS();
         }
 
         [Key]
@@ -26,22 +27,6 @@ namespace MockERKS.Framework.Entities
         [Required]
         [StringLength(255)]
         public string Address { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        public string Street { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        public string City { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        public string Province { get; set; }
-
-        [Required]
-        [StringLength(6)]
-        public string Postal_Code { get; set; }
 
         public virtual LLD_ATS LLD_ATS { get; set; }
 
