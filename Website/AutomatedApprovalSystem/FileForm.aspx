@@ -108,11 +108,11 @@
                 <asp:ObjectDataSource runat="server" ID="QuarterSectionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownQuarterSection" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>--%>
                 <asp:Label ID="QuarterS" runat="server" Text="Quarter Section #:" AssociatedControlID="QuarterSection"></asp:Label>
                 <asp:DropDownList ID="QuarterSection" runat="server">
-                    <asp:ListItem Text="<None>" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="NW" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="NE" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="SW" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="SE" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="<None>" Value="<None>"></asp:ListItem>
+                    <asp:ListItem Text="NW" Value="NW"></asp:ListItem>
+                    <asp:ListItem Text="NE" Value="NE"></asp:ListItem>
+                    <asp:ListItem Text="SW" Value="SW"></asp:ListItem>
+                    <asp:ListItem Text="SE" Value="SE"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
 
@@ -142,8 +142,8 @@
 
                 <asp:Label ID="Label10" runat="server" Text="File Status:" AssociatedControlID="FileStatus"></asp:Label>
                 <asp:DropDownList ID="FileStatus" runat="server">
-                    <asp:ListItem Text="Open" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Close" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="Open" Value="Closed"></asp:ListItem>
+                    <asp:ListItem Text="Close" Value="Open"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
 
