@@ -23,9 +23,9 @@
             <asp:LinkButton ID="ReportLink" runat="server" OnClick="ReportLink_Click" Text="See the Report"></asp:LinkButton>
 
             <asp:ObjectDataSource runat="server" ID="CreatedFileData" OldValuesParameterFormatString="original_{0}" SelectMethod="ListFilebyClient" TypeName="MockERKS.Framework.BLL.ClientController" OnSelecting ="CreatedFileData_Selecting">
-                <SelectParameters>
+                <%--<SelectParameters>
                     <asp:Parameter Name ="currOrganization_Name" Type="String" />
-                </SelectParameters>
+                </SelectParameters>--%>
             </asp:ObjectDataSource>
         </div>
     </div>
