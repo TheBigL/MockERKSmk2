@@ -22,4 +22,9 @@ public partial class AutomatedApprovalSystem_ClientPage : System.Web.UI.Page
     {
         e.InputParameters["currOrganization_Name"] = User.Identity.Name;
     }
+
+    protected void ReportLink_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/AutomatedApprovalSystem/FileReport");
+    }
 }
