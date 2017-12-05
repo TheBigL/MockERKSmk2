@@ -12,13 +12,13 @@
 
             <!-- Validation controls on Insert tab panel -->
             <asp:ValidationSummary ID="ContrestValidationSummary" runat="server"
-                HeaderText="Please correct the folowing parts of the form brfore submitting:<br />" />
+                HeaderText="Please correct the folowing parts of the form before submitting:<br />" />
             <asp:RequiredFieldValidator ID="RequiredPlanNumber" runat="server" ErrorMessage="Plan Number is Required."
                 ControlToValidate="Plan" SetFocusOnError="true" Display="None">
             </asp:RequiredFieldValidator>
-            <asp:CustomValidator ID="Custom1" CssClass="errorTop" ClientValidationFunction="CheckBoxValidation" 
+            <%--<asp:CustomValidator ID="Custom1" CssClass="errorTop" ClientValidationFunction="CheckBoxValidation" 
                 runat="server" ErrorMessage="You must check this box to proceed" ValidationGroup="AddMisc">
-            </asp:CustomValidator>
+            </asp:CustomValidator>--%>
             <%--<asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
                 ControlToValidate="Plan" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
@@ -163,9 +163,9 @@
                 <br />
                 <br />
 
-                <asp:CheckBox ID="Check" runat="server" Text="I hereby certify that the information above is true and accurate" />
+                <%--<asp:CheckBox ID="Check" runat="server" Text="I hereby certify that the information above is true and accurate" />
                 <br />
-                <br />
+                <br />--%>
 
                 <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
                 <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" OnClick="ResetForm_Click" />

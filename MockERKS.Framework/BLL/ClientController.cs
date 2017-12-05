@@ -118,7 +118,7 @@ namespace MockERKS.Framework.BLL
 
         /*  Author: Wenyu */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<CreatedFile> ListFilebyClient (String currOrganization_Name)
+        public List<CreatedFile> ListFilebyClient (/*String currOrganization_Name*/)
         {
             using (var context = new MockERKSDb())
             {
