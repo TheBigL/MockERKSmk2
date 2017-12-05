@@ -489,6 +489,12 @@ namespace MockERKS.Framework.BLL
 
 
         #region Update File
+        /*Update File
+        * Author: Leban Mohamed
+        * 
+        * 
+        * 
+        * */
         [DataObjectMethod(DataObjectMethodType.Update,false)]
         public void File_Update(Site_File file)
         {
@@ -509,6 +515,12 @@ namespace MockERKS.Framework.BLL
 
 
         #region Update Organization
+        /*Update Organization
+         * Author: Leban Mohamed
+         * 
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Update,false)]
         public void updateOrganization(Organization organization)
         {
@@ -525,6 +537,12 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region Update Officer
+        /*Update Officer
+        * Author: Leban Mohamed
+        * 
+        * 
+        * 
+        * */
         [DataObjectMethod(DataObjectMethodType.Update,false)]
         public void updateOfficer(Officer officer)
         {
@@ -541,8 +559,15 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
-        #region
+        #region Update Manager
+        /*Update Manager
+        * Author: Leban Mohamed
+        * 
+        * 
+        * 
+        * */
         [DataObjectMethod(DataObjectMethodType.Update)]
+
         public void updateManager(Manager manager)
         {
             using (var context = new MockERKSDb())
