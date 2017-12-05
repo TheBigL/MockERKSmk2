@@ -71,8 +71,19 @@
                 <h5>Site Location</h5>
 
                 <asp:Label ID="Label12" runat="server" Text="Location:" AssociatedControlID="Location"></asp:Label>
-                <asp:DropDownList ID="Location" runat="server" DataSourceID="LocationODS" DataTextField="location" DataValueField="locationCode"></asp:DropDownList>
-                <asp:ObjectDataSource runat="server" ID="LocationODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownLocation" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>
+                <%--<asp:DropDownList ID="Location" runat="server" DataSourceID="LocationODS" DataTextField="location" DataValueField="locationCode"></asp:DropDownList>--%>
+                <%--<asp:ObjectDataSource runat="server" ID="LocationODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownLocation" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>--%>
+                <asp:DropDownList ID="Location" runat="server">
+                    <asp:ListItem Text="<None>" Value="<None>"></asp:ListItem>
+                    <asp:ListItem Text="Edmonton" Value="Edmonton"></asp:ListItem>
+                    <asp:ListItem Text="Swan Hill" Value="Swan Hill"></asp:ListItem>
+                    <asp:ListItem Text="Fort Saskatchewan" Value="Fort Saskatchewan"></asp:ListItem>
+                    <asp:ListItem Text="Spruce Grove" Value="Spruce Grove"></asp:ListItem>
+                    <asp:ListItem Text="Slave Lake" Value="Slave Lake"></asp:ListItem>
+                    <asp:ListItem Text="Rocky Mountain House" Value="Rocky Mountain House"></asp:ListItem>
+                    <asp:ListItem Text="Camorse" Value="Camorse"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                </asp:DropDownList>
                 <br />
 
                 <asp:Label ID="Label13" runat="server" Text="Address:" AssociatedControlID="Address"></asp:Label>
