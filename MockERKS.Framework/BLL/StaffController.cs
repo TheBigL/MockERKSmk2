@@ -488,6 +488,42 @@ namespace MockERKS.Framework.BLL
         #endregion
 
 
+        #region Update File
+        [DataObjectMethod(DataObjectMethodType.Update,false)]
+        public void File_Update(Site_File file)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Site_File.Attach(file);
+
+                file.File_Status = string.IsNullOrEmpty(file.File_Status) ? null : file.File_Status;
+
+                context.Entry(file).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
+        #region Update Organization
+        [DataObjectMethod(DataObjectMethodType.Update,false)]
+        public void updateOrganization(Organization organization)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Organizations.Attach(organization);
+
+                context.Entry(organization).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+        #endregion
+
 
 
 
