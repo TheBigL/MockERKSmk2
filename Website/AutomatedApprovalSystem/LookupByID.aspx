@@ -2,7 +2,8 @@
 
 <asp:content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <div id="row">
-        <h2>Look up By ID</h2>
+        <h2>
+            Look up By ID</h2>
 
         <ul class="nav nav-tabs">
             <li ><a href="#Organizations" data-toggle="tab">Organizations</a></li>

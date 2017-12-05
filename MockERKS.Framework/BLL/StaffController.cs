@@ -524,6 +524,40 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
+        #region Update Officer
+        [DataObjectMethod(DataObjectMethodType.Update,false)]
+        public void updateOfficer(Officer officer)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Officers.Attach(officer);
+
+                context.Entry(officer).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+        #endregion
+
+
+        #region
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void updateManager(Manager manager)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Managers.Attach(manager);
+
+                context.Entry(manager).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
 
 
 
