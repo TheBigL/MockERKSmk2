@@ -61,7 +61,7 @@ namespace MockERKS.Framework.BLL
 
         //Author :Sayed
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void RegisterOrganization(string organizationName, int description, string phone, string email)
+        public void RegisterOrganization(string organizationName, int description, string phone, string email, string userName)
         {
             using (var context = new MockERKSDb())
             {
@@ -70,6 +70,7 @@ namespace MockERKS.Framework.BLL
                 newOrg.Description_ID = description;
                 newOrg.Email = email;
                 newOrg.Phone = phone;
+                newOrg.User_Name = userName;
 
                 context.Organizations.Add(newOrg);
 
