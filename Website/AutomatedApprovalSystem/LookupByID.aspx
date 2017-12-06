@@ -7,24 +7,30 @@
 
         <ul class="nav nav-tabs">
             <li ><a href="#Organizations" data-toggle="tab">Organizations</a></li>
-            <li ><a href="#RecordDetails" data-toggle="tab">Files</a></li>
             <li ><a href="#Officers" data-toggle="tab">Officers</a></li>
         </ul>
 
 
         <div id="Organizations" class="tab-pane fade">
+            <asp:DropDownList ID="OrganizationDropdown" runat="server" DataSourceID="OrganizationDropdownDS" DataTextField="organizationName" DataValueField="organizationID"></asp:DropDownList>
+
+            <asp:GridView ID="FileByOrganizationGridView" runat="server" AutoGenerateColumns="False" DataSourceID="FileByOrganizationIDDS">
+                <Columns>
+                    <asp:BoundField DataField="fileID" HeaderText="fileID" SortExpression="fileID" />
+                    <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName" />
+                    <asp:BoundField DataField="docTypeDescription" HeaderText="docTypeDescription" SortExpression="docTypeDescription" />
+                    <asp:BoundField DataField="securityClassificationTypeName" HeaderText="securityClassificationTypeName" SortExpression="securityClassificationTypeName" />
+                    <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName" />
+                    <asp:BoundField DataField="operationName" HeaderText="operationName" SortExpression="operationName" />
+                </Columns>
+            </asp:GridView>
 
         </div>
 
-        <div id="RecordDetails" class="tab-pane fade">
-
-
-
-        </div>
 
         <div id="Officers" class="tab-pane fade">
 
-            <asp:DropDownList ID="OfficersDropdown" runat="server" DataSourceID="OfficerDropdownDS" DataTextField="fullName" DataValueField="officerID">
+            <asp:DropDownList ID="OfficersDropdown" runat="server" DataSourceID="OfficerDropdownDS" DataTextField="fullName" DataValueField="officerID" OnSelectedIndexChanged="OfficersDropdown_SelectedIndexChanged">
             </asp:DropDownList>
 
             <asp:gridview ID="RecordDetailsByEmployeeDS" runat="server" AutoGenerateColumns="False" DataSourceID="RecordDetailGridViewDS">
@@ -53,7 +59,14 @@
             </asp:ObjectDataSource>
             <asp:ObjectDataSource ID="OfficerDropdownDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RegisteredStaffDropdown" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
-            <asp:Button ID="OfficerDropdownReset" runat="server" Text="Reset Dropdown"/>
+            <asp:ObjectDataSource ID="FileByOrganizationIDDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupFileSummaryByOrganizationID" TypeName="MockERKS.Framework.BLL.StaffController">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="OrganizationDropdown" Name="orgID" PropertyName="SelectedValue" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="OrganizationDropdownDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="organizationDropdown" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
+
+            <asp:Button ID="OfficerDropdownReset" runat="server" Text="Reset Dropdown" OnClick="OfficerDropdownReset_Click"/>
 
         </div>
 
