@@ -47,4 +47,10 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
         sysmgr.RDSummaryByOfficerID(officerID);
         RecordDetailsByEmployeeDS.DataBind();
     }
+
+    protected void OfficerDropdownReset_Click(object sender, EventArgs e)
+    {
+        resetDropdownValues(OfficersDropdown.SelectedValue);
+        resetDropdownValues(OrganizationDropdown.SelectedValue);
+    }
 }

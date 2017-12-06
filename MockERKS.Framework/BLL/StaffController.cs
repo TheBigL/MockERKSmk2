@@ -203,6 +203,12 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region Lookup File by Organization ID
+        /*Lookup File By Organization ID
+         * Author: Leban Mohamed
+         * Retrieves File based on the Organization
+         * 
+         * 
+         * */
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<FileSummary> LookupFileSummaryByOrganizationID(int orgID)
         {
