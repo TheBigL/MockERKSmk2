@@ -19,5 +19,6 @@ namespace MockERKS.Framework.Entities.POCOs
         public string LocationAddress {get;set;}
 
         
+        
     }
 }
