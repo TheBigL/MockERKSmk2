@@ -202,6 +202,29 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
+        #region Lookup File by Organization ID
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<FileSummary> LookupFileSummaryByOrganizationID(int orgID)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var fileList = from f in context.Site_File
+                               where f.Organization_ID == orgID
+                               select new FileSummary
+                               {
+                                   organizationName = f.Organization.Organization_Name,
+                                   categoryName = f.Category.Category_Name,
+                                   docTypeDescription = f.File_Type.Type_Description,
+                                   fileID = f.File_ID,
+                                   operationName = f.Operation.Operation_Name,
+                                   securityClassificationTypeName = f.Security_Classification.Security_Classification_Name
+                               };
+                return fileList.ToList();
+
+            }
+        }
+
+        #endregion
 
         #region CategoryDropdown
         [DataObjectMethod(DataObjectMethodType.Select)]
