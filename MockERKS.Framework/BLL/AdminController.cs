@@ -10,6 +10,7 @@ using System.ComponentModel;
 using MockERKS.Framework.Entities;
 using MockERKS.Framework.DAL;
 using MockERKS.Framework.Entities.POCOs;
+using MockERKS.Framework.Entities.DTO;
 #endregion
 
 namespace MockERKS.Framework.BLL
@@ -114,8 +115,9 @@ namespace MockERKS.Framework.BLL
         #endregion
 
         #region LookupAllFiles
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Site_File> ListAll_SiteFile()
+  
+      [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Site_File> siteFile_Get()
         {
             using (var context = new MockERKSDb())
             {
@@ -156,9 +158,34 @@ namespace MockERKS.Framework.BLL
         }
 
 
-  
+
 
         #endregion
+
+        //#region SitefileLookUPBYPOCOLIST
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        //public List<SiteFileDTO> Sitefile_List()
+        //{
+        //    using (var context = new MockERKSDb())
+        //    {
+        //        var results = from x in context.Site_File
+        //                      group x by x.File_ID into result
+        //                      select new SiteFileDTO
+        //                      {
+        //                          FileID = result.Key,
+
+        //                          FileList = (from y in result
+        //                                    select new AlbumRelease
+        //                                    {
+        //                                        Title = y.Title,
+        //                                        RYear = y.ReleaseYear,
+        //                                        Label = y.ReleaseLabel
+        //                                    }).ToList()
+        //                      };
+        //        return results.ToList();
+        //    }
+        //}
+        //#endregion
 
         #region List OF file types
         [DataObjectMethod(DataObjectMethodType.Select, false)]
