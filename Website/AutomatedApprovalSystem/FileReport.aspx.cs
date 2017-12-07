@@ -29,4 +29,9 @@ public partial class AutomatedApprovalSystem_FileReport : System.Web.UI.Page
     {
         Response.Redirect("ClientPage.aspx");
     }
+
+    protected void BacktoLookup_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Lookup.aspx");
+    }
 }

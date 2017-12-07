@@ -19,4 +19,9 @@ public partial class AutomatedApprovalSystem_OrganizationReport : System.Web.UI.
             Response.Redirect("~/Default.aspx");
         }
     }
+
+    protected void backtoLookup_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Lookup.aspx");
+    }
 }
