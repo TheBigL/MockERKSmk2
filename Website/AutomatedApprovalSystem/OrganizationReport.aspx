@@ -19,6 +19,10 @@
             </LocalReport>
         </rsweb:ReportViewer>
         
+        <br />
+
+        <asp:LinkButton ID="backtoLookup" runat="server" Text="Back to the Main Lookup page" OnClick="backtoLookup_Click"></asp:LinkButton>
+        
     </div>
 
 

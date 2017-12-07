@@ -42,8 +42,10 @@ All User roles can log in, but only the Website administrators can set the Roles
 
 Registering an Organization is simple. You'd need to enter the Organization ID, Name, Address, LCIN Code, and more.
 
+#Lookup and Reports
 
-
-
+Staff members can get retrive information regard the files, staff members (called Officers), organizations, and managers.
  
+#Lookup By ID
 
+Performs various lookup operations using a dropdown list

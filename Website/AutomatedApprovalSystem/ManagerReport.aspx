@@ -15,6 +15,6 @@
     </rsweb:ReportViewer>
     <asp:ObjectDataSource ID="ManagerDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupManager" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
-
+    <asp:LinkButton ID="BackToLookup" runat="server" Text="Back to the main Lookup Page" OnClick="BackToLookup_Click"></asp:LinkButton>
 
 </asp:Content>

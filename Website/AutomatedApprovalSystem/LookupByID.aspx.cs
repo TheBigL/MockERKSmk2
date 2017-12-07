@@ -46,7 +46,7 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
         else
         {
             MessageUserControl.TryRun(() => {
-                int officerID = OfficersDropdown.SelectedIndex;
+                int officerID = int.Parse(OfficersDropdown.SelectedValue);
                 string officerName = OfficersDropdown.SelectedValue;
 
                 StaffController sysmgr = new StaffController();
@@ -62,28 +62,7 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 
 
 
-    protected void OrganizationDropdown_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (OrganizationDropdown.SelectedIndex == 0)
-        {
-            MessageUserControl.ShowInfo("No Organization is picked");
-        }
 
-        else
-        {
-            MessageUserControl.TryRun(() => { int orgID = OrganizationDropdown.SelectedIndex;
-
-                string orgName = OrganizationDropdown.SelectedValue;
-
-                StaffController sysmgr = new StaffController();
-
-                sysmgr.LookupFileByOrganization(orgID);
-                FileByOrganizationGridView.DataBind();
-            }, "Organization Changed", "File records have been retrieved.");
-
-            
-        }
         
          
     }
-}

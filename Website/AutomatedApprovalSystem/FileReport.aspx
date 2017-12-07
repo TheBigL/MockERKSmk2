@@ -23,5 +23,7 @@
             <asp:Parameter Name ="currUser_Name" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
+
+    <asp:LinkButton ID="BacktoLookup" runat="server" Text="Back to the main lookup page" OnClick="BacktoLookup_Click"></asp:LinkButton>
 </asp:Content>
 
