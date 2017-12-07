@@ -34,104 +34,118 @@
                             </div>
                             <div class="col-md-12">
                           
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID" 
-                                    DataSourceID="SqlDataSource1" CellPadding="4" CssClass="active"  ForeColor="#333333" GridLines="None"
-                                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID"
+                                    DataSourceID="SqlDataSource1" CellPadding="3" CssClass="active"
+                                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                     <Columns>
                                         <asp:CommandField ShowEditButton="True"></asp:CommandField>
                                         <asp:TemplateField HeaderText="File ID" InsertVisible="False" SortExpression="File_ID">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Eval("File_ID") %>' ID="Label1"></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Eval("File_ID") %>' ID="Label1" Width="150"></asp:Label>
                                             </EditItemTemplate>
                                             <ItemTemplate>
                                                 <asp:Label runat="server" Text='<%# Bind("File_ID") %>' ID="Label1"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+
                                         <asp:TemplateField HeaderText="Security Classification ID" SortExpression="Security_Classification_ID">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
                                                 <asp:DropDownList ID="DropDownList1" runat="server"
-                                                     DataSourceID="SecurityClassODS" 
-                                                     DataTextField="securityClassificationName"
-                                                     DataValueField="securityClassificationID"
-                                                     selectedValue='<%# Bind("Security_Classification_ID") %>'></asp:DropDownList>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("Security_Classification_ID") %>' ID="Label2"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="File Status" SortExpression="File_Status">
-                                            <EditItemTemplate>
-                                                <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind("File_Status") %>'>
-                                                    <asp:ListItem >Open</asp:ListItem>
-                                                    <asp:ListItem >Closed</asp:ListItem>
+                                                    DataSourceID="SecurityClassODS"
+                                                    DataTextField="securityClassificationName"
+                                                    DataValueField="securityClassificationID"
+                                                    SelectedValue='<%# Bind("Security_Classification_ID") %>' Width="150">
                                                 </asp:DropDownList>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("File_Status") %>' ID="Label3"></asp:Label>
+
+                                                <asp:Label runat="server" Text='<%# Bind("Security_Classification_ID") %>' ID="Label2"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="File Status" ItemStyle-HorizontalAlign="Center" SortExpression="File_Status">
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind("File_Status") %>' Width="150">
+                                                    <asp:ListItem>Open</asp:ListItem>
+                                                    <asp:ListItem>Closed</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <itemstyle horizontalalign="Center"></itemstyle>
+
+                                                <asp:Label runat="server" Text='<%# Bind("File_Status") %>' ID="Label3" Width="150"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Closed Date" SortExpression="Closed_Date">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
-                                                <asp:TextBox runat="server" Text='<%# Bind("Closed_Date") %>' ID="TextBox3"></asp:TextBox>
+                                                <asp:TextBox runat="server" Text='<%# Bind("Closed_Date") %>' ID="TextBox3" Width="200"></asp:TextBox>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("Closed_Date") %>' ID="Label4"></asp:Label>
+                                                <itemstyle horizontalalign="Center"></itemstyle>
+                                                <asp:Label runat="server" Text='<%# Bind("Closed_Date") %>' ID="Label4"  Width="150"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="LINC Number" SortExpression="LINC_Number">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
                                                 <asp:TextBox runat="server" Text='<%# Bind("LINC_Number") %>' ID="TextBox4"></asp:TextBox>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="Label5"></asp:Label>
+                                                <itemstyle horizontalalign="Center"></itemstyle>
+                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="Label5" Width="150"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Organization ID" SortExpression="Organization_ID">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
-                                                <asp:label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox5"></asp:label>
+                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox5"></asp:Label>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label6"></asp:Label>
+                                                <itemstyle horizontalalign="Center"></itemstyle>
+                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label6" Width="150"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
                                     </Columns>
-                                    <EditRowStyle BackColor="#999999" />
-                                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
                                 </asp:GridView>
                                 
                                
                             </div>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MockERKSConnectionString %>'
-                                DeleteCommand="DELETE FROM [Site_File] WHERE [File_ID] = @original_File_ID"
-                                InsertCommand="INSERT INTO [Site_File] ([Security_Classification_ID], [File_Status], [Closed_Date], [LINC_Number], [Organization_ID]) VALUES (@Security_Classification_ID, @File_Status, @Closed_Date, @LINC_Number, @Organization_ID)"
-                                SelectCommand="SELECT [File_ID], [Security_Classification_ID], [File_Status], [Closed_Date], [LINC_Number], [Organization_ID] FROM [Site_File]" UpdateCommand="UPDATE [Site_File] SET [Security_Classification_ID] = @Security_Classification_ID, [File_Status] = @File_Status, [Closed_Date] = @Closed_Date, [LINC_Number] = @LINC_Number, [Organization_ID] = @Organization_ID WHERE [File_ID] = @original_File_ID" OldValuesParameterFormatString="original_{0}">
+                                DeleteCommand="DELETE FROM [Site_File] WHERE [File_ID] = @File_ID"
+                                InsertCommand="INSERT INTO [Site_File] ([Security_Classification_ID], [File_Status], [Closed_Date], [Organization_ID], [Type_ID], [LINC_Number]) VALUES (@Security_Classification_ID, @File_Status, @Closed_Date, @Organization_ID, @Type_ID, @LINC_Number)"
+                                SelectCommand="SELECT [File_ID], [Security_Classification_ID], [File_Status], [Closed_Date], [Organization_ID], [Type_ID], [LINC_Number] FROM [Site_File]"
+                                UpdateCommand="UPDATE [Site_File] SET [Security_Classification_ID] = @Security_Classification_ID, [File_Status] = @File_Status, [Closed_Date] = @Closed_Date, [Organization_ID] = @Organization_ID, [Type_ID] = @Type_ID, [LINC_Number] = @LINC_Number WHERE [File_ID] = @File_ID">
                                 <DeleteParameters>
-                                    <asp:Parameter Name="original_File_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
                                 </DeleteParameters>
                                 <InsertParameters>
                                     <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
                                     <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
-                                    <asp:Parameter Name="Closed_Date" DbType="Date"></asp:Parameter>
-                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                                    <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
                                     <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
                                 </InsertParameters>
                                 <UpdateParameters>
                                     <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
                                     <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
-                                    <asp:Parameter Name="Closed_Date" DbType="Date"></asp:Parameter>
-                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                                    <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
                                     <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="original_File_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                                    <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
                                 </UpdateParameters>
                             </asp:SqlDataSource>
 
@@ -177,182 +191,88 @@
                         <ContentTemplate>
                             <asp:Label ID="Label3" runat="server" Text="All Clients"></asp:Label>
                             <br />
-                            <asp:ListView ID="ClientListView" runat="server" DataKeyNames="Organization_ID" DataSourceID="ClientODS" InsertItemPosition="LastItem">
-                                <AlternatingItemTemplate>
-                                    <tr style="background-color: #FFFFFF; color: #284775;">
-                                        <td>
-                                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" class="btn btn-danger"/>
-                                            <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" class="btn btn-info"/>
-                                        </td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_ID") %>' runat="server" ID="Organization_IDLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Location_Code") %>' runat="server" ID="Location_CodeLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_Name") %>' runat="server" ID="Organization_NameLabel" /></td>
-                                        <td>
-                                            <asp:DropDownList ID="DescriptionDDl" runat="server"
-                                                 DataSourceID="DescriptionODS"
-                                                 DataTextField="Description" 
-                                                DataValueField="Description_ID"
-                                                selectedvalue='<%# Eval("Description_ID") %>'
-                                                     Width="250"></asp:DropDownList></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                     
-                                   
-                                    </tr>
-                                </AlternatingItemTemplate>
-                                <EditItemTemplate>
-                                    <tr style="background-color: #90EE90;">
-                                        <td>
-                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" class="btn btn-success"/>
-                                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" class="btn"/>
-                                        </td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Organization_ID") %>' runat="server" ID="Organization_IDTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Location_Code") %>' runat="server" ID="Location_CodeTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Organization_Name") %>' runat="server" ID="Organization_NameTextBox" /></td>
-                                        <td>
-                                            <asp:DropDownList ID="DescriptionDDl" runat="server"
-                                                 DataSourceID="DescriptionODS"
-                                                 DataTextField="Description" 
-                                                DataValueField="Description_ID"
-                                                selectedvalue='<%# Bind("Description_ID") %>'
-                                                     Width="250"></asp:DropDownList>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
-                                   
-                                       
-                                    </tr>
-                                </EditItemTemplate>
-                                <EmptyDataTemplate>
-                                    <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
-                                        <tr>
-                                            <td>No data was returned.</td>
-                                        </tr>
-                                    </table>
-                                </EmptyDataTemplate>
-                                <InsertItemTemplate>
-                                    <tr style="">
-                                        <td>
-                                            <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" class="btn btn-success"/>
-                                            <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" class="btn"/>
-                                        </td>
-                                        <td>
-                                            <asp:Label Text='<%# Bind("Organization_ID") %>' runat="server" ID="Organization_IDTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Location_Code") %>' runat="server" ID="Location_CodeTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Organization_Name") %>' runat="server" ID="Organization_NameTextBox" /></td>
-                                        <td>
-                                            <asp:DropDownList ID="DescriptionDDl" runat="server"
-                                                 DataSourceID="DescriptionODS"
-                                                 DataTextField="Description" 
-                                                DataValueField="Description_ID"
-                                                selectedvalue='<%# Bind("Description_ID") %>'
-                                                     Width="250"></asp:DropDownList>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
-                                        <td>
-                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
-                                       
-                                       
-                                       
-                                    </tr>
-                                </InsertItemTemplate>
-                                <ItemTemplate>
-                                    <tr style="background-color: #E0FFFF; color: #333333;">
-                                        <td>
-                                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" class="btn btn-danger" />
-                                            <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" class="btn btn-info"/>
-                                        </td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_ID") %>' runat="server" ID="Organization_IDLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Location_Code") %>' runat="server" ID="Location_CodeLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_Name") %>' runat="server" ID="Organization_NameLabel" /></td>
-                                        <td>
-                                              <asp:DropDownList ID="DescriptionDDl" runat="server"
-                                                 DataSourceID="DescriptionODS"
-                                                 DataTextField="Description" 
-                                                DataValueField="Description_ID"
-                                                selectedvalue='<%# Bind("Description_ID") %>'
-                                                     Width="250"></asp:DropDownList></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                                     
-                                   
-                                    </tr>
-                                </ItemTemplate>
-                                <LayoutTemplate>
-                                    <table runat="server">
-                                        <tr runat="server">
-                                            <td runat="server">
-                                                <table runat="server" id="itemPlaceholderContainer" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;" border="1">
-                                                    <tr runat="server" style="background-color: #E0FFFF; color: #333333;">
-                                                        <th runat="server"></th>
-                                                        <th runat="server">Organization_ID</th>
-                                                        <th runat="server">Location_Code</th>
-                                                        <th runat="server">Organization_Name</th>
-                                                        <th runat="server">Description_ID</th>
-                                                        <th runat="server">Phone</th>
-                                                        <th runat="server">Email</th>
-                                                        
-                                                        
-                                                    </tr>
-                                                    <tr runat="server" id="itemPlaceholder"></tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr runat="server">
-                                            <td runat="server" style="text-align: center; background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF">
-                                                <asp:DataPager runat="server" ID="DataPager3">
-                                                    <Fields>
-                                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
-                                                    </Fields>
-                                                </asp:DataPager>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </LayoutTemplate>
-                                <SelectedItemTemplate>
-                                    <tr style="background-color: #E2DED6; font-weight: bold; color: #333333;">
-                                        <td>
-                                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" class="btn btn-danger" />
-                                            <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
-                                        </td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_ID") %>' runat="server" ID="Organization_IDLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Location_Code") %>' runat="server" ID="Location_CodeLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Organization_Name") %>' runat="server" ID="Organization_NameLabel" /></td>
-                                        <td>
-                                              <asp:DropDownList ID="DescriptionDDl" runat="server"
-                                                 DataSourceID="DescriptionODS"
-                                                 DataTextField="Description" 
-                                                DataValueField="Description_ID"
-                                                selectedvalue='<%# Bind("Description_ID") %>'
-                                                     Width="250"></asp:DropDownList></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
-                                        <td>
-                                            <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                                        
-                                       
-                                    </tr>
-                                </SelectedItemTemplate>
-                            </asp:ListView>
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ClientODS" DataKeyNames="Organization_ID" AllowPaging="True"
+                                 BackColor="White" BorderColor="#CCCCCC"
+                                 BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                                <Columns>
+                                    <asp:CommandField ShowEditButton="True"></asp:CommandField>
+                                    <asp:TemplateField HeaderText="Organization_ID" SortExpression="Organization_ID">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox1"></asp:Label>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label1"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Location_Code" SortExpression="Location_Code">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Location_Code") %>' ID="TextBox2"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Location_Code") %>' ID="Label2"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Organization_Name" SortExpression="Organization_Name">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Organization_Name") %>' ID="TextBox3"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Organization_Name") %>' ID="Label3"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Description_ID" SortExpression="Description_ID">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Description_ID") %>' ID="TextBox4"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Description_ID") %>' ID="Label4"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Phone" SortExpression="Phone">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Phone") %>' ID="TextBox5"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Phone") %>' ID="Label5"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Email") %>' ID="TextBox6"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Email") %>' ID="Label6"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:BoundField DataField="User_Name" HeaderText="User_Name" SortExpression="User_Name"></asp:BoundField>
+                                </Columns>
+                                <FooterStyle BackColor="White" ForeColor="#000066"></FooterStyle>
+
+                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                <PagerStyle HorizontalAlign="Left" BackColor="White" ForeColor="#000066"></PagerStyle>
+
+                                <RowStyle ForeColor="#000066"></RowStyle>
+
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                                <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+
+                                <SortedAscendingHeaderStyle BackColor="#007DBB"></SortedAscendingHeaderStyle>
+
+                                <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
+
+                                <SortedDescendingHeaderStyle BackColor="#00547E"></SortedDescendingHeaderStyle>
+                            </asp:GridView>
                           
                             <br />
 
@@ -362,11 +282,11 @@
 
 
                 </div>
-                <asp:ObjectDataSource ID="ClientODS" runat="server" DataObjectTypeName="MockERKS.Framework.Entities.Organization" 
-                    DeleteMethod="Client_Delete" InsertMethod="Client_Add" 
-                    OldValuesParameterFormatString="original_{0}" 
-                    SelectMethod="ListAll_Organizations" 
-                    TypeName="MockERKS.Framework.BLL.AdminController" 
+                <asp:ObjectDataSource ID="ClientODS" runat="server" DataObjectTypeName="MockERKS.Framework.Entities.Organization"
+                    DeleteMethod="Client_Delete"
+                    OldValuesParameterFormatString="original_{0}"
+                    SelectMethod="ListAll_Organizations"
+                    TypeName="MockERKS.Framework.BLL.AdminController"
                     UpdateMethod="Client_Update">
 
                 </asp:ObjectDataSource>
@@ -403,8 +323,7 @@
                                             <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                                        <%--<td>
-                                            <asp:Label Text='<%# Eval("Record_Details") %>' runat="server" ID="Record_DetailsLabel" /></td>--%>
+                                    
                                     </tr>
                                 </AlternatingItemTemplate>
                                 <EditItemTemplate>
@@ -420,11 +339,12 @@
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
                                         <td>
-                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" />
+
+                                        </td>
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
-                                        <%--<td>
-                                            <asp:TextBox Text='<%# Bind("Record_Details") %>' runat="server" ID="Record_DetailsTextBox" /></td>--%>
+                                     
                                     </tr>
                                 </EditItemTemplate>
                                 <EmptyDataTemplate>
@@ -450,8 +370,7 @@
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
-                                  <%--      <td>
-                                            <asp:TextBox Text='<%# Bind("Record_Details") %>' runat="server" ID="Record_DetailsTextBox" /></td>--%>
+                                 
                                     </tr>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
@@ -470,8 +389,7 @@
                                             <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                                       <%-- <td>
-                                            <asp:Label Text='<%# Eval("Record_Details") %>' runat="server" ID="Record_DetailsLabel" /></td>--%>
+                                
                                     </tr>
                                 </ItemTemplate>
                                 <LayoutTemplate>
@@ -519,13 +437,12 @@
                                             <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Email") %>' runat="server" ID="EmailLabel" /></td>
-                                       <%-- <td>
-                                            <asp:Label Text='<%# Eval("Record_Details") %>' runat="server" ID="Record_DetailsLabel" /></td>--%>
+                                      
                                     </tr>
                                 </SelectedItemTemplate>
                             </asp:ListView>
                             <br />
-                            <asp:Button ID="SearchEmployeeByID" runat="server" Text="Search Employee By ID" />
+                            
 
 
                         </ContentTemplate>
