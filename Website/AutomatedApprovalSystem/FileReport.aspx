@@ -6,7 +6,8 @@
 
     <br />
     <br />
-    <button type="button" class="btn" id="cancel" onclick="window.history.back()">Back</button>
+    <%--<button type="button" class="btn" id="cancel" onclick="window.history.back()">Back</button>--%>
+    <asp:Button CssClass="btn" ID="Back" runat="server" Text="Back" OnClick="Back_Click" />
     <br />
     <br />
 
@@ -17,6 +18,10 @@
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>
-    <asp:ObjectDataSource ID="ODSFileReport" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetFileReport" TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODSFileReport" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetFileReport" TypeName="MockERKS.Framework.BLL.ClientController" OnSelecting="ODSFileReport_Selecting">
+        <SelectParameters>
+            <asp:Parameter Name ="currUser_Name" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>
 

@@ -119,12 +119,12 @@ namespace MockERKS.Framework.BLL
 
         /*  Author: Wenyu */
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<CreatedFile> ListFilebyClient (/*String currOrganization_Name*/)
+        public List<CreatedFile> ListFilebyClient (String currUser_Name)
         {
             using (var context = new MockERKSDb())
             {
                 var files = from file in context.Site_File
-                            //where file.Organization.Organization_Name.Trim().Equals(currOrganization_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
+                            where file.Organization.User_Name.Trim().Equals(currUser_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
                             select new CreatedFile
                             {
                                 fileID = file.File_ID,
@@ -132,18 +132,19 @@ namespace MockERKS.Framework.BLL
                                 categoryName = file.Category.Category_Name,
                                 operationName = file.Operation.Operation_Name
                             };
-
                 return files.ToList();
             }
         }
 
         /*  Author: Wenyu */
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<FileReport> GetFileReport()
+        public List<FileReport> GetFileReport(String currUser_Name)
         {
+            System.Diagnostics.Debug.WriteLine("xx" + currUser_Name);
             using (MockERKSDb context = new MockERKSDb())
             {
                 var results = from f in context.Site_File
+                              where f.Organization.User_Name.Trim().Equals(currUser_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
                               select new FileReport
                               {
                                   fileID = f.File_ID,

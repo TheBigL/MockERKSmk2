@@ -67,43 +67,20 @@ public partial class WebPages_FileForm : System.Web.UI.Page
     {
         if (IsValid)
         {
-            //IQueryable<TempOrg> orgs;
-            //List<TempOrg> norgs;
-            //TempOrg currTempOrg = new TempOrg();
-            //Organization currOrg = new Organization();
+            List<Organization> orgs;
 
-            //using (var context = new MockERKSDb())
-            //{
-            //    orgs = from org in context.Organizations
-            //               //where org.Organization_Name.Trim().Equals(User.Identity.Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
-            //               select new TempOrg
-            //               {
-            //                   Organization_ID = org.Organization_ID,
-            //                   Organization_Name = org.Organization_Name,
-            //                   Phone = org.Phone,
-            //                   Email = org.Email
-            //               };
-            //    currTempOrg = orgs.FirstOrDefault();
-            //    norgs = orgs.ToList();
-            //}
-
-            //foreach (TempOrg norg in norgs){
-            //    System.Diagnostics.Debug.WriteLine(norg.Organization_Name);
-            //}
-            //if (currTempOrg == null)
-            //    System.Diagnostics.Debug.WriteLine(User.Identity.Name.Trim());
-            //{
-            //    currOrg.Organization_ID = currTempOrg.Organization_ID;
-            //    currOrg.Organization_Name = currTempOrg.Organization_Name;
-            //    currOrg.Phone = currTempOrg.Phone;
-            //    currOrg.Email = currTempOrg.Email;
-            //}
+            using (var context = new MockERKSDb())
+            {
+                orgs = (from org in context.Organizations
+                       where org.User_Name.Trim().Equals(User.Identity.Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
+                       select org).ToList();
+            }
 
             MessageUserControl.TryRun(() =>
             {
                 FileController sysmgr = new FileController();
                 Site_File newSiteFile = new Site_File();
-                //newSiteFile.Organization = currOrg;
+                newSiteFile.Organization = orgs.FirstOrDefault();
                 int i;
 
 
@@ -161,12 +138,18 @@ public partial class WebPages_FileForm : System.Web.UI.Page
 
                 sysmgr.File_Add(newSiteFile);
             }, "Add File", "File has been successfuly added to the database");
-
+            
+            Response.Redirect("ClientPage.aspx");
         }
     }
 
-    //protected void CancelActivity_Click(object sender, EventArgs e)
-    //{
-    //    Response.Redirect("ClientPage.aspx");
-    //}
+    protected void CancelActivity_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ClientPage.aspx");
+    }
+
+    protected void CheckBoxValidation(object sender, ServerValidateEventArgs e)
+    {
+        e.IsValid = Check.Checked;
+    }
 }
