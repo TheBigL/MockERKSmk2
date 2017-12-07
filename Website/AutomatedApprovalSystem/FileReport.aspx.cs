@@ -19,4 +19,14 @@ public partial class AutomatedApprovalSystem_FileReport : System.Web.UI.Page
             Response.Redirect("~/Default.aspx");
         }
     }
+
+    protected void ODSFileReport_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        e.InputParameters["currUser_Name"] = User.Identity.Name;
+    }
+
+    protected void Back_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ClientPage.aspx");
+    }
 }

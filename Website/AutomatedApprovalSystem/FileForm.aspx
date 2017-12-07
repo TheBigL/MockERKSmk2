@@ -16,9 +16,12 @@
             <asp:RequiredFieldValidator ID="RequiredPlanNumber" runat="server" ErrorMessage="Plan Number is Required."
                 ControlToValidate="Plan" SetFocusOnError="true" Display="None">
             </asp:RequiredFieldValidator>
-            <%--<asp:CustomValidator ID="Custom1" CssClass="errorTop" ClientValidationFunction="CheckBoxValidation" 
-                runat="server" ErrorMessage="You must check this box to proceed" ValidationGroup="AddMisc">
-            </asp:CustomValidator>--%>
+            <asp:RequiredFieldValidator ID="RequiredOperationName" runat="server" ErrorMessage="Operation Name is Required."
+                ControlToValidate="OperationName" SetFocusOnError="true" Display="None">
+            </asp:RequiredFieldValidator>
+            <asp:CustomValidator ID="Custom" CssClass="errorTop" OnServerValidate="CheckBoxValidation"
+                runat="server" ErrorMessage="You must check this box to proceed">
+            </asp:CustomValidator>
             <%--<asp:RegularExpressionValidator ID="RegularExpressionPlanNumber" runat="server" Display="None"
                 ControlToValidate="Plan" ValidationExpression="^[A-Z\d]{7}$"
                 SetFocusOnError="true" ForeColor="#a94442" ErrorMessage="Invalid Plan Number. Plan number can be alpha numeric (2477KS) or numeric (9624282) - maximum 7 digits, no spaces.">
@@ -70,11 +73,11 @@
                 <!-- <asp:Label ID="Label6" runat="server" Text="Site Location"></asp:Label><br /> -->
                 <h5>Site Location</h5>
 
-                <asp:Label ID="Label12" runat="server" Text="Location:" AssociatedControlID="Location"></asp:Label>
                 <%--<asp:DropDownList ID="Location" runat="server" DataSourceID="LocationODS" DataTextField="location" DataValueField="locationCode"></asp:DropDownList>--%>
                 <%--<asp:ObjectDataSource runat="server" ID="LocationODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownLocation" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>--%>
+                <asp:Label ID="Label12" runat="server" Text="Location:" AssociatedControlID="Location"></asp:Label>
                 <asp:DropDownList ID="Location" runat="server">
-                    <asp:ListItem Text="<None>" Value="<None>"></asp:ListItem>
+                    <asp:ListItem Text="<None>" Value="None"></asp:ListItem>
                     <asp:ListItem Text="Edmonton" Value="Edmonton"></asp:ListItem>
                     <asp:ListItem Text="Swan Hill" Value="Swan Hill"></asp:ListItem>
                     <asp:ListItem Text="Fort Saskatchewan" Value="Fort Saskatchewan"></asp:ListItem>
@@ -119,11 +122,11 @@
                 <asp:ObjectDataSource runat="server" ID="QuarterSectionODS" OldValuesParameterFormatString="original_{0}" SelectMethod="DropDownQuarterSection" TypeName="MockERKS.Framework.BLL.FileController"></asp:ObjectDataSource>--%>
                 <asp:Label ID="QuarterS" runat="server" Text="Quarter Section #:" AssociatedControlID="QuarterSection"></asp:Label>
                 <asp:DropDownList ID="QuarterSection" runat="server">
-                    <asp:ListItem Text="<None>" Value="<None>"></asp:ListItem>
-                    <asp:ListItem Text="NW" Value="NW"></asp:ListItem>
-                    <asp:ListItem Text="NE" Value="NE"></asp:ListItem>
-                    <asp:ListItem Text="SW" Value="SW"></asp:ListItem>
-                    <asp:ListItem Text="SE" Value="SE"></asp:ListItem>
+                    <asp:ListItem Value="None"><None></asp:ListItem>
+                    <asp:ListItem Value="NW">NW</asp:ListItem>
+                    <asp:ListItem Value="NE">NE</asp:ListItem>
+                    <asp:ListItem Value="SW">SW</asp:ListItem>
+                    <asp:ListItem Value="SE">SE</asp:ListItem>
                 </asp:DropDownList>
                 <br />
 
@@ -163,15 +166,15 @@
                 <br />
                 <br />
 
-                <%--<asp:CheckBox ID="Check" runat="server" Text="I hereby certify that the information above is true and accurate" />
+                <asp:CheckBox ID="Check" runat="server" Text="I hereby certify that the information above is true and accurate" />
                 <br />
-                <br />--%>
+                <br />
 
                 <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
                 <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" OnClick="ResetForm_Click" />
-                <button type="button" class="btn" id="cancel" onclick="window.history.back()">Cancel</button>
+                <%--<button class="btn" id="cancel" onclick="window.history.back()">Cancel</button>--%>
                 <%--<asp:Button CssClass="btn" ID="Update" runat="server" Text="Update" OnClick="Update_Click" />--%>
-                <%--<asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" CausesValidation="false" />--%>
+                <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" CausesValidation="false" />
                 <%--<asp:Button ID="AddFile" runat="server" CssClass="btn" Text="Add File" OnClick="AddFile_Click" />--%>
 
 
