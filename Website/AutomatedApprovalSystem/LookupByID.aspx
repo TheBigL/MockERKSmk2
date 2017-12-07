@@ -12,7 +12,7 @@
 
 
         <div id="Organizations" class="tab-pane fade">
-            <asp:DropDownList ID="OrganizationDropdown" runat="server" DataSourceID="OrganizationDropdownDS" DataTextField="organizationName" DataValueField="organizationID"></asp:DropDownList>
+            <asp:DropDownList ID="OrganizationDropdown" runat="server" DataSourceID="OrganizationDropdownDS" DataTextField="organizationName" DataValueField="organizationID" OnSelectedIndexChanged="OrganizationDropdown_SelectedIndexChanged"></asp:DropDownList>
 
             <asp:GridView ID="FileByOrganizationGridView" runat="server" AutoGenerateColumns="False" DataSourceID="FileByOrganizationIDDS">
                 <Columns>
