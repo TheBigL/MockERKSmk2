@@ -10,17 +10,25 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+       resetDropdownValues("0");
     }
 
     public void resetDropdownValues(string selectedValue)
     {
         OfficersDropdown.DataBind();
+        OrganizationDropdown.DataBind();
         OfficersDropdown.Items.Insert(0, "[Select an Officer]");
+        OrganizationDropdown.Items.Insert(0, "[Select an Organization]");
         if(OfficersDropdown.SelectedValue.Contains(selectedValue))
         {
             OfficersDropdown.SelectedIndex = 0;
         }
+
+        if (OrganizationDropdown.SelectedValue.Contains(selectedValue))
+        {
+            OfficersDropdown.SelectedIndex = 0;
+        }
+
     }
 
     public void GetRecordDetailInfo()
@@ -50,7 +58,7 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 
     protected void OfficerDropdownReset_Click(object sender, EventArgs e)
     {
-        resetDropdownValues(OfficersDropdown.SelectedValue);
-        resetDropdownValues(OrganizationDropdown.SelectedValue);
+        resetDropdownValues(OrganizationDropdown.SelectedValue.ToString());
+        resetDropdownValues(OfficersDropdown.SelectedValue.ToString());
     }
 }
