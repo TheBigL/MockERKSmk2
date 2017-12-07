@@ -163,7 +163,7 @@
         </asp:ListView>
         <br />
 
-        <asp:LinkButton ID="OrganizationLinkReport" runat="server" OnClick="OrganizationLinkReport_Click"></asp:LinkButton>
+        <asp:LinkButton ID="OrganizationLinkReport" runat="server" OnClick="OrganizationLinkReport_Click">Organization Report</asp:LinkButton>
 
     </div>
 
