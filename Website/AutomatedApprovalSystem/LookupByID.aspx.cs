@@ -10,7 +10,15 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        if (!Request.IsAuthenticated)
+        {
+            Response.Redirect("~/Account/Login.aspx");
+        }
+
+        else if (User.IsInRole("Client"))
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 
    
@@ -31,27 +39,51 @@ public partial class AutomatedApprovalSystem_LookupByID : System.Web.UI.Page
 
     protected void OfficersDropdown_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int officerID = OfficersDropdown.SelectedIndex;
-        string officerName = OfficersDropdown.SelectedValue;
+        if(OfficersDropdown.SelectedIndex == 0)
+        {
+            MessageUserControl.ShowInfo("Pick an Officer");
+        }
+        else
+        {
+            MessageUserControl.TryRun(() => {
+                int officerID = OfficersDropdown.SelectedIndex;
+                string officerName = OfficersDropdown.SelectedValue;
 
-        StaffController sysmgr = new StaffController();
+                StaffController sysmgr = new StaffController();
 
-        sysmgr.RDSummaryByOfficerID(officerID);
-        RecordDetailsByEmployeeDS.DataBind();
+                sysmgr.RDSummaryByOfficerID(officerID);
+                RecordDetailsByEmployeeDS.DataBind();
+            }, "Officer Changed", "The Record details were retrieved.");
+        }
+
+       
+        
     }
 
 
 
     protected void OrganizationDropdown_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int orgID = OrganizationDropdown.SelectedIndex;
+        if (OrganizationDropdown.SelectedIndex == 0)
+        {
+            MessageUserControl.ShowInfo("No Organization is picked");
+        }
 
-        string orgName = OrganizationDropdown.SelectedValue;
+        else
+        {
+            MessageUserControl.TryRun(() => { int orgID = OrganizationDropdown.SelectedIndex;
 
-        StaffController sysmgr = new StaffController();
+                string orgName = OrganizationDropdown.SelectedValue;
 
-        sysmgr.LookupFileByOrganization(orgID);
-        FileByOrganizationGridView.DataBind();
+                StaffController sysmgr = new StaffController();
+
+                sysmgr.LookupFileByOrganization(orgID);
+                FileByOrganizationGridView.DataBind();
+            }, "Organization Changed", "File records have been retrieved.");
+
+            
+        }
+        
          
     }
 }

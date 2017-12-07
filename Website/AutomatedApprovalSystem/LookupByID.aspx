@@ -1,9 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LookupByID.aspx.cs" Inherits="AutomatedApprovalSystem_LookupByID" MasterPageFile="~/Site.master" %>
 
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 <asp:content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <div id="row">
         <h2>
             Look up By ID</h2>
+
+        <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
         <ul class="nav nav-tabs">
             <li ><a href="#Organizations" data-toggle="tab">Organizations</a></li>
