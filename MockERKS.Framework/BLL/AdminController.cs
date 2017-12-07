@@ -187,6 +187,18 @@ namespace MockERKS.Framework.BLL
         //}
         //#endregion
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Site_File> Site_FileGetById(int fileId)
+        {
+            using (var context = new MockERKSDb())
+            {
+                var results = from x in context.Site_File
+                              where x.File_ID==fileId
+                              select x;
+                return results.ToList();
+            }
+        }
+
         #region List OF file types
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<File_Type> File_TypeList()

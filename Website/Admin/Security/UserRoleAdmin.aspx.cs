@@ -60,4 +60,9 @@ public partial class Admin_Security_UserRoleAdmin : System.Web.UI.Page
 
        
     }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Admin_File_Management.aspx");
+    }
 }

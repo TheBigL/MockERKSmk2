@@ -212,6 +212,12 @@
                    </asp:UpdatePanel>
                  </div>
                </div>
+            <div class="container">
+                <div class="row">
+                    <p>To Manage File,Employees Or Clients Click the link below  </p>
+            <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" runat="server">Management</asp:LinkButton>
+                </div>
+                </div>
         </div>
      </div>  
   

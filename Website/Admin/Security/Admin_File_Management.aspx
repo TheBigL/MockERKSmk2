@@ -20,7 +20,6 @@
             </script>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#FileLookup" data-toggle="tab">File Lookup</a></li>
-                 <li><a href="#Maintain" data-toggle="tab">File Maintain</a></li>
                 <li><a href="#Client" data-toggle="tab">Client Management</a></li>
                 <li><a href="#Employee" data-toggle="tab">Employee Management</a></li>
             </ul>
@@ -35,78 +34,106 @@
                             </div>
                             <div class="col-md-12">
                           
-                                <asp:Button ID="Button1" runat="server" OnClick="Search_Click" Text="Search All Files"  CausesValidation="False" /> <br />
-                                <br />
-                                <br />
-                                <br />
-                                
-                                
-                                
-                            
-
-                            
-                                 <asp:GridView ID="FileList" runat="server"
-                                     AutoGenerateColumns="False" 
-                                     OnSelectedIndexChanged="FileList_SelectedIndexChanged">
-                                     <Columns>
-                                         <asp:CommandField ShowSelectButton="True"></asp:CommandField>
-                                         <asp:TemplateField HeaderText="File ID">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID" 
+                                    DataSourceID="SqlDataSource1" CellPadding="4" CssClass="active"  ForeColor="#333333" GridLines="None"
+                                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                    <Columns>
+                                        <asp:CommandField ShowEditButton="True"></asp:CommandField>
+                                        <asp:TemplateField HeaderText="File ID" InsertVisible="False" SortExpression="File_ID">
+                                            <EditItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Eval("File_ID") %>' ID="Label1"></asp:Label>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="FileID" runat="server" Text='<%# Eval("File_ID") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("File_ID") %>' ID="Label1"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                         <asp:TemplateField HeaderText="Type ID">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <asp:TemplateField HeaderText="Security Classification ID" SortExpression="Security_Classification_ID">
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="DropDownList1" runat="server"
+                                                     DataSourceID="SecurityClassODS" 
+                                                     DataTextField="securityClassificationName"
+                                                     DataValueField="securityClassificationID"
+                                                     selectedValue='<%# Bind("Security_Classification_ID") %>'></asp:DropDownList>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="TypeID" runat="server" Text='<%# Eval("Type_ID") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("Security_Classification_ID") %>' ID="Label2"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                         <asp:TemplateField HeaderText="Organization ID">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <asp:TemplateField HeaderText="File Status" SortExpression="File_Status">
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind("File_Status") %>'>
+                                                    <asp:ListItem >Open</asp:ListItem>
+                                                    <asp:ListItem >Closed</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="OrganizationID" runat="server" Text='<%# Eval("Organization_ID") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("File_Status") %>' ID="Label3"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        
-                                         <asp:TemplateField HeaderText="LINC">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <asp:TemplateField HeaderText="Closed Date" SortExpression="Closed_Date">
+                                            <EditItemTemplate>
+                                                <asp:TextBox runat="server" Text='<%# Bind("Closed_Date") %>' ID="TextBox3"></asp:TextBox>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="Linc" runat="server" Text='<%# Eval("LINC_Number") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("Closed_Date") %>' ID="Label4"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                         <asp:TemplateField HeaderText="Security Classification ID">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <asp:TemplateField HeaderText="LINC Number" SortExpression="LINC_Number">
+                                            <EditItemTemplate>
+                                                <asp:TextBox runat="server" Text='<%# Bind("LINC_Number") %>' ID="TextBox4"></asp:TextBox>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="SecurityClassificationID" CssClass="" runat="server" Text='<%# Eval("Security_Classification_ID") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="Label5"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        
-                                         <asp:TemplateField HeaderText="Operation ID">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        <asp:TemplateField HeaderText="Organization ID" SortExpression="Organization_ID">
+                                            <EditItemTemplate>
+                                                <asp:label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox5"></asp:label>
+                                            </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label Id="OperationID" runat="server" Text='<%# Eval("Operation_ID") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                         <asp:TemplateField HeaderText="File Status">
-                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <ItemTemplate>
-                                                <asp:Label Id="FileStatus" runat="server" Text='<%# Eval("File_Status") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                         <asp:TemplateField HeaderText="Closed Date" ItemStyle-Width="200px">
-                                            <ItemTemplate>
-                                                <asp:Label Id="closedDate" runat="server" Text='<%# Eval("Closed_Date") %>'></asp:Label>
+                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label6"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
-                                      </Columns>
+                                    </Columns>
+                                    <EditRowStyle BackColor="#999999" />
+                                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                 </asp:GridView>
-                                <asp:Label ID="Label1" runat="server" Text="Selected File:"></asp:Label>
-                                <asp:Label ID="SelectedTitle" runat="server"></asp:Label>
-                                <button type="button" class="btn" onclick="nextButton('#Maintain')">Next</button><br />
+                                
+                               
                             </div>
-                           
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MockERKSConnectionString %>'
+                                DeleteCommand="DELETE FROM [Site_File] WHERE [File_ID] = @original_File_ID"
+                                InsertCommand="INSERT INTO [Site_File] ([Security_Classification_ID], [File_Status], [Closed_Date], [LINC_Number], [Organization_ID]) VALUES (@Security_Classification_ID, @File_Status, @Closed_Date, @LINC_Number, @Organization_ID)"
+                                SelectCommand="SELECT [File_ID], [Security_Classification_ID], [File_Status], [Closed_Date], [LINC_Number], [Organization_ID] FROM [Site_File]" UpdateCommand="UPDATE [Site_File] SET [Security_Classification_ID] = @Security_Classification_ID, [File_Status] = @File_Status, [Closed_Date] = @Closed_Date, [LINC_Number] = @LINC_Number, [Organization_ID] = @Organization_ID WHERE [File_ID] = @original_File_ID" OldValuesParameterFormatString="original_{0}">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="original_File_ID" Type="Int32"></asp:Parameter>
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
+                                    <asp:Parameter Name="Closed_Date" DbType="Date"></asp:Parameter>
+                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                                    <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                                </InsertParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
+                                    <asp:Parameter Name="Closed_Date" DbType="Date"></asp:Parameter>
+                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                                    <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                                    <asp:Parameter Name="original_File_ID" Type="Int32"></asp:Parameter>
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
 
                            <br />
                            
@@ -119,76 +146,7 @@
                   
                 <br />
 
-<%------------------Maintain Tab--------------------------------------------------------------------------------------------------------------------------------------%>
-              
-                
-                  <div class="tab-pane" id="Maintain">
-                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                        <ContentTemplate>
-                            <uc1:MessageUserControl runat="server" ID="MessageUserControl2" />
-                            <asp:ValidationSummary ID="ContrestValidationSummary" runat="server" BackColor="#ff99cc"
-                                HeaderText="Please correct the following parts of the form before submitting:<br/>" />
-                             
-                             <fieldset class="form-horizontal">
-                                 <asp:Label ID="Label" runat="server" Text="File ID:"
-                                     AssociatedControlID="mFileID"></asp:Label>
-                                 <asp:Label ID="mFileID" runat="server" ></asp:Label><br />
-                                 <%--TypeDDL--%>
-                                 <asp:Label ID="Label4" runat="server" Text="Type ID:"
-                                     AssociatedControlID="mTypeID"></asp:Label>
-                                 <asp:DropDownList ID="mTypeID"
-                                     runat="server" DataSourceID="FileTypeODS"
-                                     DataTextField="typeDescription"
-                                     DataValueField="typeID">
-                                 </asp:DropDownList><br />
 
-                                 <asp:Label ID="Label6" runat="server" Text="Organization ID:"
-                                     AssociatedControlID="mOrganizationID"></asp:Label>
-                                 <asp:Label ID="mOrganizationID" runat="server" ></asp:Label><br />
-                                 <asp:Label ID="Label8" runat="server" Text="Operation ID:"
-                                     AssociatedControlID="mOperationID"></asp:Label>
-                                 <asp:Label ID="mOperationID" runat="server" ></asp:Label><br />
-
-                                 <asp:Label ID="Label5" runat="server" Text="LINC Number:"
-                                     AssociatedControlID="mLINCNumber"></asp:Label>
-                                 <asp:Label ID="mLINCNumber" runat="server" ></asp:Label><br />
-                                 <%--securityDDL--%>
-                                 <asp:Label ID="Label7" runat="server" Text="Security ID:"
-                                     AssociatedControlID="mSecurityID"></asp:Label>
-                                 <asp:DropDownList ID="mSecurityID"
-                                     runat="server"
-                                     DataSourceID="SecurityClassODS"
-                                     DataTextField="securityClassificationName"
-                                     DataValueField="securityClassificationID">
-                                 </asp:DropDownList><br />
-                                 <%--FileStatus--%>
-                                  <asp:Label ID="Label9" runat="server" Text="File Status:"
-                                     AssociatedControlID="mFileStatus"></asp:Label>
-                                 <asp:DropDownList ID="mFileStatus" runat="server">
-                                     <asp:ListItem>Open</asp:ListItem>
-                                     <asp:ListItem>Close</asp:ListItem>
-                                 </asp:DropDownList><br />
-
-                                  <asp:Label ID="Label10" runat="server" Text="Closed Date:"
-                                     AssociatedControlID="mClosedDate"></asp:Label>
-                                 <asp:Label ID="mClosedDate" runat="server" ></asp:Label><br />
-
-                                 </fieldset>
-                                 
-
-                             <br/>
-                               
-                                <asp:Button cssclass="btn btn-success" ID="AddAlbum" runat="server" OnClick="AddFile_Click" Text="Add"></asp:Button>
-                                <asp:Button cssclass="btn btn-info" ID="UpdateAlbum" runat="server" OnClick="UpdateFile_Click" Text="Update"></asp:Button>
-                                <asp:Button cssclass="btn btn-danger" ID="DeleteAlbum" runat="server" OnClick="DeleteFile_Click" Text="Delete" CausesValidation="false"></asp:Button>
-                                <asp:Button cssclass="btn" ID="Clear" runat="server" OnClick="Clear_Click" Text="Clear" CausesValidation="false"></asp:Button>
-                                <button type="button"  class="btn" onclick="nextButton('#FileLookup')" >Back</button><br />
-                            <br/>
-
-
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
                 <%--file type ODS--%>
                 <asp:ObjectDataSource ID="FileTypeODS" 
                     runat="server" 
@@ -205,6 +163,12 @@
                     SelectMethod="DropDownSecurityClassification" 
                     TypeName="MockERKS.Framework.BLL.FileController">
 
+                </asp:ObjectDataSource>
+
+                <asp:ObjectDataSource ID="SiteFileODs" runat="server" 
+                    OldValuesParameterFormatString="original_{0}"
+                     SelectMethod="siteFile_Get" 
+                    TypeName="MockERKS.Framework.BLL.AdminController">
                 </asp:ObjectDataSource>
               
  <%-- //Client Management-------------------------------------------------------------------------------------------------%>
