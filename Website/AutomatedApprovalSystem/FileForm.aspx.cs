@@ -139,6 +139,20 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                 newSiteFile.Closed_Date = ClosedDate.SelectedDate;
 
                 sysmgr.File_Add(newSiteFile);
+
+                var newPDF = new iTextSharp.text.Document();
+
+                /*
+                 * PDF File Creation and Upload
+                 * Author Leban Mohamed
+                 * 
+                 * 
+                 * */
+                newPDF.AddAuthor(newSiteFile.Organization.Organization_Name);
+                newPDF.AddCreationDate();
+                newPDF.AddTitle("File regarding the project" + newSiteFile.Operation.Operation_Name);
+
+
             }, "Add File", "File has been successfuly added to the database");
             
             Response.Redirect("ClientPage.aspx");
