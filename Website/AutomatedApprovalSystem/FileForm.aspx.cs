@@ -144,13 +144,15 @@ public partial class WebPages_FileForm : System.Web.UI.Page
 
                 /*
                  * PDF File Creation and Upload
-                 * Author Leban Mohamed
+                 * Author: Leban Mohamed
                  * 
                  * 
                  * */
                 newPDF.AddAuthor(newSiteFile.Organization.Organization_Name);
                 newPDF.AddCreationDate();
                 newPDF.AddTitle("File regarding the project" + newSiteFile.Operation.Operation_Name);
+                newPDF.AddSubject(newSiteFile.Operation.Operation_Name);
+                
 
 
             }, "Add File", "File has been successfuly added to the database");
