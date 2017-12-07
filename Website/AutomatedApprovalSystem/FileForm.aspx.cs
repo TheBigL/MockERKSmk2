@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 #region Additional Namespaces
 using MockERKS.Framework.BLL;
 using MockERKS.Framework.Entities;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using MockERKS.UI;
 #endregion
 
