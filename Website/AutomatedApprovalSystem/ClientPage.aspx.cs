@@ -28,4 +28,9 @@ public partial class AutomatedApprovalSystem_ClientPage : System.Web.UI.Page
     {
         Response.Redirect("~/AutomatedApprovalSystem/FileReport");
     }
+
+    protected void Upload_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("UploadPDF.aspx");
+    }
 }

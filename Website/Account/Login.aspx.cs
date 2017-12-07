@@ -33,16 +33,9 @@ public partial class Account_Login : Page
             if (user != null)
             {
                 IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                if (!User.IsInRole("WebAdmins") && !User.IsInRole("Staff"))
-                {
-                    Response.Redirect("~/AutomatedApprovalSystem/ClientPage.aspx");
-                }
-                else
-                {
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                }
+                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
-                else
+            else
             {
                 FailureText.Text = "Invalid username or password.";
                     ErrorMessage.Visible = true;

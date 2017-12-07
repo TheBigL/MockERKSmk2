@@ -6,6 +6,8 @@
     <div class="row">
         <h2>Created File List</h2>
         <asp:Button ID="AddNew" runat="server" Text="Add New File" OnClick="AddNew_Click" />
+        <asp:Label ID="or" runat="server">Or</asp:Label>
+        <asp:Button ID="Upload" runat="server" Text="Upload PDF File" OnClick="Upload_Click" />
         <br />
         <br />
 
