@@ -33,7 +33,7 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 
     protected void ToOfficerReport_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/AutomatedApprovalSystem/Staff");
+        Response.Redirect("~/AutomatedApprovalSystem/StaffReport");
     }
 
     protected void OrganizationLinkReport_Click(object sender, EventArgs e)
