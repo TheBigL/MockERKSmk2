@@ -27,24 +27,90 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="FileLookup">
+                    
                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
                         <ContentTemplate>
+
                             <div class="row">
                                 <uc1:MessageUserControl runat="server" ID="MessageUserControl1" />
                             </div>
-                            <div class="col-md-12">
 
-                                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                            
+
+                                <h1> File Manager</h1>
+                
+                                <br /> 
+                                
+                                <asp:GridView ID="GridView3" runat="server"  OnRowUpdating="GridView3_RowUpdating" AutoGenerateColumns="False" DataKeyNames="File_ID" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                     <Columns>
                                         <asp:CommandField ShowEditButton="True"></asp:CommandField>
-                                        <asp:BoundField DataField="File_ID" HeaderText="File_ID" ReadOnly="True" InsertVisible="False" SortExpression="File_ID"></asp:BoundField>
+                                        <asp:TemplateField HeaderText="File_ID" InsertVisible="False" SortExpression="File_ID">
+                                            <EditItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Eval("File_ID") %>' ID="Label1"></asp:Label>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("File_ID") %>' ID="Label1"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Type_ID" SortExpression="Type_ID">
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="Type_ID" runat="server" Selectedvalue='<%# Bind("Type_ID") %>'>
+                                                     <asp:ListItem Text="SCD" Value="1"></asp:ListItem>
+                                                     <asp:ListItem Text="CSU" Value="2"></asp:ListItem>
+                                                     <asp:ListItem Text="PST" Value="3"></asp:ListItem>   
+                                                </asp:DropDownList>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("Type_ID") %>' ID="Label2"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Organization_ID" SortExpression="Organization_ID">
+                                            <EditItemTemplate>
+                                                <asp:label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox2"></asp:label>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label3"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="LINC_Number" SortExpression="LINC_Number">
+                                            <EditItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="TextBox3"></asp:Label>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="Label4"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Security_Classification_ID" SortExpression="Security_Classification_ID">
+                                            <EditItemTemplate>
+                                                  <asp:DropDownList ID="Security_Class_ID" runat="server" Selectedvalue='<%# Bind("Security_Classification_ID") %>'>
+                                                     <asp:ListItem Text="Unrestricted" Value="1"></asp:ListItem>
+                                                     <asp:ListItem Text="Protected" Value="2"></asp:ListItem>  
+                                                </asp:DropDownList>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("Security_Classification_ID") %>' ID="Label5"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="File_Status" SortExpression="File_Status">
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="DropDownList1" runat="server" Selectedvalue='<%# Bind("File_Status") %>'>
+                                                     <asp:ListItem Text="Open"></asp:ListItem>
+                                                     <asp:ListItem Text="Closed"></asp:ListItem>  
+                                                </asp:DropDownList>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("File_Status") %>' ID="Label6"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Closed_Date" SortExpression="Closed_Date">
+                                            <EditItemTemplate>
+                                                <asp:TextBox runat="server" Text='<%# Bind("Closed_Date") %>' ID="TextBox6"></asp:TextBox>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Bind("Closed_Date") %>' ID="Label7"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
 
-                                        <asp:BoundField DataField="Type_ID" HeaderText="Type_ID" SortExpression="Type_ID"></asp:BoundField>
-                                        <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" SortExpression="Organization_ID"></asp:BoundField>
-                                        <asp:BoundField DataField="LINC_Number" HeaderText="LINC_Number" SortExpression="LINC_Number"></asp:BoundField>
-                                        <asp:BoundField DataField="Security_Classification_ID" HeaderText="Security_Classification_ID" SortExpression="Security_Classification_ID"></asp:BoundField>
-                                        <asp:BoundField DataField="File_Status" HeaderText="File_Status" SortExpression="File_Status"></asp:BoundField>
-                                        <asp:BoundField DataField="Closed_Date" HeaderText="Closed_Date" SortExpression="Closed_Date"></asp:BoundField>
                                     </Columns>
                                     <FooterStyle BackColor="#CCCCCC"></FooterStyle>
 
@@ -64,8 +130,9 @@
 
                                     <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
                                 </asp:GridView>
+                                   
                                
-                            </div>
+                            
                             <br />
 
                         </ContentTemplate>
@@ -130,18 +197,77 @@
                 <div class="tab-pane" id="Client">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:Label ID="Label3" runat="server" Text="All Clients"></asp:Label>
-                            <br />
+
+                            <h1>Existing Clients</h1>
+                     
+                           
                            
                             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Organization_ID" DataSourceID="SqlDataSource2" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                 <Columns>
                                     <asp:CommandField ShowEditButton="True"></asp:CommandField>
-                                    <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" ReadOnly="True" InsertVisible="False" SortExpression="Organization_ID"></asp:BoundField>
-                                    <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name"></asp:BoundField>
-                                    <asp:BoundField DataField="Description_ID" HeaderText="Description_ID" SortExpression="Description_ID"></asp:BoundField>
-                                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone"></asp:BoundField>
-                                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
-                                    <asp:BoundField DataField="User_Name" HeaderText="User_Name" SortExpression="User_Name"></asp:BoundField>
+                                    <asp:TemplateField HeaderText="Organization_ID" InsertVisible="False" SortExpression="Organization_ID">
+                                        <EditItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Eval("Organization_ID") %>' ID="Label1"></asp:Label>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label1"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Organization_Name" SortExpression="Organization_Name">
+                                        <EditItemTemplate>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Organization_Name") %>' ID="TextBox1"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Organization_Name") %>' ID="Label2"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Description_ID" SortExpression="Description_ID">
+                                        <EditItemTemplate>
+                                             <asp:DropDownList ID="DropDownList1" runat="server" Selectedvalue='<%# Bind("Description_ID") %>'>
+                                                     <asp:ListItem Text="Individual" Value="1"></asp:ListItem>
+                                                     <asp:ListItem Text="Organization" Value="2"></asp:ListItem>  
+                                                </asp:DropDownList>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Description_ID") %>' ID="Label3"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Phone" SortExpression="Phone">
+                                        <EditItemTemplate>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="TextBox3" ErrorMessage="Enter a 10 digit number before continuing."
+                                                 ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Phone") %>' ID="TextBox3"></asp:TextBox>
+                                          
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Phone") %>' ID="Label4"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                                        <EditItemTemplate>
+                                          <asp:RegularExpressionValidator ID="regexEmailValid" 
+                                                runat="server" 
+                                                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                                ControlToValidate="TextBox4" ErrorMessage="Invalid Email Format"
+                                              ForeColor="Red">
+                                              </asp:RegularExpressionValidator>
+                                            <asp:TextBox runat="server" Text='<%# Bind("Email") %>' ID="TextBox4"></asp:TextBox>
+                                            
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Email") %>' ID="Label5"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="User_Name" SortExpression="User_Name">
+                                        <EditItemTemplate>
+                                            <asp:label runat="server" Text='<%# Bind("User_Name") %>' ID="TextBox5"></asp:label>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("User_Name") %>' ID="Label6"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
                                 </Columns>
                                 <FooterStyle BackColor="#CCCCCC"></FooterStyle>
 
@@ -162,8 +288,7 @@
                                 <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
                             </asp:GridView>
                             <br />
-
-                            
+                           
                         </ContentTemplate>
                     </asp:UpdatePanel>
 
@@ -199,7 +324,8 @@
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
 
-                            <asp:Label ID="Label2" runat="server" Text="Current Employees"></asp:Label>
+                             <h1>Current Employees</h1>
+
 
                             <br />
 
@@ -226,8 +352,8 @@
                                 <EditItemTemplate>
                                     <tr style="background-color: #999999;">
                                         <td>
-                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"  CausesValidation="false" class="btn btn-success"/>
-                                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton"  CausesValidation="false" class="btn"/>
+                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"   class="btn btn-success"/>
+                                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton"   class="btn"/>
                                         </td>
                                         <td>
                                             <asp:Label Text='<%# Bind("Officer_ID") %>' runat="server" ID="Officer_IDTextBox" /></td>
@@ -236,10 +362,19 @@
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
                                         <td>
+                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a 10 digit number before continuing."
+                                                 ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" />
 
                                         </td>
                                         <td>
+                                              <asp:RegularExpressionValidator ID="regexEmailValid" 
+                                                runat="server" 
+                                                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                              ForeColor="Red">
+                                              </asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
                                      
                                     </tr>
@@ -254,18 +389,39 @@
                                 <InsertItemTemplate>
                                     <tr style="">
                                         <td>
-                                            <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton"  CausesValidation="false" class="btn btn-success"/>
+                                            <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton"  class="btn btn-success"/>
                                             <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton"  CausesValidation="false" class="btn"/>
                                         </td>
                                         <td>
                                             <asp:Label Text='<%# Bind("Officer_ID") %>' runat="server" ID="Officer_IDTextBox" /></td>
                                         <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red"
+                                                ErrorMessage="First name required " ControlToValidate="First_NameTextBox" SetFocusOnError="True" >
+                                            </asp:RequiredFieldValidator>
                                             <asp:TextBox Text='<%# Bind("First_Name") %>' runat="server" ID="First_NameTextBox" /></td>
                                         <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldAlbumReleaseYear" runat="server" ForeColor="Red"
+                                                ErrorMessage="Last name required " ControlToValidate="Last_NameTextBox" SetFocusOnError="True">
+                                            </asp:RequiredFieldValidator>
                                             <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
                                         <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="#990000" 
+                                                 ErrorMessage="Phone required field" ControlToValidate="PhoneTextBox" SetFocusOnError="True" >
+                                                          </asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Input A 10 Digit Number."
+                                                 ValidationExpression="[0-9]{10}" ForeColor="Red"  SetFocusOnError="True"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
                                         <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="#990000" 
+                                                 ErrorMessage="Email required field" ControlToValidate="EmailTextBox" SetFocusOnError="True" >
+                                                          </asp:RequiredFieldValidator>
+                                              <asp:RegularExpressionValidator ID="regexEmailValid" 
+                                                runat="server" 
+                                                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                              ForeColor="Red"  SetFocusOnError="True">
+                                              </asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
                                  
                                     </tr>
