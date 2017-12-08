@@ -18,13 +18,14 @@ namespace MockERKS.Framework.BLL
     [DataObject]
     public class AdminController
     {
-
+        //Author:Sayed
         //TODO Create a Delete File Function For the Admin.
         #region DeleteSITEFile
 
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void DeleteFile(int fileID, List<Record_Details> rdetails)
+
+        public void DeleteFile(int fileID)
         {
             using (var context = new MockERKSDb())
             {
@@ -62,37 +63,20 @@ namespace MockERKS.Framework.BLL
 
                 context.Security_Classification.Remove(file.Security_Classification);
 
-                //Get rid of the child class be creating a List of Record Details.
-                List<Record_Details> remove = new List<Record_Details>();
-      
-                //Adding the Record details to the new List.
-                foreach(var item in rdetails)
-                {
-                    bool rdMatch = context.Record_Details.Any(x => x.File_ID == fileID);
-                    if(rdMatch)
-                    {
-                        remove.Add(item);
-                    } 
-                }
-
-                //Removing each Record Details from the list.
-                foreach(var item in remove)
-                {
-                    context.Record_Details.Remove(item);
-                }
-
-
-                //Getting rid of the file class proper
+                
                 context.Site_File.Remove(file);
 
-                //Saving all the changes making them permanent.
+                
                 context.SaveChanges();
             }
 
         }
+
+        
+
         #endregion
 
-        //Author:Sayed
+        
         #region UpdateFile
 
        
@@ -162,6 +146,8 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
+
+        #region Site_FIle Get By FILEID
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Site_File> Site_FileGetById(int fileId)
         {
@@ -173,6 +159,7 @@ namespace MockERKS.Framework.BLL
                 return results.ToList();
             }
         }
+        #endregion
 
         #region List OF file types
         [DataObjectMethod(DataObjectMethodType.Select, false)]
@@ -275,7 +262,21 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
-        //TODO Create and Delete An Client File Function For the Admin.
+
+
+
+//TODO Create and Delete An Client File Function For the Admin.
+        #region GetClientByID
+
+        public Organization Client_Get(int organizationId)
+        {
+            using (var context = new MockERKSDb())
+            {
+                return context.Organizations.Find(organizationId);
+            }
+        }
+
+        #endregion
 
         #region getallClients
 
@@ -307,17 +308,6 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        #region GetClientByID
-
-        public Organization Client_Get(int organizationId)
-        {
-            using (var context = new MockERKSDb())
-            {
-                return context.Organizations.Find(organizationId);
-            }
-        }
-
-        #endregion
 
         #region RemoveClient
     
@@ -370,21 +360,7 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-        #region get location list
-       
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Site_Address> SiteAddressList( int org)
-        {
-            using (var context = new MockERKSDb())
-            {
-
-                return context.Site_Address.ToList();
-            }
-
-        }
-
-        #endregion
-
+     
 
     }
 }

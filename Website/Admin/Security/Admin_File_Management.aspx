@@ -53,10 +53,10 @@
                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                             <EditItemTemplate>
                                                 <asp:DropDownList ID="DropDownList1" runat="server"
-                                                    DataSourceID="SecurityClassODS"
                                                     DataTextField="securityClassificationName"
-                                                    DataValueField="securityClassificationID"
                                                     SelectedValue='<%# Bind("Security_Classification_ID") %>' Width="150">
+                                                    <asp:ListItem Value="1">Unrestricted</asp:ListItem>
+                                                    <asp:ListItem Value="2">Protected</asp:ListItem>
                                                 </asp:DropDownList>
                                             </EditItemTemplate>
                                             <ItemTemplate>
@@ -191,88 +191,7 @@
                         <ContentTemplate>
                             <asp:Label ID="Label3" runat="server" Text="All Clients"></asp:Label>
                             <br />
-                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ClientODS" DataKeyNames="Organization_ID" AllowPaging="True"
-                                 BackColor="White" BorderColor="#CCCCCC"
-                                 BorderStyle="None" BorderWidth="1px" CellPadding="3">
-                                <Columns>
-                                    <asp:CommandField ShowEditButton="True"></asp:CommandField>
-                                    <asp:TemplateField HeaderText="Organization_ID" SortExpression="Organization_ID">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox1"></asp:Label>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label1"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Location_Code" SortExpression="Location_Code">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" Text='<%# Bind("Location_Code") %>' ID="TextBox2"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Location_Code") %>' ID="Label2"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Organization_Name" SortExpression="Organization_Name">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" Text='<%# Bind("Organization_Name") %>' ID="TextBox3"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Organization_Name") %>' ID="Label3"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Description_ID" SortExpression="Description_ID">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" Text='<%# Bind("Description_ID") %>' ID="TextBox4"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Description_ID") %>' ID="Label4"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Phone" SortExpression="Phone">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" Text='<%# Bind("Phone") %>' ID="TextBox5"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Phone") %>' ID="Label5"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Email" SortExpression="Email">
-                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" Text='<%# Bind("Email") %>' ID="TextBox6"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" Text='<%# Bind("Email") %>' ID="Label6"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:BoundField DataField="User_Name" HeaderText="User_Name" SortExpression="User_Name"></asp:BoundField>
-                                </Columns>
-                                <FooterStyle BackColor="White" ForeColor="#000066"></FooterStyle>
-
-                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-                                <PagerStyle HorizontalAlign="Left" BackColor="White" ForeColor="#000066"></PagerStyle>
-
-                                <RowStyle ForeColor="#000066"></RowStyle>
-
-                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
-
-                                <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
-
-                                <SortedAscendingHeaderStyle BackColor="#007DBB"></SortedAscendingHeaderStyle>
-
-                                <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
-
-                                <SortedDescendingHeaderStyle BackColor="#00547E"></SortedDescendingHeaderStyle>
-                            </asp:GridView>
+                           
                           
                             <br />
 
