@@ -33,132 +33,73 @@
                                 <uc1:MessageUserControl runat="server" ID="MessageUserControl1" />
                             </div>
                             <div class="col-md-12">
-                          
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID"
-                                    DataSourceID="SqlDataSource1" CellPadding="3" CssClass="active"
-                                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+
+                                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataKeyNames="File_ID" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                     <Columns>
                                         <asp:CommandField ShowEditButton="True"></asp:CommandField>
-                                        <asp:TemplateField HeaderText="File ID" InsertVisible="False" SortExpression="File_ID">
-                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <EditItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Eval("File_ID") %>' ID="Label1" Width="150"></asp:Label>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("File_ID") %>' ID="Label1"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="File_ID" HeaderText="File_ID" ReadOnly="True" InsertVisible="False" SortExpression="File_ID"></asp:BoundField>
 
-                                        <asp:TemplateField HeaderText="Security Classification ID" SortExpression="Security_Classification_ID">
-                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <EditItemTemplate>
-                                                <asp:DropDownList ID="DropDownList1" runat="server"
-                                                    DataTextField="securityClassificationName"
-                                                    SelectedValue='<%# Bind("Security_Classification_ID") %>' Width="150">
-                                                    <asp:ListItem Value="1">Unrestricted</asp:ListItem>
-                                                    <asp:ListItem Value="2">Protected</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-
-                                                <asp:Label runat="server" Text='<%# Bind("Security_Classification_ID") %>' ID="Label2"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="File Status" ItemStyle-HorizontalAlign="Center" SortExpression="File_Status">
-                                            <EditItemTemplate>
-                                                <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind("File_Status") %>' Width="150">
-                                                    <asp:ListItem>Open</asp:ListItem>
-                                                    <asp:ListItem>Closed</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <itemstyle horizontalalign="Center"></itemstyle>
-
-                                                <asp:Label runat="server" Text='<%# Bind("File_Status") %>' ID="Label3" Width="150"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Closed Date" SortExpression="Closed_Date">
-                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <EditItemTemplate>
-                                                <asp:TextBox runat="server" Text='<%# Bind("Closed_Date") %>' ID="TextBox3" Width="200"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <itemstyle horizontalalign="Center"></itemstyle>
-                                                <asp:Label runat="server" Text='<%# Bind("Closed_Date") %>' ID="Label4"  Width="150"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="LINC Number" SortExpression="LINC_Number">
-                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <EditItemTemplate>
-                                                <asp:TextBox runat="server" Text='<%# Bind("LINC_Number") %>' ID="TextBox4"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <itemstyle horizontalalign="Center"></itemstyle>
-                                                <asp:Label runat="server" Text='<%# Bind("LINC_Number") %>' ID="Label5" Width="150"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Organization ID" SortExpression="Organization_ID">
-                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                            <EditItemTemplate>
-                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="TextBox5"></asp:Label>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <itemstyle horizontalalign="Center"></itemstyle>
-                                                <asp:Label runat="server" Text='<%# Bind("Organization_ID") %>' ID="Label6" Width="150"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
+                                        <asp:BoundField DataField="Type_ID" HeaderText="Type_ID" SortExpression="Type_ID"></asp:BoundField>
+                                        <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" SortExpression="Organization_ID"></asp:BoundField>
+                                        <asp:BoundField DataField="LINC_Number" HeaderText="LINC_Number" SortExpression="LINC_Number"></asp:BoundField>
+                                        <asp:BoundField DataField="Security_Classification_ID" HeaderText="Security_Classification_ID" SortExpression="Security_Classification_ID"></asp:BoundField>
+                                        <asp:BoundField DataField="File_Status" HeaderText="File_Status" SortExpression="File_Status"></asp:BoundField>
+                                        <asp:BoundField DataField="Closed_Date" HeaderText="Closed_Date" SortExpression="Closed_Date"></asp:BoundField>
                                     </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                                    <RowStyle ForeColor="#000066" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    <FooterStyle BackColor="#CCCCCC"></FooterStyle>
+
+                                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                    <PagerStyle HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black"></PagerStyle>
+
+                                    <RowStyle BackColor="White"></RowStyle>
+
+                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+
+                                    <SortedAscendingHeaderStyle BackColor="#808080"></SortedAscendingHeaderStyle>
+
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
+
+                                    <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
                                 </asp:GridView>
-                                
                                
                             </div>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MockERKSConnectionString %>'
-                                DeleteCommand="DELETE FROM [Site_File] WHERE [File_ID] = @File_ID"
-                                InsertCommand="INSERT INTO [Site_File] ([Security_Classification_ID], [File_Status], [Closed_Date], [Organization_ID], [Type_ID], [LINC_Number]) VALUES (@Security_Classification_ID, @File_Status, @Closed_Date, @Organization_ID, @Type_ID, @LINC_Number)"
-                                SelectCommand="SELECT [File_ID], [Security_Classification_ID], [File_Status], [Closed_Date], [Organization_ID], [Type_ID], [LINC_Number] FROM [Site_File]"
-                                UpdateCommand="UPDATE [Site_File] SET [Security_Classification_ID] = @Security_Classification_ID, [File_Status] = @File_Status, [Closed_Date] = @Closed_Date, [Organization_ID] = @Organization_ID, [Type_ID] = @Type_ID, [LINC_Number] = @LINC_Number WHERE [File_ID] = @File_ID">
-                                <DeleteParameters>
-                                    <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
-                                </DeleteParameters>
-                                <InsertParameters>
-                                    <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
-                                    <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
-                                    <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
-                                </InsertParameters>
-                                <UpdateParameters>
-                                    <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
-                                    <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
-                                    <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
-                                    <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
-                                    <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
-                                </UpdateParameters>
-                            </asp:SqlDataSource>
+                            <br />
 
-                           <br />
-                           
-                            
                         </ContentTemplate>
 
                     </asp:UpdatePanel>
                   </div>
-                   
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MockERKSConnectionString %>' 
+                    DeleteCommand="DELETE FROM [Site_File] WHERE [File_ID] = @File_ID" 
+                    InsertCommand="INSERT INTO [Site_File] ([Type_ID], [Organization_ID], [LINC_Number], [Security_Classification_ID], [File_Status], [Closed_Date]) VALUES (@Type_ID, @Organization_ID, @LINC_Number, @Security_Classification_ID, @File_Status, @Closed_Date)" SelectCommand="SELECT [File_ID], [Type_ID], [Organization_ID], [LINC_Number], [Security_Classification_ID], [File_Status], [Closed_Date] FROM [Site_File]" 
+                    UpdateCommand="UPDATE [Site_File] SET [Type_ID] = @Type_ID, [Organization_ID] = @Organization_ID, [LINC_Number] = @LINC_Number, [Security_Classification_ID] = @Security_Classification_ID, [File_Status] = @File_Status, [Closed_Date] = @Closed_Date WHERE [File_ID] = @File_ID">
+                    <DeleteParameters>
+                        <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
+                        <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Type_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="LINC_Number" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Security_Classification_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="File_Status" Type="String"></asp:Parameter>
+                        <asp:Parameter DbType="Date" Name="Closed_Date"></asp:Parameter>
+                        <asp:Parameter Name="File_ID" Type="Int32"></asp:Parameter>
+                    </UpdateParameters>
+                </asp:SqlDataSource>
                   
                 <br />
+               
 
 
                 <%--file type ODS--%>
@@ -192,7 +133,34 @@
                             <asp:Label ID="Label3" runat="server" Text="All Clients"></asp:Label>
                             <br />
                            
-                          
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Organization_ID" DataSourceID="SqlDataSource2" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                <Columns>
+                                    <asp:CommandField ShowEditButton="True"></asp:CommandField>
+                                    <asp:BoundField DataField="Organization_ID" HeaderText="Organization_ID" ReadOnly="True" InsertVisible="False" SortExpression="Organization_ID"></asp:BoundField>
+                                    <asp:BoundField DataField="Organization_Name" HeaderText="Organization_Name" SortExpression="Organization_Name"></asp:BoundField>
+                                    <asp:BoundField DataField="Description_ID" HeaderText="Description_ID" SortExpression="Description_ID"></asp:BoundField>
+                                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone"></asp:BoundField>
+                                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
+                                    <asp:BoundField DataField="User_Name" HeaderText="User_Name" SortExpression="User_Name"></asp:BoundField>
+                                </Columns>
+                                <FooterStyle BackColor="#CCCCCC"></FooterStyle>
+
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                <PagerStyle HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black"></PagerStyle>
+
+                                <RowStyle BackColor="White"></RowStyle>
+
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                                <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+
+                                <SortedAscendingHeaderStyle BackColor="#808080"></SortedAscendingHeaderStyle>
+
+                                <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
+
+                                <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
+                            </asp:GridView>
                             <br />
 
                             
@@ -201,18 +169,28 @@
 
 
                 </div>
-                <asp:ObjectDataSource ID="ClientODS" runat="server" DataObjectTypeName="MockERKS.Framework.Entities.Organization"
-                    DeleteMethod="Client_Delete"
-                    OldValuesParameterFormatString="original_{0}"
-                    SelectMethod="ListAll_Organizations"
-                    TypeName="MockERKS.Framework.BLL.AdminController"
-                    UpdateMethod="Client_Update">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString='<%$ ConnectionStrings:MockERKSConnectionString %>' DeleteCommand="DELETE FROM [Organization] WHERE [Organization_ID] = @Organization_ID" InsertCommand="INSERT INTO [Organization] ([Organization_Name], [Description_ID], [Phone], [Email], [User_Name]) VALUES (@Organization_Name, @Description_ID, @Phone, @Email, @User_Name)" SelectCommand="SELECT [Organization_ID], [Organization_Name], [Description_ID], [Phone], [Email], [User_Name] FROM [Organization]" UpdateCommand="UPDATE [Organization] SET [Organization_Name] = @Organization_Name, [Description_ID] = @Description_ID, [Phone] = @Phone, [Email] = @Email, [User_Name] = @User_Name WHERE [Organization_ID] = @Organization_ID">
+                    <DeleteParameters>
+                        <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="Organization_Name" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Description_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="Phone" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Email" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="User_Name" Type="String"></asp:Parameter>
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Organization_Name" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Description_ID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="Phone" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Email" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="User_Name" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="Organization_ID" Type="Int32"></asp:Parameter>
+                    </UpdateParameters>
+                </asp:SqlDataSource>
 
-                </asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="DescriptionODS" runat="server" 
-                    OldValuesParameterFormatString="original_{0}" 
-                    SelectMethod="DescriptionList" 
-                    TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
+              
               
                 
 
