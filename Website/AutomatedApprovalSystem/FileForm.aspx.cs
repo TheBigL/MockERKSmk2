@@ -12,6 +12,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.tool.xml;
 
 #endregion
 
@@ -142,7 +144,6 @@ public partial class WebPages_FileForm : System.Web.UI.Page
 
                 sysmgr.File_Add(newSiteFile);
 
-                var newPDF = new iTextSharp.text.Document();
 
                 /*
                  * PDF File Creation and Upload
@@ -153,7 +154,7 @@ public partial class WebPages_FileForm : System.Web.UI.Page
 
 
                 FileStream fs = new FileStream("File Title here", FileMode.Create, FileAccess.Write, FileShare.None);
-                iTextSharp.text.Document newDoc = new iTextSharp.text.Document(PageSize.A4, 88f, 88f, 10f, 10f);
+                
 
 
                 using (StringWriter sw = new StringWriter())
@@ -161,8 +162,29 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                     using (HtmlTextWriter hw = new HtmlTextWriter(sw))
                     {
                         StringBuilder sb = new StringBuilder();
+                        sb.Append("<label>Date Produced:<label>" + DateTime.Now);
                         sb.Append("<label>Organization Name:</label> " + newSiteFile.Organization.Organization_Name);
-                        sb.Append("<label>Operation Name:</label> " + newSiteFile.Operation.Operation_Name)
+                        sb.Append("<label>Operation Name:</label> " + newSiteFile.Operation.Operation_Name);
+                        sb.Append("<label>Address:</label> " + newSiteFile.Organization.Site_Address.Location);
+                        sb.Append("<label>Category:</label> " + newSiteFile.Category.Category_Name);
+                        sb.Append("<label>Category Description:</label> " + newSiteFile.Category.Description);
+                        
+
+                        StringReader sr = new StringReader(sb.ToString());
+                        iTextSharp.text.Document newDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                        PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
+                        newDoc.Open();
+                        XMLWorkerHelper.ParseToElementList(sr.ToString(), "");
+                        newDoc.Close();
+                        Response.ContentType = "application/pdf";
+                        Response.AddHeader("Mock Title", "Done, baby!");
+                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        Response.Write(newDoc);
+                        Response.End();
+
+
+
+
                     }
                         
 
