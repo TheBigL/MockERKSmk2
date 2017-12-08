@@ -10,7 +10,9 @@ using MockERKS.Framework.BLL;
 using MockERKS.Framework.Entities;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using MockERKS.UI;
+using System.IO;
+using System.Text;
+
 #endregion
 
 public partial class WebPages_FileForm : System.Web.UI.Page
@@ -148,11 +150,25 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                  * 
                  * 
                  * */
-                newPDF.AddAuthor(newSiteFile.Organization.Organization_Name);
-                newPDF.AddCreationDate();
-                newPDF.AddTitle("File regarding the project" + newSiteFile.Operation.Operation_Name);
-                newPDF.AddSubject(newSiteFile.Operation.Operation_Name);
-                
+
+
+                FileStream fs = new FileStream("File Title here", FileMode.Create, FileAccess.Write, FileShare.None);
+                iTextSharp.text.Document newDoc = new iTextSharp.text.Document(PageSize.A4, 88f, 88f, 10f, 10f);
+
+
+                using (StringWriter sw = new StringWriter())
+                {
+                    using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("<label>Organization Name:</label> " + newSiteFile.Organization.Organization_Name);
+                        sb.Append("<label>Operation Name:</label> " + newSiteFile.Operation.Operation_Name)
+                    }
+                        
+
+
+
+                }
 
 
 
