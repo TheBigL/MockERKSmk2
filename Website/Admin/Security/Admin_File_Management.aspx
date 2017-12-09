@@ -353,7 +353,7 @@
                                     <tr style="background-color: #999999;">
                                         <td>
                                             <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"   class="btn btn-success"/>
-                                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton"   class="btn"/>
+                                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton"  CausesValidation="false" class="btn"/>
                                         </td>
                                         <td>
                                             <asp:Label Text='<%# Bind("Officer_ID") %>' runat="server" ID="Officer_IDTextBox" /></td>
@@ -363,7 +363,7 @@
                                             <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
                                         <td>
                                               <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a 10 digit number before continuing."
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a valid 10 digit number."
                                                  ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" />
 
@@ -409,7 +409,7 @@
                                                  ErrorMessage="Phone required field" ControlToValidate="PhoneTextBox" SetFocusOnError="True" >
                                                           </asp:RequiredFieldValidator>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                                ControlToValidate="PhoneTextBox" ErrorMessage="Input A 10 Digit Number."
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter A 10 Digit Number."
                                                  ValidationExpression="[0-9]{10}" ForeColor="Red"  SetFocusOnError="True"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
                                         <td>
