@@ -325,7 +325,7 @@
                         <ContentTemplate>
 
                              <h1>Current Employees</h1>
-
+                           
 
                             <br />
 
@@ -363,19 +363,19 @@
                                             <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
                                         <td>
                                               <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a valid 10 digit number."
+                                                ControlToValidate="PhoneTextBoxE" ErrorMessage="Enter a valid 10 digit number."
                                                  ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
-                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" />
+                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBoxE" />
 
                                         </td>
                                         <td>
                                               <asp:RegularExpressionValidator ID="regexEmailValid" 
                                                 runat="server" 
                                                 ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
-                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                                ControlToValidate="EmailTextBoxE" ErrorMessage="Invalid Email Format"
                                               ForeColor="Red">
                                               </asp:RegularExpressionValidator>
-                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBoxE" /></td>
                                      
                                     </tr>
                                 </EditItemTemplate>
@@ -396,33 +396,35 @@
                                             <asp:Label Text='<%# Bind("Officer_ID") %>' runat="server" ID="Officer_IDTextBox" /></td>
                                         <td>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red"
-                                                ErrorMessage="First name required " ControlToValidate="First_NameTextBox" SetFocusOnError="True" >
+                                                ErrorMessage="First name required " ControlToValidate="IFirst_NameTextBox" SetFocusOnError="True" >
                                             </asp:RequiredFieldValidator>
-                                            <asp:TextBox Text='<%# Bind("First_Name") %>' runat="server" ID="First_NameTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("First_Name") %>' runat="server" ID="IFirst_NameTextBox" /></td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldAlbumReleaseYear" runat="server" ForeColor="Red"
-                                                ErrorMessage="Last name required " ControlToValidate="Last_NameTextBox" SetFocusOnError="True">
+                                            <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ForeColor="Red"
+                                                ErrorMessage="Last name required " ControlToValidate="ILast_NameTextBox" SetFocusOnError="True">
                                             </asp:RequiredFieldValidator>
-                                            <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="Last_NameTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("Last_Name") %>' runat="server" ID="ILast_NameTextBox" /></td>
                                         <td>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="#990000" 
-                                                 ErrorMessage="Phone required field" ControlToValidate="PhoneTextBox" SetFocusOnError="True" >
+                                                 ErrorMessage="Phone required field" ControlToValidate="IPhoneTextBox" SetFocusOnError="True" >
                                                           </asp:RequiredFieldValidator>
+                                            <br />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter A 10 Digit Number."
+                                                ControlToValidate="IPhoneTextBox" ErrorMessage="Enter A 10 Digit Number."
                                                  ValidationExpression="[0-9]{10}" ForeColor="Red"  SetFocusOnError="True"></asp:RegularExpressionValidator>
-                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="IPhoneTextBox" /></td>
                                         <td>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="#990000" 
-                                                 ErrorMessage="Email required field" ControlToValidate="EmailTextBox" SetFocusOnError="True" >
+                                                 ErrorMessage="Email required field" ControlToValidate="IEmailTextBox" SetFocusOnError="True" >
                                                           </asp:RequiredFieldValidator>
+                                            <br />
                                               <asp:RegularExpressionValidator ID="regexEmailValid" 
                                                 runat="server" 
                                                 ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
-                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                                ControlToValidate="IEmailTextBox" ErrorMessage="Invalid Email Format"
                                               ForeColor="Red"  SetFocusOnError="True">
                                               </asp:RegularExpressionValidator>
-                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
+                                            <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="IEmailTextBox" /></td>
                                  
                                     </tr>
                                 </InsertItemTemplate>

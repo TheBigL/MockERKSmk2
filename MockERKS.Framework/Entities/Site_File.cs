@@ -12,8 +12,6 @@ namespace MockERKS.Framework.Entities
         public Site_File()
         {
             Record_Details = new HashSet<Record_Details>();
-            LLD_PBL = new LLD_PBL();
-            Operation = new Operation();
         }
 
         [Key]

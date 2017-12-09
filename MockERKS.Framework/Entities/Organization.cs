@@ -12,8 +12,8 @@ namespace MockERKS.Framework.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Organization()
         {
+            SavePDFs = new HashSet<SavePDF>();
             Site_File = new HashSet<Site_File>();
-            Site_Address = new Site_Address();
         }
 
         [Key]
@@ -39,10 +39,12 @@ namespace MockERKS.Framework.Entities
         [StringLength(125)]
         public string User_Name { get; set; }
 
-
         public virtual Organization_Description Organization_Description { get; set; }
 
         public virtual Site_Address Site_Address { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SavePDF> SavePDFs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site_File> Site_File { get; set; }

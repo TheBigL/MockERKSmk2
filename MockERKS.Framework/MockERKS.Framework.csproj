@@ -109,6 +109,7 @@
     <Compile Include="Entities\POCOs\SecurityClassificationList.cs" />
     <Compile Include="Entities\POCOs\SecurityClassificationSummary.cs" />
     <Compile Include="Entities\Record_Details.cs" />
+    <Compile Include="Entities\SavePDF.cs" />
     <Compile Include="Entities\Security\ApplicationUser.cs" />
     <Compile Include="Entities\Security\RoleProfile.cs" />
     <Compile Include="Entities\Security\SecurityRoles.cs" />

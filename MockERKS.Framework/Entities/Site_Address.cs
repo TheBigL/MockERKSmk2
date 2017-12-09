@@ -12,17 +12,16 @@ namespace MockERKS.Framework.Entities
         public Site_Address()
         {
             Organizations = new HashSet<Organization>();
-            LLD_ATS = new LLD_ATS();
         }
 
         [Key]
         public int Location_Code { get; set; }
 
         public int? ATS_ID { get; set; }
-        
+
         [StringLength(255)]
         public string Location { get; set; }
-        
+
         [StringLength(255)]
         public string Address { get; set; }
 
