@@ -18,6 +18,11 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(!IsPostBack)
+        {
+            DataBind();
+        }
+
         if(!Request.IsAuthenticated)
         {
             Response.Redirect("~/Account/Login.aspx");
@@ -58,19 +63,24 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
         {
             using (HtmlTextWriter hw = new HtmlTextWriter(sw))
             {
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment;filename=LookupPDF.pdf");
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
                 gv.AllowPaging = false;
                 gv.DataBind();
-
-                gv.RenderControl(hw);
+                
+                
                 StringReader sr = new StringReader(sw.ToString());
                 
                 PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
                 newDoc.Open();
                 XMLWorkerHelper.GetInstance().ParseXHtml(writer, newDoc, sr);
+                gv.RenderControl(hw);
+                Response.Write(newDoc);
                 newDoc.Close();
 
-
-                Response.Write(newDoc);
+                
+                
                 Response.Close();
 
 
@@ -79,11 +89,23 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 
     }
 
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        
+
+    }
+
+
 
 
     protected void PDFOrganization_Click(object sender, EventArgs e)
     {
-
+        iTextSharp.text.Document orgListDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 10f);
+        orgListDoc.AddTitle("List of Registered Oranizations");
+        orgListDoc.AddAuthor("Leban Mohamed");
+        orgListDoc.AddLanguage("English");
+        ExportPDF(OrganizationGrid, orgListDoc);
+        
     }
 
     protected void PDFFileReportLink_Click(object sender, EventArgs e)

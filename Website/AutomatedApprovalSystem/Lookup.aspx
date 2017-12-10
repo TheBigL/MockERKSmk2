@@ -1,20 +1,22 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Lookup.aspx.cs" Inherits="AutomatedApprovalSystem_LookupFile" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Lookup.aspx.cs" Inherits="AutomatedApprovalSystem_LookupFile" MasterPageFile="~/Site.master" Debug="true" EnableEventValidation="false" %>
+
 
 <asp:Content ID="Content1" contentplaceholderid="MainContent" runat="server">
     <h2>Look up Organization & File</h2>
+    
+
 
     <div class="row">
     <ul class="nav nav-tabs">
-                <li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
+                <li><a href="#organization" data-toggle="tab">Organizations</a></li>
                 <li ><a href="#filelookup" data-toggle="tab">Files</a></li>
                 <li><a href="#staff" data-toggle="tab">Officers</a></li>
                 <li><a href="#managers" data-toggle="tab">Managers</a></li>
                 
                 
     </ul>
-
-    <div id="organization" class="tab-pane fade in active" role="tabpanel">
-
+     
+    <div id="organization" class="tab-pane fade" role="tabpanel">
         <asp:GridView ID="OrganizationGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="OrganizationData" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -35,12 +37,16 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
+        
+
+            
 
         <asp:LinkButton ID="OrganizationLinkReport" runat="server" OnClick="OrganizationLinkReport_Click">Organization Report</asp:LinkButton>
 
         <asp:LinkButton ID="PDFOrganization" runat="server" OnClick="PDFOrganization_Click" Text="Export Data to PDF"></asp:LinkButton>
 
     </div>
+          
 
            
 
@@ -147,3 +153,4 @@
     </div>
 
      </asp:Content>
+
