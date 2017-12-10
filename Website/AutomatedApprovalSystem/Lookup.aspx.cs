@@ -10,6 +10,9 @@ using System.Web.UI.WebControls;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using iTextSharp.text.xml;
+using System.IO;
+using iTextSharp.tool.xml;
 
 public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 {
@@ -49,12 +52,34 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
         Response.Redirect("~/AutomatedApprovalSystem/ManagerReport");
     }
 
-
-
-    protected void OrganizationList_ItemEditing(object sender, ListViewEditEventArgs e)
+    protected void ExportPDF(GridView gv, iTextSharp.text.Document newDoc)
     {
-        
+        using (StringWriter sw = new StringWriter())
+        {
+            using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+            {
+                gv.AllowPaging = false;
+                gv.DataBind();
+
+                gv.RenderControl(hw);
+                StringReader sr = new StringReader(sw.ToString());
+                
+                PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
+                newDoc.Open();
+                XMLWorkerHelper.GetInstance().ParseXHtml(writer, newDoc, sr);
+                newDoc.Close();
+
+
+                Response.Write(newDoc);
+                Response.Close();
+
+
+            }
+        }
+
     }
+
+
 
     protected void PDFOrganization_Click(object sender, EventArgs e)
     {
