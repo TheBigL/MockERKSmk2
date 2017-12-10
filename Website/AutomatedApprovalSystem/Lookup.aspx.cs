@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
 
 public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 {
@@ -63,7 +66,7 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 
     }
 
-    protected void Officer PDF_Click(object sender, EventArgs e)
+    protected void OfficerPDF_Click(object sender, EventArgs e)
     {
 
     }

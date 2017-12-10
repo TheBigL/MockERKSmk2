@@ -491,7 +491,7 @@
 
             <asp:LinkButton ID="ToOfficerReport" runat="server" OnClick="ToOfficerReport_Click">To Officer Report Page</asp:LinkButton>
 
-            <asp:LinkButton ID="OfficerPDF" runat="server" OnClick="Officer PDF_Click" Text="Export Data to PDF"></asp:LinkButton>
+            <asp:LinkButton ID="OfficerPDFLink" runat="server" OnClick="OfficerPDF_Click" Text="Export to PDF"></asp:LinkButton>
 
 
         </div>
