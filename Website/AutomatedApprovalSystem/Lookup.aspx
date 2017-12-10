@@ -165,6 +165,8 @@
 
         <asp:LinkButton ID="OrganizationLinkReport" runat="server" OnClick="OrganizationLinkReport_Click">Organization Report</asp:LinkButton>
 
+        <asp:LinkButton ID="PDFOrganization" runat="server" OnClick="PDFOrganization_Click" Text="Export Data to PDF"></asp:LinkButton>
+
     </div>
 
            
@@ -337,6 +339,8 @@
            
             <asp:LinkButton ID="ReportLink" runat="server" OnClick="ReportLink_Click">To the File Report</asp:LinkButton>
 
+            <asp:LinkButton ID="PDFFileReportLink" runat="server" OnClick="PDFFileReportLink_Click" Text="Export Data to PDF"></asp:LinkButton>
+
             </div>
            
 
@@ -487,140 +491,24 @@
 
             <asp:LinkButton ID="ToOfficerReport" runat="server" OnClick="ToOfficerReport_Click">To Officer Report Page</asp:LinkButton>
 
-
+            <asp:LinkButton ID="OfficerPDF" runat="server" OnClick="Officer PDF_Click" Text="Export Data to PDF"></asp:LinkButton>
 
 
         </div>
 
         <div id="managers" class="tab-pane fade">
-            <asp:ListView ID="ManagerList" runat="server" DataSourceID="ManagerDataSource">
-                <AlternatingItemTemplate>
-                    <tr style="background-color:#FFF8DC;">
-                        <td>
-                            <asp:Label ID="managerIDLabel" runat="server" Text='<%# Eval("managerID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="fullNameLabel" runat="server" Text='<%# Eval("fullName") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="phoneLabel" runat="server" Text='<%# Eval("phone") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
-                        </td>
-                    </tr>
-                </AlternatingItemTemplate>
-                <EditItemTemplate>
-                    <tr style="background-color:#008A8C;color: #FFFFFF;">
-                        <td>
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="managerIDTextBox" runat="server" Text='<%# Bind("managerID") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="fullNameTextBox" runat="server" Text='<%# Bind("fullName") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="phoneTextBox" runat="server" Text='<%# Bind("phone") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="emailTextBox" runat="server" Text='<%# Bind("email") %>' />
-                        </td>
-                    </tr>
-                </EditItemTemplate>
-                <EmptyDataTemplate>
-                    <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                        <tr>
-                            <td>No data was returned.</td>
-                        </tr>
-                    </table>
-                </EmptyDataTemplate>
-                <InsertItemTemplate>
-                    <tr style="">
-                        <td>
-                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="managerIDTextBox" runat="server" Text='<%# Bind("managerID") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="fullNameTextBox" runat="server" Text='<%# Bind("fullName") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="phoneTextBox" runat="server" Text='<%# Bind("phone") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="emailTextBox" runat="server" Text='<%# Bind("email") %>' />
-                        </td>
-                    </tr>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <tr style="background-color:#DCDCDC;color: #000000;">
-                        <td>
-                            <asp:Label ID="managerIDLabel" runat="server" Text='<%# Eval("managerID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="fullNameLabel" runat="server" Text='<%# Eval("fullName") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="phoneLabel" runat="server" Text='<%# Eval("phone") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
-                        </td>
-                    </tr>
-                </ItemTemplate>
-                <LayoutTemplate>
-                    <table runat="server">
-                        <tr runat="server">
-                            <td runat="server">
-                                <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                    <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
-                                        <th runat="server">managerID</th>
-                                        <th runat="server">fullName</th>
-                                        <th runat="server">phone</th>
-                                        <th runat="server">email</th>
-                                    </tr>
-                                    <tr id="itemPlaceholder" runat="server">
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr runat="server">
-                            <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                                <asp:DataPager ID="DataPager1" runat="server">
-                                    <Fields>
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                        <asp:NumericPagerField />
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                    </Fields>
-                                </asp:DataPager>
-                            </td>
-                        </tr>
-                    </table>
-                </LayoutTemplate>
-                <SelectedItemTemplate>
-                    <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
-                        <td>
-                            <asp:Label ID="managerIDLabel" runat="server" Text='<%# Eval("managerID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="fullNameLabel" runat="server" Text='<%# Eval("fullName") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="phoneLabel" runat="server" Text='<%# Eval("phone") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
-                        </td>
-                    </tr>
-                </SelectedItemTemplate>
-        </asp:ListView>
+            <asp:GridView ID="ManagerGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ManagerDataSource">
+                <Columns>
+                    <asp:BoundField DataField="managerID" HeaderText="managerID" SortExpression="managerID" />
+                    <asp:BoundField DataField="fullName" HeaderText="fullName" SortExpression="fullName" />
+                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
+                    <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                </Columns>
+            </asp:GridView>
 
             <asp:LinkButton ID="ManagerReportLink" runat="server" OnClick="ManagerReportLink_Click">To Manager Report Page</asp:LinkButton>
+
+            <asp:LinkButton ID="ManagerPDF" runat="server" OnClick="ManagerPDF_Click" Text="Export Data to PDF"></asp:LinkButton>
         </div>
 
 

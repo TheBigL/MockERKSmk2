@@ -52,5 +52,25 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
     {
         
     }
+
+    protected void PDFOrganization_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void PDFFileReportLink_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Officer PDF_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void ManagerPDF_Click(object sender, EventArgs e)
+    {
+
+    }
 }
 
