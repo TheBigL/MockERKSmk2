@@ -219,6 +219,7 @@ namespace MockERKS.Framework.BLL
             }
         }
 
+        /* Author: Wenyu Zhang */
         public void file_update(int fileID, int organizationId)
         {
             using (var context = new MockERKSDb())

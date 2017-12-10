@@ -41,7 +41,7 @@ public partial class AutomatedApprovalSystem_UploadPDF : System.Web.UI.Page
         {
             try
             {
-                switch (ext)
+                switch (ext) // this switch code validate the files which allow to upload only PDF file
                 {
                     case ".pdf":
                         type = "application/pdf";
@@ -56,9 +56,9 @@ public partial class AutomatedApprovalSystem_UploadPDF : System.Web.UI.Page
                     {
                         con.Open();
                         Stream fs = FileUpload.PostedFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                        string query = "insert into SavePDF (PDF_Name,PDF_Type,PDF_Data, Organization_ID)" + " values (@Name, @type, @Data, @id)";
+                        BinaryReader br = new BinaryReader(fs); //reads the binary files
+                        Byte[] bytes = br.ReadBytes((Int32)fs.Length); //counting the file length into bytes
+                        string query = "insert into SavePDF (PDF_Name,PDF_Type,PDF_Data, Organization_ID)" + " values (@Name, @type, @Data, @id)"; //insert query
                         SqlCommand comm = new SqlCommand(query, con);
                         comm.Parameters.Add("@Name", SqlDbType.VarChar).Value = filename1;
                         comm.Parameters.Add("@type", SqlDbType.VarChar).Value = type;
@@ -83,7 +83,7 @@ public partial class AutomatedApprovalSystem_UploadPDF : System.Web.UI.Page
                 else
                 {
                     Label2.ForeColor = System.Drawing.Color.Red;
-                    Label2.Text = "Select Only PDF Files ";
+                    Label2.Text = "Select Only PDF Files "; // if file is other than speified extension
                 }
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ public partial class AutomatedApprovalSystem_UploadPDF : System.Web.UI.Page
                 Response.Clear();
                 Response.Buffer = true;
                 Response.ContentType = dr["PDF_Type"].ToString();
-                Response.AddHeader("content-disposition", "attachment;filename=" + dr["PDF_Name"].ToString());
+                Response.AddHeader("content-disposition", "attachment;filename=" + dr["PDF_Name"].ToString()); // to open file prompt Box open or Save file
                 Response.Charset = "";
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
                 Response.BinaryWrite((byte[])dr["PDF_Data"]);
