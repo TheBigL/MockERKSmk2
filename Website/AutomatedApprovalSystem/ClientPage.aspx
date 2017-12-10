@@ -18,7 +18,7 @@
                     <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName"></asp:BoundField>
                     <asp:BoundField DataField="categoryName" HeaderText="categoryName" SortExpression="categoryName"></asp:BoundField>
                     <asp:BoundField DataField="operationName" HeaderText="operationName" SortExpression="operationName"></asp:BoundField>
-
+                    <asp:BoundField DataField="orgainzationID" HeaderText="orgainzationID" SortExpression="orgainzationID"></asp:BoundField>
                 </Columns>
             </asp:GridView>
 

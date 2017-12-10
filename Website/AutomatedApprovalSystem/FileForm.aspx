@@ -3,6 +3,13 @@
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+
+    <br />
+    <br />
+    <asp:Button CssClass="btn" ID="Back" runat="server" Text="Back to File Page" OnClick="CancelActivity_Click" CausesValidation="false" />
+    <br />
+    <br />
+
     <h1>File Form</h1>
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
@@ -171,7 +178,7 @@
                 <br />
 
                 <asp:Button CssClass="btn" ID="SaveForm" runat="server" Text="Save" OnClick="AddFile_Click" />
-                <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" OnClick="ResetForm_Click" />
+                <asp:Button CssClass="btn" ID="ResetForm" runat="server" Text="Reset" OnClick="ResetForm_Click" CausesValidation="false" />
                 <%--<button class="btn" id="cancel" onclick="window.history.back()">Cancel</button>--%>
                 <%--<asp:Button CssClass="btn" ID="Update" runat="server" Text="Update" OnClick="Update_Click" />--%>
                 <asp:Button CssClass="btn" ID="CancelActivity" runat="server" Text="Cancel" OnClick="CancelActivity_Click" CausesValidation="false" />

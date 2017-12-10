@@ -8,12 +8,13 @@ using System.Web.UI.WebControls;
 #region Additional Namespaces
 using MockERKS.Framework.BLL;
 using MockERKS.Framework.Entities;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.tool.xml;
+using Microsoft.AspNet.Identity;
+//using iTextSharp.text.html.simpleparser;
+//using iTextSharp.tool.xml;
 
 #endregion
 
@@ -89,7 +90,10 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                 newSiteFile.Organization = orgs.FirstOrDefault();
                 int i;
 
+                string userName = Context.User.Identity.GetUserName();
+                int orgainztionId = sysmgr.OrganizationId_get(userName);
 
+                newSiteFile.Organization_ID = orgainztionId;
                 if (int.TryParse(FileType.SelectedValue, out i))
                     newSiteFile.Type_ID = i;
                 else
@@ -105,34 +109,55 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                 else
                     newSiteFile.Security_Classification_ID = null;
 
-                newSiteFile.Operation.Operation_Name = OperationName.Text;
-
-                if (int.TryParse(OperationID.Text, out i))
-                    newSiteFile.Operation_ID = i;
+                Operation newOperation = new Operation();
+                
+                if (sysmgr.checkExist(OperationName.Text) == false)
+                {
+                    newOperation.Operation_Name = OperationName.Text;
+                    //if (int.TryParse(OperationID.Text, out i))
+                    //    newSiteFile.Operation_ID = i;
+                    //else
+                    //    newSiteFile.Operation_ID = null;
+                    sysmgr.createOperation(newOperation);
+                }
                 else
-                    newSiteFile.Operation_ID = null;
-
-                newSiteFile.Organization.Site_Address.Location = Location.SelectedValue;
-                newSiteFile.Organization.Site_Address.Address = Address.Text;
-                newSiteFile.Organization.Site_Address.LLD_ATS.Meridian_Number = Meridian.SelectedValue;
-                newSiteFile.Organization.Site_Address.LLD_ATS.Range_Number = Range.SelectedValue;
-                newSiteFile.Organization.Site_Address.LLD_ATS.Township_Number = Township.SelectedValue;
-                newSiteFile.Organization.Site_Address.LLD_ATS.Section_Number = Section.SelectedValue;
-                newSiteFile.Organization.Site_Address.LLD_ATS.Quarter_Section_Number = QuarterSection.SelectedValue;
-                newSiteFile.Organization.Site_Address.LLD_ATS.LSD = LSD.SelectedValue;
-
-                newSiteFile.LLD_PBL.Plan_Number = Plan.Text;
+                {
+                    newOperation = sysmgr.findOperation(OperationName.Text);
+                    newSiteFile.Operation_ID = newOperation.Operation_ID;
+                }
+                //newSiteFile.Operation.Operation_Name = OperationName.Text;
+                newSiteFile.Operation_ID = newOperation.Operation_ID;
+                
+                //Organization newOrganization = new Organization();
+                //newOrganization = sysmgr.getOrganzationById(orgainztionId);
+                Site_Address newAddress = new Site_Address();
+                newAddress.Location = Location.SelectedValue;
+                newAddress.Address = Address.Text;
+                LLD_ATS newAts = new LLD_ATS();
+                newAts.Meridian_Number = Meridian.SelectedValue;
+                newAts.Range_Number = Range.SelectedValue;
+                newAts.Township_Number = Township.SelectedValue;
+                newAts.Section_Number = Section.SelectedValue;
+                newAts.Quarter_Section_Number = QuarterSection.SelectedValue;
+                newAts.LSD = LSD.SelectedValue;
+                LLD_PBL newPbl = new LLD_PBL();
+                newPbl.Plan_Number = Plan.Text;
+                                        
 
 
                 if (Block.Text.Trim().Equals(""))
-                    newSiteFile.LLD_PBL.Block_Number = "<None>";
+                    newPbl.Block_Number = "<None>";
                 else
-                    newSiteFile.LLD_PBL.Block_Number = Block.Text;
+                    newPbl.Block_Number = Block.Text;
 
                 if (Lot.Text.Trim().Equals(""))
-                    newSiteFile.LLD_PBL.Lot_Number = "<None>";
+                    newPbl.Lot_Number = "<None>";
                 else
-                    newSiteFile.LLD_PBL.Lot_Number = Lot.Text;
+                    newPbl.Lot_Number = Lot.Text;
+
+                sysmgr.createLocation(newAddress);
+                sysmgr.createLLd_ATS(newAts);
+                sysmgr.createLLD_PBL(newPbl);
 
                 if (LINC.Text.Trim().Equals(""))
                     newSiteFile.LINC_Number = "<None>";
@@ -141,9 +166,10 @@ public partial class WebPages_FileForm : System.Web.UI.Page
 
                 newSiteFile.File_Status = FileStatus.SelectedValue;
                 newSiteFile.Closed_Date = ClosedDate.SelectedDate;
-
-                sysmgr.File_Add(newSiteFile);
-
+                newSiteFile.PBL_ID = newPbl.PBL_ID;
+                newSiteFile.Document_ID = 1;
+                sysmgr.File_Add(newSiteFile,orgainztionId);
+                sysmgr.file_update(newSiteFile.File_ID, orgainztionId);
 
                 /*
                  * PDF File Creation and Upload
@@ -153,44 +179,44 @@ public partial class WebPages_FileForm : System.Web.UI.Page
                  * */
 
 
-                FileStream fs = new FileStream("File Title here", FileMode.Create, FileAccess.Write, FileShare.None);
+                //FileStream fs = new FileStream("File Title here", FileMode.Create, FileAccess.Write, FileShare.None);
                 
 
 
-                using (StringWriter sw = new StringWriter())
-                {
-                    using (HtmlTextWriter hw = new HtmlTextWriter(sw))
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("<label>Date Produced:<label>" + DateTime.Now);
-                        sb.Append("<label>Organization Name:</label> " + newSiteFile.Organization.Organization_Name);
-                        sb.Append("<label>Operation Name:</label> " + newSiteFile.Operation.Operation_Name);
-                        sb.Append("<label>Address:</label> " + newSiteFile.Organization.Site_Address.Location);
-                        sb.Append("<label>Category:</label> " + newSiteFile.Category.Category_Name);
-                        sb.Append("<label>Category Description:</label> " + newSiteFile.Category.Description);
+                //using (StringWriter sw = new StringWriter())
+                //{
+                //    using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+                //    {
+                //        StringBuilder sb = new StringBuilder();
+                //        sb.Append("<label>Date Produced:<label>" + DateTime.Now);
+                //        sb.Append("<label>Organization Name:</label> " + newSiteFile.Organization.Organization_Name);
+                //        sb.Append("<label>Operation Name:</label> " + newSiteFile.Operation.Operation_Name);
+                //        sb.Append("<label>Address:</label> " + newSiteFile.Organization.Site_Address.Location);
+                //        sb.Append("<label>Category:</label> " + newSiteFile.Category.Category_Name);
+                //        sb.Append("<label>Category Description:</label> " + newSiteFile.Category.Description);
                         
 
-                        StringReader sr = new StringReader(sb.ToString());
-                        iTextSharp.text.Document newDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                        PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
-                        newDoc.Open();
-                        XMLWorkerHelper.ParseToElementList(sr.ToString(), "");
-                        newDoc.Close();
-                        Response.ContentType = "application/pdf";
-                        Response.AddHeader("Mock Title", "Done, baby!");
-                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        Response.Write(newDoc);
-                        Response.End();
+                //        StringReader sr = new StringReader(sb.ToString());
+                //        iTextSharp.text.Document newDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                //        PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
+                //        newDoc.Open();
+                //        XMLWorkerHelper.ParseToElementList(sr.ToString(), "");
+                //        newDoc.Close();
+                //        Response.ContentType = "application/pdf";
+                //        Response.AddHeader("Mock Title", "Done, baby!");
+                //        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                //        Response.Write(newDoc);
+                //        Response.End();
 
 
 
 
-                    }
+                //    }
                         
 
 
 
-                }
+                //}
 
 
 

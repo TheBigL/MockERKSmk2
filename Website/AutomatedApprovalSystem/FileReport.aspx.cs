@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MockERKS.Framework.BLL;
+using Microsoft.AspNet.Identity;
 
 public partial class AutomatedApprovalSystem_FileReport : System.Web.UI.Page
 {
@@ -22,7 +24,7 @@ public partial class AutomatedApprovalSystem_FileReport : System.Web.UI.Page
 
     protected void ODSFileReport_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        e.InputParameters["currUser_Name"] = User.Identity.Name;
+        e.InputParameters["currUser_Name"] = Context.User.Identity.GetUserName();
     }
 
     protected void Back_Click(object sender, EventArgs e)

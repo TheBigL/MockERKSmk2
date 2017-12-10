@@ -128,6 +128,7 @@ namespace MockERKS.Framework.BLL
                             select new CreatedFile
                             {
                                 fileID = file.File_ID,
+                                orgainzationID = file.Organization_ID,
                                 organizationName = file.Organization.Organization_Name,
                                 categoryName = file.Category.Category_Name,
                                 operationName = file.Operation.Operation_Name
@@ -142,7 +143,7 @@ namespace MockERKS.Framework.BLL
         {
             System.Diagnostics.Debug.WriteLine("xx" + currUser_Name);
             using (MockERKSDb context = new MockERKSDb())
-            {
+            {       
                 var results = from f in context.Site_File
                               where f.Organization.User_Name.Trim().Equals(currUser_Name.Trim(), StringComparison.InvariantCultureIgnoreCase)
                               select new FileReport

@@ -209,11 +209,122 @@ namespace MockERKS.Framework.BLL
 
         /* Author: Wenyu Zhang */
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void File_Add(Site_File item)
+        public void File_Add(Site_File item, int id)
         {
             using (var context = new MockERKSDb())
             {
+                item.Organization_ID = id;
                 context.Site_File.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        public void file_update(int fileID, int organizationId)
+        {
+            using (var context = new MockERKSDb())
+            {
+                Site_File file = (from x in context.Site_File
+                                  where x.File_ID == fileID
+                                  select x).FirstOrDefault();
+                file.Organization_ID = organizationId;
+                context.Site_File.Attach(file);
+                context.Entry(file).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public int OrganizationId_get(string username)
+        {
+            using (var context = new MockERKSDb())
+            {
+                int id = (from x in context.Organizations
+                          where x.User_Name == username
+                          select x.Organization_ID).FirstOrDefault();
+                return id;
+            }
+        }
+
+
+        /* Author: Wenyu Zhang*/
+        public Operation findOperation (string name)
+        {
+            using (var context
+                 = new MockERKSDb())
+            {
+                Operation results = (from x in context.Operations
+                                       where x.Operation_Name == name
+                                       select x).FirstOrDefault();
+                return results;
+            }
+            
+        }
+
+        /* Author: Wenyu Zhang*/
+        public void createOperation (Operation oper)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Operations.Add(oper);
+                context.SaveChanges();
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        public bool checkExist(string name)
+        {
+            using (var context
+                 = new MockERKSDb())
+            {
+                Operation results = (from x in context.Operations
+                                     where x.Operation_Name == name
+                                     select x).FirstOrDefault();
+                if (results != null)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        public Organization getOrganzationById(int id)
+        {
+            using (var context = new MockERKSDb())
+            {
+                Organization results = (from x in context.Organizations
+                                        where x.Organization_ID == id
+                                        select x).FirstOrDefault();
+                return results;
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        public void createLocation(Site_Address address)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.Site_Address.Add(address);
+                context.SaveChanges();
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        public void createLLd_ATS(LLD_ATS ats)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.LLD_ATS.Add(ats);
+                context.SaveChanges();
+            }
+        }
+
+        /* Author: Wenyu Zhang*/
+        public void createLLD_PBL(LLD_PBL pbl)
+        {
+            using (var context = new MockERKSDb())
+            {
+                context.LLD_PBL.Add(pbl);
                 context.SaveChanges();
             }
         }
