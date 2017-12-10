@@ -11,7 +11,9 @@ namespace MockERKS.Framework.Entities
     {
         public int ID { get; set; }
 
-        public byte[] PDF_File { get; set; }
+        public string PDF_Name { get; set; }
+        public string PDF_Type { get; set; }
+        public byte[] PDF_Data { get; set; }
 
         public int? Organization_ID { get; set; }
 
