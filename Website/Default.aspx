@@ -24,7 +24,7 @@
             <p>Currently, the ERKS has a manual approval process for the file: the administrators or an IT specialist would manually have to review and possibly request the client to alter or add to the information submitted. This process would take hours to perform. Also, ERKS is supposed to automatically upload files that fall under the ‘unprotected’ security classification to ESAR for public access. Otherwise, the submitted file will stay inside ERKS for record keeping purposes.</p>
             <br />
             <asp:Image ID="img1" runat="server" ImageAlign="Left" ImageUrl="Images/img1.png" />
-            <p>So we decided to provide an external submission portal that automatically files reports to the file repository system (ERKS) while setting a security classification. The system will streamline user input into ERKS by creating a web form submission based on the requirements of submission for ERKS and adding the status of approved or un-approved for upload with a proof of concept demonstration dut to AEP policy.</p>
+            <p>So we decided to provide an external submission portal that automatically files reports to the file repository system (ERKS) while setting a security classification. The system will streamline user input into ERKS by creating a web form submission based on the requirements of submission for ERKS due to AEP policy.</p>
             <br />
         </div>
 
