@@ -30,5 +30,11 @@
 
     </div>
 
+    <div>
+        <footer>
+            <asp:Image ID="footer" runat="server" ImageAlign="Middle" Width="100%" ImageUrl="Images/footer.png"  />
+        </footer>
+    </div>
+
    
 </asp:Content>
