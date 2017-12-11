@@ -38,7 +38,7 @@
         </asp:TableRow>
     </asp:Table>
     <%--Caption="PDF Files" --%>
-    <asp:GridView ID="Gridview1" runat="server" CaptionAlign="Top" HorizontalAlign="Justify" DataKeyNames="id" OnSelectedIndexChanged="Gridview1_SelectedIndexChanged" ToolTip="PDF File Download Tool" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="false">
+    <asp:GridView ID="Gridview1" runat="server" CaptionAlign="Top" HorizontalAlign="Justify" DataKeyNames="ID" OnSelectedIndexChanged="Gridview1_SelectedIndexChanged" ToolTip="PDF File Download Tool" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="false">
         <RowStyle BackColor="#E3EAEB" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" SelectText="Download" ControlStyle-ForeColor="Blue" />

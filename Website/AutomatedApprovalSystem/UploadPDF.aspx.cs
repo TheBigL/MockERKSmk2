@@ -115,7 +115,8 @@ public partial class AutomatedApprovalSystem_UploadPDF : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection("server=(local);database=MockERKS;Trusted_Connection=yes");
         SqlCommand com = new SqlCommand("select PDF_Name,PDF_Type,PDF_Data from SavePDF where id=@id", con);
-        com.Parameters.AddWithValue("id", Gridview1.SelectedRow.Cells[1].Text);
+        //com.Parameters.AddWithValue("id", Gridview1.SelectedRow.Cells[1].Text);
+        com.Parameters.AddWithValue("id", Gridview1.SelectedValue);
         try
         {
             con.Open();
