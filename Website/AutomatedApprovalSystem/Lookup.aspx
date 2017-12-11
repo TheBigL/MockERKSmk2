@@ -170,7 +170,7 @@
             </asp:GridView>
 
             <asp:LinkButton ID="LinktoPDFReport" runat="server" Text="PDF Report" OnClick="LinktoPDFReport_Click"></asp:LinkButton>
-
+            <asp:LinkButton ID="ExportDatatoPDF" runat="server" Text="Export Data to PDF" OnClick="ExportDatatoPDF_Click"></asp:LinkButton>
 
         </div>
 
