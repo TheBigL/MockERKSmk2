@@ -82,6 +82,7 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 
                 Response.End();
                 gv.AllowPaging = true;
+                gv.DataBind();
 
 
             }
