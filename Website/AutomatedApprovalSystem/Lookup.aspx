@@ -12,6 +12,7 @@
                 <li ><a href="#filelookup" data-toggle="tab">Files</a></li>
                 <li><a href="#staff" data-toggle="tab">Officers</a></li>
                 <li><a href="#managers" data-toggle="tab">Managers</a></li>
+                <li><a href="#pdf" data-toggle="tab">PDF</a></li>
                 
                 
     </ul>
@@ -141,6 +142,39 @@
         </div>
 
 
+        <div id="pdf" class="tab-pane fade">
+
+
+
+
+            <asp:GridView ID="PDFGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="PDFDataSource" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="pdfID" HeaderText="pdfID" SortExpression="pdfID" />
+                    <asp:BoundField DataField="pdfName" HeaderText="pdfName" SortExpression="pdfName" />
+                    <asp:BoundField DataField="pdfType" HeaderText="pdfType" SortExpression="pdfType" />
+                    <asp:BoundField DataField="organizationID" HeaderText="organizationID" SortExpression="organizationID" />
+                    <asp:BoundField DataField="organizationName" HeaderText="organizationName" SortExpression="organizationName" />
+                    <asp:BoundField DataField="ogranizationDescription" HeaderText="ogranizationDescription" SortExpression="ogranizationDescription"></asp:BoundField>
+                </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+
+
+
+
+        </div>
+
+
 
      <asp:ObjectDataSource ID="OrganizationData" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupRegisteredOrganizations" TypeName="MockERKS.Framework.BLL.StaffController" DataObjectTypeName="MockERKS.Framework.Entities.Organization" UpdateMethod="updateOrganization"></asp:ObjectDataSource>
 
@@ -149,6 +183,8 @@
         <asp:ObjectDataSource ID="OfficerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupOfficers" TypeName="MockERKS.Framework.BLL.StaffController" DataObjectTypeName="MockERKS.Framework.Entities.Officer" UpdateMethod="updateOfficer"></asp:ObjectDataSource>
 
         <asp:ObjectDataSource ID="ManagerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LookupManager" TypeName="MockERKS.Framework.BLL.StaffController" DataObjectTypeName="MockERKS.Framework.Entities.Manager" UpdateMethod="updateManager"></asp:ObjectDataSource>
+
+        <asp:ObjectDataSource ID="PDFDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="lookupPDFs" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
     </div>
 

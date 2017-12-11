@@ -613,6 +613,31 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
+        #region LookupPDFs
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+
+        public List<PDFSummary> lookupPDFs()
+        {
+            using (var context = new MockERKSDb())
+            {
+                var pdfList = from p in context.SavePDFs
+                              orderby p.Organization_ID
+                              select new PDFSummary
+                              {
+                                  pdfID = p.ID,
+                                  pdfName = p.PDF_Name,
+                                  pdfType = p.PDF_Type,
+                                  organizationName = p.Organization.Organization_Name,
+                                  ogranizationDescription = p.Organization.Organization_Description.Description,
+                                  organizationID = p.Organization.Organization_ID
+
+                              };
+                return pdfList.ToList();
+            }
+        }
+
+
+        #endregion
 
 
 

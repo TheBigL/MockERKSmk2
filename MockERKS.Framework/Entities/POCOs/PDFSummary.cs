@@ -8,7 +8,9 @@ namespace MockERKS.Framework.Entities.POCOs
 {
     public class PDFSummary
     {
-        int pdfID { get; set; }
+        public int pdfID { get; set; }
+
+        public string pdfName { get; set; }
 
         public string pdfType { get; set; }
         public int organizationID { get; set; }
