@@ -517,103 +517,13 @@ namespace MockERKS.Framework.BLL
 
         #endregion
 
-
-        #region Update File
-        /*Update File
-        * Author: Leban Mohamed
-        * 
-        * 
-        * 
-        * */
-        [DataObjectMethod(DataObjectMethodType.Update,false)]
-        public void File_Update(Site_File file)
-        {
-            using (var context = new MockERKSDb())
-            {
-                context.Site_File.Attach(file);
-
-                file.File_Status = string.IsNullOrEmpty(file.File_Status) ? null : file.File_Status;
-
-                context.Entry(file).State = System.Data.Entity.EntityState.Modified;
-
-                context.SaveChanges();
-            }
-        }
-
-
-        #endregion
-
-
-        #region Update Organization
-        /*Update Organization
+        #region LookupPDFs
+        /*
+         * LookupPDFs
          * Author: Leban Mohamed
-         * 
-         * 
+         * Simple lookup operation of all the PDF files uploaded
          * 
          * */
-        [DataObjectMethod(DataObjectMethodType.Update,false)]
-        public void updateOrganization(Organization organization)
-        {
-            using (var context = new MockERKSDb())
-            {
-                context.Organizations.Attach(organization);
-
-                context.Entry(organization).State = System.Data.Entity.EntityState.Modified;
-
-                context.SaveChanges();
-            }
-        }
-
-        #endregion
-
-        #region Update Officer
-        /*Update Officer
-        * Author: Leban Mohamed
-        * 
-        * 
-        * 
-        * */
-        [DataObjectMethod(DataObjectMethodType.Update,false)]
-        public void updateOfficer(Officer officer)
-        {
-            using (var context = new MockERKSDb())
-            {
-                context.Officers.Attach(officer);
-
-                context.Entry(officer).State = System.Data.Entity.EntityState.Modified;
-
-                context.SaveChanges();
-            }
-        }
-
-        #endregion
-
-
-        #region Update Manager
-        /*Update Manager
-        * Author: Leban Mohamed
-        * 
-        * 
-        * 
-        * */
-        [DataObjectMethod(DataObjectMethodType.Update)]
-
-        public void updateManager(Manager manager)
-        {
-            using (var context = new MockERKSDb())
-            {
-                context.Managers.Attach(manager);
-
-                context.Entry(manager).State = System.Data.Entity.EntityState.Modified;
-
-                context.SaveChanges();
-            }
-        }
-
-
-        #endregion
-
-        #region LookupPDFs
         [DataObjectMethod(DataObjectMethodType.Select,false)]
 
         public List<PDFSummary> lookupPDFs()
