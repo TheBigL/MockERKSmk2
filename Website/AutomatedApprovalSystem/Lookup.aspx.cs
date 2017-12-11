@@ -154,5 +154,18 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
     {
         Response.Redirect("~/AutomatedApprovalSystem/PDFReport");
     }
+
+    protected void ExportDatatoPDF_Click(object sender, EventArgs e)
+    {
+        Response.ContentType = "application/pdf";
+        Response.AddHeader("content-disposition", "attachment;filename=LookupUploadedPDF.pdf");
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        iTextSharp.text.Document pdfListDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 10f);
+        pdfListDoc.AddTitle("List of PDF files");
+        
+        pdfListDoc.AddAuthor("Leban Mohamed");
+        pdfListDoc.AddLanguage("English");
+        ExportPDF(PDFGrid, pdfListDoc);
+    }
 }
 
