@@ -15,4 +15,6 @@
     <asp:ObjectDataSource ID="PDFReportDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="lookupPDFs" TypeName="MockERKS.Framework.BLL.StaffController"></asp:ObjectDataSource>
 
 
+    <asp:LinkButton ID="BacktoLookup" runat="server" Text="Back to Main Lookup" OnClick="BacktoLookup_Click"></asp:LinkButton>
+
 </asp:Content>

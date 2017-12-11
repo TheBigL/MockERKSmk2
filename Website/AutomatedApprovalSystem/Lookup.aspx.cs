@@ -125,5 +125,10 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
     {
 
     }
+
+    protected void LinktoPDFReport_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/AutomatedApprovalSystem/PDFReport");
+    }
 }
 

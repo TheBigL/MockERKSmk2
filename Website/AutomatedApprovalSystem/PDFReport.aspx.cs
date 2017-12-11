@@ -11,4 +11,9 @@ public partial class AutomatedApprovalSystem_PDFReport : System.Web.UI.Page
     {
 
     }
+
+    protected void BacktoLookup_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Lookup.aspx");
+    }
 }

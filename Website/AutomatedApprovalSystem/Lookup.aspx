@@ -169,7 +169,7 @@
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
 
-
+            <asp:LinkButton ID="LinktoPDFReport" runat="server" Text="PDF Report" OnClick="LinktoPDFReport_Click"></asp:LinkButton>
 
 
         </div>
