@@ -66,12 +66,15 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
                 Response.ContentType = "application/pdf";
                 Response.AddHeader("content-disposition", "attachment;filename=LookupPDF.pdf");
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
+
+
                 gv.AllowPaging = false;
                 gv.DataBind();
-                
-                
+
+
                 StringReader sr = new StringReader(sw.ToString());
-                
+
                 PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
                 newDoc.Open();
                 XMLWorkerHelper.GetInstance().ParseXHtml(writer, newDoc, sr);
@@ -79,8 +82,8 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
                 Response.Write(newDoc);
                 newDoc.Close();
 
-                
-                
+
+
                 Response.Close();
 
 
