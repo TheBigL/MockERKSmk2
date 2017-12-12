@@ -37,6 +37,7 @@
             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <EmptyDataTemplate>No Organizations have been added yet.</EmptyDataTemplate>
         </asp:GridView>
         
 
@@ -78,6 +79,7 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <EmptyDataTemplate>No File data has been added yet.</EmptyDataTemplate>
             </asp:GridView>
             <asp:LinkButton ID="ReportLink" runat="server" OnClick="ReportLink_Click">To the File Report</asp:LinkButton>
 
@@ -106,6 +108,7 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <EmptyDataTemplate>No officers added yet.</EmptyDataTemplate>
             </asp:GridView>
 
             <asp:LinkButton ID="ToOfficerReport" runat="server" OnClick="ToOfficerReport_Click">To Officer Report Page</asp:LinkButton>
@@ -134,6 +137,7 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <EmptyDataTemplate>Sorry, there are no managers yet.</EmptyDataTemplate>
             </asp:GridView>
 
             <asp:LinkButton ID="ManagerReportLink" runat="server" OnClick="ManagerReportLink_Click">To Manager Report Page</asp:LinkButton>
@@ -167,6 +171,7 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <EmptyDataTemplate>Sorry, there's no PDF files uploaded yet</EmptyDataTemplate>
             </asp:GridView>
 
             <asp:LinkButton ID="LinktoPDFReport" runat="server" Text="PDF Report" OnClick="LinktoPDFReport_Click"></asp:LinkButton>
