@@ -101,7 +101,7 @@ namespace MockERKS.Framework.BLL
         #region LookupAllFiles
   
       [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Site_File> siteFile_Get()
+        public List<Site_File> LookUpAllFiles()
         {
             using (var context = new MockERKSDb())
             {
