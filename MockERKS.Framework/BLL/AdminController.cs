@@ -291,24 +291,7 @@ namespace MockERKS.Framework.BLL
         }
         #endregion
 
-        #region AddClient
-
-        [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void Client_Add(Organization item)
-        {
-
-            using (var context = new MockERKSDb())
-            {
-                //any business rules
-                context.Organizations.Add(item);
-                context.SaveChanges();
-            }
-        }
-
-
-        #endregion
-
-
+  
         #region RemoveClient
     
         [DataObjectMethod(DataObjectMethodType.Delete, false)]
