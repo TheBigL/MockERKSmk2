@@ -204,10 +204,12 @@
                                        
                                     </tr>
                                 </AlternatingItemTemplate>
+                                
                                 <EditItemTemplate>
+                                    
                                     <tr style="background-color: #999999;">
                                         <td>
-                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" CausesValidation="false"/>
+                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" CausesValidation="false" />
                                             <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" CausesValidation="false"/>
                                         </td>
                                         <td>
@@ -218,6 +220,7 @@
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Description_ID") %>' runat="server" ID="Description_IDTextBox" /></td>
                                         <td>
+                                            
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                                 ControlToValidate="PhoneTextBox" ErrorMessage="Enter a valid 10 digit number."
                                                  ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
@@ -401,7 +404,7 @@
                                 <EditItemTemplate>
                                     <tr style="background-color: #999999;">
                                         <td>
-                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"   class="btn btn-success"/>
+                                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"  CausesValidation="false" class="btn btn-success"/>
                                             <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton"  CausesValidation="false" class="btn"/>
                                         </td>
                                         <td>
