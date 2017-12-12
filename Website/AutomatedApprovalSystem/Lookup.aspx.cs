@@ -16,11 +16,46 @@ using iTextSharp.tool.xml;
 
 public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
 {
+    /*Lookup page
+     * Author: Leban Mohamed
+     * 
+     * */
     protected void Page_Load(object sender, EventArgs e)
     {
         if(!IsPostBack)
         {
             DataBind();
+            if(OrganizationGrid.Rows.Count == 0)
+            {
+                disableButtonsWhenGridViewIsEmpty(OrganizationLinkReport);
+                disableButtonsWhenGridViewIsEmpty(PDFOrganization);
+            }
+
+            else if(StaffGrid.Rows.Count == 0)
+            {
+                disableButtonsWhenGridViewIsEmpty(ToOfficerReport);
+                disableButtonsWhenGridViewIsEmpty(OfficerPDFLink);
+            }
+            else if(ManagerGrid.Rows.Count == 0)
+            {
+                disableButtonsWhenGridViewIsEmpty(ManagerReportLink);
+                disableButtonsWhenGridViewIsEmpty(ManagerPDF);
+            }
+
+            else if(FileGrid.Rows.Count == 0)
+            {
+                disableButtonsWhenGridViewIsEmpty(PDFFileReportLink);
+                disableButtonsWhenGridViewIsEmpty(ReportLink);
+            }
+            else if (PDFGrid.Rows.Count == 0)
+            {
+                disableButtonsWhenGridViewIsEmpty(LinktoPDFReport);
+                disableButtonsWhenGridViewIsEmpty(ExportDatatoPDF);
+            }
+
+
+            
+
         }
 
         if(!Request.IsAuthenticated)
@@ -36,7 +71,11 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
     }
 
 
-
+    public void disableButtonsWhenGridViewIsEmpty(LinkButton link)
+    {
+        link.Visible = false;
+        link.Enabled = false;
+    }
     protected void ReportLink_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/AutomatedApprovalSystem/FileReport");
@@ -73,11 +112,9 @@ public partial class AutomatedApprovalSystem_LookupFile : System.Web.UI.Page
                 HTMLWorker htmlParse = new HTMLWorker(newDoc);
                 PdfWriter writer = PdfWriter.GetInstance(newDoc, Response.OutputStream);
                 newDoc.Open();
-                htmlParse.Parse(sr);
-                
-                Response.Write(newDoc);
+                htmlParse.Parse(sr);  
                 newDoc.Close();
-
+                Response.Write(newDoc);
 
 
                 Response.End();
