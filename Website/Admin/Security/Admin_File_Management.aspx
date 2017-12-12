@@ -19,14 +19,14 @@
                 }
             </script>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#FileLookup" data-toggle="tab">File Lookup</a></li>
-                <li><a href="#Client" data-toggle="tab">Client Management</a></li>
+                <%--<li class="active"><a href="#FileLookup" data-toggle="tab">File Lookup</a></li>--%>
+                <li class="active"><a href="#Client" data-toggle="tab">Client Management</a></li>
                 <li><a href="#Employee" data-toggle="tab">Employee Management</a></li>
             </ul>
 
-            <div class="tab-content">
+          <div class="tab-content">
 
-                <div class="tab-pane active" id="FileLookup">
+                <%--<div class="tab-pane active" id="FileLookup">
                     
                     <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
                         <ContentTemplate>
@@ -57,7 +57,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Type_ID" SortExpression="Type_ID">
                                         <EditItemTemplate>
-                                            <asp:DropDownList ID="TypeDDL" runat="server" Selectedvalue='<%# Bind("Type_ID") %>' AutoPostBack="True">
+                                            <asp:DropDownList ID="TypeDDL" runat="server" Selectedvalue='<%# Bind("Type_ID") %>' AutoPostBack="True" >
                                                      <asp:ListItem Value="1">SCD</asp:ListItem>
                                                      <asp:ListItem  Value="2">CSU</asp:ListItem>
                                                      <asp:ListItem  Value="3">PST</asp:ListItem> 
@@ -143,7 +143,7 @@
                         </ContentTemplate>
 
                     </asp:UpdatePanel>
-                  </div>
+                  </div>--%>
   <%------------------------------------------file type ODS--%>
                 <asp:ObjectDataSource ID="FileTypeODS" 
                     runat="server" 
@@ -169,7 +169,10 @@
  <%-- //Client Management-------------------------------------------------------------------------------------------------%>
 
 
-                <div class="tab-pane" id="Client">
+                <div class="tab-content" >
+
+                      <div class="tab-pane active" id="Client">
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
@@ -215,8 +218,16 @@
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Description_ID") %>' runat="server" ID="Description_IDTextBox" /></td>
                                         <td>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a valid 10 digit number."
+                                                 ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
                                         <td>
+                                            <asp:RegularExpressionValidator ID="regexEmailValid" 
+                                                runat="server" 
+                                                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                              ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
                                         <td>
                                             <asp:Label Text='<%# Bind("User_Name") %>' runat="server" ID="User_NameTextBox" /></td>
@@ -241,12 +252,23 @@
                                             <asp:Label Text='<%# Bind("Organization_ID") %>' runat="server" ID="Organization_IDTextBox" /></td>
                                       
                                         <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red"
+                                                ErrorMessage="First name required " ControlToValidate="Organization_NameTextBox" SetFocusOnError="True" >
+                                            </asp:RequiredFieldValidator>
                                             <asp:TextBox Text='<%# Bind("Organization_Name") %>' runat="server" ID="Organization_NameTextBox" /></td>
                                         <td>
                                             <asp:TextBox Text='<%# Bind("Description_ID") %>' runat="server" ID="Description_IDTextBox" /></td>
                                         <td>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="PhoneTextBox" ErrorMessage="Enter a valid 10 digit number."
+                                                 ValidationExpression="[0-9]{10}" ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
                                         <td>
+                                             <asp:RegularExpressionValidator ID="regexEmailValid" 
+                                                runat="server" 
+                                                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                                ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email Format"
+                                              ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" /></td>
                                         <td>
                                             <asp:Label Text='<%# Bind("User_Name") %>' runat="server" ID="User_NameTextBox" /></td>
@@ -340,7 +362,10 @@
                         TypeName="MockERKS.Framework.BLL.AdminController" UpdateMethod="Client_Update"></asp:ObjectDataSource>
 
               
-              
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                        OldValuesParameterFormatString="original_{0}" 
+                        SelectMethod="DescriptionList" 
+                        TypeName="MockERKS.Framework.BLL.ClientController"></asp:ObjectDataSource>
                 
 
    <%-- //Employee Management--------------------------------------------------------------------------------------------------------%>
